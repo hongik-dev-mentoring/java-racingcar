@@ -12,13 +12,13 @@ public class Calculator {
         return 1;
     }
 
-    private String[] splitInputString(String input) {
-        return input.trim().split(",|:");
-    }
-
     private boolean isInputOneNumberString(String input) {
         String[] tokens = splitInputString(input);
         return tokens.length == 1;
+    }
+
+    private String[] splitInputString(String input) {
+        return input.trim().split(",|:");
     }
 
     private boolean isInputNullOrEmpty(String input) {

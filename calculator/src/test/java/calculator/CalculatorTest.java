@@ -3,7 +3,10 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculatorTest {
     @Test
@@ -11,13 +14,11 @@ public class CalculatorTest {
     public void emptyInputTest() {
         // given
         Calculator calculator = new Calculator();
-        // when
+        // when & then
         int actual = calculator.splitAndSum("");
-        // then
         assertThat(actual).isEqualTo(0);
-        // when
+        // when & then
         actual = calculator.splitAndSum("   ");
-        // then
         assertThat(actual).isEqualTo(0);
     }
 
@@ -30,5 +31,18 @@ public class CalculatorTest {
         int actual = calculator.splitAndSum(null);
         // then
         assertThat(actual).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자 반환")
+    public void oneNumberInputTest() {
+        // given
+        Calculator calculator = new Calculator();
+        List<String> list = Arrays.asList("7", " 7", "7 ", "7,", "7:");
+        // when & then
+        list.forEach(input -> {
+            int actual = calculator.splitAndSum(input);
+            assertThat(actual).isEqualTo(7);
+        });
     }
 }

@@ -5,10 +5,23 @@ public class Calculator {
         if (isInputNullOrEmpty(input)) {
             return 0;
         }
+        if (isInputOneNumberString(input)) {
+            String result = splitInputString(input)[0];
+            return Integer.parseInt(result);
+        }
         return 1;
     }
 
-    private static boolean isInputNullOrEmpty(String input) {
+    private String[] splitInputString(String input) {
+        return input.trim().split(",|:");
+    }
+
+    private boolean isInputOneNumberString(String input) {
+        String[] tokens = splitInputString(input);
+        return tokens.length == 1;
+    }
+
+    private boolean isInputNullOrEmpty(String input) {
         return input == null || input.isEmpty() || input.isBlank();
     }
 }

@@ -11,13 +11,28 @@ public class Calculator {
             String result = splitInputString(input)[0];
             return Integer.parseInt(result);
         }
-
         String[] tokens = splitInputString(input);
-        Integer result = Arrays.stream(tokens)
+        checkNegativeNumberNotExists(tokens);
+        return calculateSum(tokens);
+    }
+
+    private void checkNegativeNumberNotExists(String[] tokens) {
+        Arrays.stream(tokens).forEach(s -> {
+            int number = Integer.parseInt(s.trim());
+            checkIfNumberIsNegative(number);
+        });
+    }
+
+    private void checkIfNumberIsNegative(int number) {
+        if (number < 0) {
+            throw new RuntimeException("음수는 계산할 수 없습니다.");
+        }
+    }
+
+    private static Integer calculateSum(String[] tokens) {
+        return Arrays.stream(tokens)
                 .map(s -> Integer.parseInt(s.trim()))
                 .reduce(0, (a, b) -> a + b);
-
-        return result;
     }
 
     private boolean isInputOneNumberString(String input) {
@@ -25,7 +40,7 @@ public class Calculator {
         return tokens.length == 1;
     }
 
-    public String[] splitInputString(String input) {
+    private String[] splitInputString(String input) {
         return input.trim().split(",|:");
     }
 

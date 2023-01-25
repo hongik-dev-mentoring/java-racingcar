@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CalculatorTest {
     @Test
@@ -85,12 +86,18 @@ public class CalculatorTest {
     @Test
     @DisplayName("'//'와 '\n' 문자 사이에 커스텀 구분자를 지정할 수 있다.")
     public void numbersWithCustomSeparatorInputTest() {
-
+        //
     }
 
     @Test
     @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생해야 한다.")
     public void nagativeNumberInputTest() {
-
+        // given
+        Calculator calculator = new Calculator();
+        String input = "-1: 2, 3";
+        // when & then
+        assertThatThrownBy(() -> calculator.splitAndSum(input))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("음수는 계산할 수 없습니다.");
     }
 }

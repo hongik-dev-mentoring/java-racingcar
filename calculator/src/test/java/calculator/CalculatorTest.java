@@ -84,9 +84,35 @@ public class CalculatorTest {
     }
 
     @Test
+    public void testCustomSeparatorExistsMethod() {
+        // given
+        Calculator calculator = new Calculator();
+        String input = "//.\n1.2.3";
+        // when
+        boolean exists = calculator.CustomSeparatorExists(input);
+        // then
+        assertThat(exists).isTrue();
+    }
+
+    @Test
     @DisplayName("'//'와 '\n' 문자 사이에 커스텀 구분자를 지정할 수 있다.")
     public void numbersWithCustomSeparatorInputTest() {
-        //
+        // given
+        Calculator calculator = new Calculator();
+        // when
+        int actual = calculator.splitAndSum("//;\n1;2;3");
+//        int actual = calculator.splitAndSum("//;\n1:2:3");
+        // then
+        assertThat(actual).isEqualTo(6);
+    }
+
+    @Test
+    public void customSeparatorInvalidInputTest() {
+        // given
+        Calculator calculator = new Calculator();
+        // when & then
+        assertThatThrownBy(() -> calculator.splitAndSum("//;\n1:2:3"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

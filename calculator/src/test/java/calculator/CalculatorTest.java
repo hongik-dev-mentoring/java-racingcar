@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.*;
 
 public class CalculatorTest {
     @Test
-    @DisplayName("빈 문자열을 입력할 경우 0을 반환")
+    @DisplayName("빈 문자열을 입력할 경우 0을 반환한다.")
     public void emptyInputTest() {
         // given
         Calculator calculator = new Calculator();
@@ -23,7 +23,7 @@ public class CalculatorTest {
     }
 
     @Test
-    @DisplayName("null 값을 입력할 경우 0을 반환")
+    @DisplayName("null 값을 입력할 경우 0을 반환한다.")
     public void nullInputTest() {
         // given
         Calculator calculator = new Calculator();
@@ -34,7 +34,7 @@ public class CalculatorTest {
     }
 
     @Test
-    @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환")
+    @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.")
     public void oneNumberStringInputTest() {
         // given
         Calculator calculator = new Calculator();
@@ -47,20 +47,32 @@ public class CalculatorTest {
     }
 
     @Test
-    @DisplayName("숫자를 ',' 구분자로 입력할 경우 숫자의 합을 반환")
+    @DisplayName("숫자를 ',' 구분자로 입력할 경우 숫자의 합을 반환한다.")
     public void numbersWithCommaInputTest() {
 
     }
 
     @Test
-    @DisplayName("숫자를 ':' 구분자로 입력할 경우 숫자의 합을 반환")
+    @DisplayName("숫자를 ':' 구분자로 입력할 경우 숫자의 합을 반환한다.")
     public void numbersWithColonInputTest() {
 
     }
 
     @Test
-    @DisplayName("숫자를 ',' 와 ':' 구분자로 입력할 경우 숫자의 합을 반환")
+    @DisplayName("숫자를 ',' 와 ':' 구분자로 입력할 경우 숫자의 합을 반환한다.")
     public void numbersWithCommaAndColonInputTest() {
+
+    }
+
+    @Test
+    @DisplayName("'//'와 '\n' 문자 사이에 커스텀 구분자를 지정할 수 있다.")
+    public void numbersWithCustomSeparatorInputTest() {
+
+    }
+
+    @Test
+    @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생해야 한다.")
+    public void nagativeNumberInputTest() {
 
     }
 }

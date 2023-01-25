@@ -1,5 +1,7 @@
 package calculator;
 
+import java.util.Arrays;
+
 public class Calculator {
     public int splitAndSum(String input) {
         if (isInputNullOrEmpty(input)) {
@@ -9,7 +11,13 @@ public class Calculator {
             String result = splitInputString(input)[0];
             return Integer.parseInt(result);
         }
-        return 1;
+
+        String[] tokens = splitInputString(input);
+        Integer result = Arrays.stream(tokens)
+                .map(s -> Integer.parseInt(s.trim()))
+                .reduce(0, (a, b) -> a + b);
+
+        return result;
     }
 
     private boolean isInputOneNumberString(String input) {
@@ -17,7 +25,7 @@ public class Calculator {
         return tokens.length == 1;
     }
 
-    private String[] splitInputString(String input) {
+    public String[] splitInputString(String input) {
         return input.trim().split(",|:");
     }
 

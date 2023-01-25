@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculatorTest {
     @Test
@@ -49,19 +49,37 @@ public class CalculatorTest {
     @Test
     @DisplayName("숫자를 ',' 구분자로 입력할 경우 숫자의 합을 반환한다.")
     public void numbersWithCommaInputTest() {
-
+        // given
+        Calculator calculator = new Calculator();
+        String input = "1, 2, 3";
+        // when
+        int actual = calculator.splitAndSum(input);
+        // then
+        assertThat(actual).isEqualTo(6);
     }
 
     @Test
     @DisplayName("숫자를 ':' 구분자로 입력할 경우 숫자의 합을 반환한다.")
     public void numbersWithColonInputTest() {
-
+        // given
+        Calculator calculator = new Calculator();
+        String input = "1: 2: 3";
+        // when
+        int actual = calculator.splitAndSum(input);
+        // then
+        assertThat(actual).isEqualTo(6);
     }
 
     @Test
     @DisplayName("숫자를 ',' 와 ':' 구분자로 입력할 경우 숫자의 합을 반환한다.")
     public void numbersWithCommaAndColonInputTest() {
-
+        // given
+        Calculator calculator = new Calculator();
+        String input = "1: 2, 3";
+        // when
+        int actual = calculator.splitAndSum(input);
+        // then
+        assertThat(actual).isEqualTo(6);
     }
 
     @Test

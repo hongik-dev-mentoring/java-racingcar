@@ -5,25 +5,22 @@ public class Input {
 	private static ArrayList<String> strings = new ArrayList<>();
 	private static int tryNum;
 
-	public static void readNames(){
+	public static ArrayList<String> readNames(){
 		Scanner sc = new Scanner(System.in);
-
 		while(true){
 			String input = sc.nextLine();
 			if (noExceptionAtStrings(input) == true) break;
 		}
-
-		// for (String string : strings) {
-		// 	System.out.println("string = " + string);
-		// }
+		return strings;
 	}
 
-	public static void readNum(){
+	public static int readNum(){
 		Scanner sc = new Scanner(System.in);
 		while(true){
 			String input = sc.nextLine();
 			if(noExceptionAtNum(input) == true) break;
 		}
+		return tryNum;
 	}
 
 	private static boolean noExceptionAtNum(String input) {
@@ -51,10 +48,4 @@ public class Input {
 			return false;
 		}
 	}
-
-	public static void main(String[] args) {
-		Input.readNames();
-		Input.readNum();
-	}
-
 }

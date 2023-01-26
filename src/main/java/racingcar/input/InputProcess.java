@@ -16,19 +16,34 @@ public class InputProcess {
 
     private final Validation validation = new Validation();
 
+    private List<Car> carList;
+
+    private Integer moveCount;
+
     public List<Car> getCarList() {
-        System.out.println(INPUT_CAR_NAMES);
-        String input = sc.nextLine();
-        validation.validateCarNameInputProcess(input);
-        List<Car> carList = Arrays.stream(input.split(","))
-                .map(s -> new Car(s.trim())).collect(Collectors.toList());
+        try {
+            System.out.println(INPUT_CAR_NAMES);
+            String input = sc.nextLine();
+            validation.validateCarNameInputProcess(input);
+            carList = Arrays.stream(input.split(","))
+                    .map(s -> new Car(s.trim())).collect(Collectors.toList());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            getCarList();
+        }
         return carList;
     }
 
     public Integer getMoveCount() {
-        System.out.println(INPUT_MOVE_COUNT);
-        String input = sc.nextLine();
-        validation.validateMoveCountInputProcess(input);
-        return Integer.parseInt(input);
+        try {
+            System.out.println(INPUT_MOVE_COUNT);
+            String input = sc.nextLine();
+            validation.validateMoveCountInputProcess(input);
+            moveCount = Integer.parseInt(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            getMoveCount();
+        }
+        return moveCount;
     }
 }

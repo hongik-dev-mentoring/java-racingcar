@@ -24,6 +24,8 @@ public class CarTest {
     @Test
     public void printPositionTest() {
         Car car = new Car("abc", 3);
+        int actual = car.getPosition();
+        Assertions.assertThat(actual).isEqualTo(3);
         car.printPosition();
         String output = getOutput();
         Assertions.assertThat(output).contains("abc : ---");

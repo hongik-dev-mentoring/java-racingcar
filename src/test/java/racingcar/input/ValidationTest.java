@@ -2,21 +2,15 @@ package racingcar.input;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.message.ErrorMessage;
 
 import static racingcar.message.ErrorMessage.*;
 
 public class ValidationTest {
 
     private final Validation validate = new Validation();
-
-    @Test // checkCarNameLengthTest로 커버가능
-    public void checkCarNameIsEmpty() {
-        String input = ",A,B,C,D"; // 01111
-        Arrays.stream(input.split(","))
-                .forEach(s -> System.out.println(s.length()));
-    }
 
     @Test
     public void checkInputContainsBlankTest() {
@@ -36,7 +30,7 @@ public class ValidationTest {
 
     @Test
     public void checkCarNameLengthTest() {
-        String carName = "AAABBC";
+        String carName = "AAABBC,DD";
         Assertions.assertThatThrownBy(() -> validate.checkCarNameLength(carName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NOT_PROPER_NAME_LENGTH.toString());
@@ -48,6 +42,19 @@ public class ValidationTest {
         Assertions.assertThatThrownBy(() -> validate.checkDuplicatedCarNames(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(DUPLICATED_NAMES.toString());
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "A,B,C,D D:INPUT_CONTAINS_BLANK",
+            "A,:NOT_ENOUGH_CARS",
+            "AAABBC,DD:NOT_PROPER_NAME_LENGTH",
+            "AA,AA,B,C:DUPLICATED_NAMES"}, delimiter = ':')
+    public void validateCarNameInputProcessTest(String input, String errorMessage) {
+        ErrorMessage message = Enum.valueOf(ErrorMessage.class, errorMessage);
+        Assertions.assertThatThrownBy(() -> validate.validateCarNameInputProcess(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(message.toString());
     }
 
     @Test
@@ -64,6 +71,17 @@ public class ValidationTest {
         Assertions.assertThatThrownBy(() -> validate.checkInputIsGreaterThanZero(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INPUT_IS_UNDER_ONE.toString());
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "AA:INPUT_IS_NOT_NUMBER",
+            "-1:INPUT_IS_UNDER_ONE"}, delimiter = ':')
+    public void validateMoveCountInputProcessTest(String input, String errorMessage) {
+        ErrorMessage message = Enum.valueOf(ErrorMessage.class, errorMessage);
+        Assertions.assertThatThrownBy(() -> validate.validateMoveCountInputProcess(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(message.toString());
     }
 
 }

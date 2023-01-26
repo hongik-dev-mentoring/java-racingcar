@@ -1,11 +1,20 @@
 package racingcar.input;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
 import static racingcar.message.ErrorMessage.*;
 
 public class Validation {
+
+    public void validateCarNameInputProcess(String input) {
+        checkInputContainsBlank(input);
+        checkInputHasEnoughCars(input);
+        checkDuplicatedCarNames(input);
+        Arrays.stream(input.split(","))
+                .forEach((carName) -> checkCarNameLength(carName));
+    }
 
     public void checkInputContainsBlank(String input) {
         if (input.contains(" ")) {
@@ -32,6 +41,11 @@ public class Validation {
         if (strings.length != hashSet.size()) {
             throw (new IllegalArgumentException(DUPLICATED_NAMES.toString()));
         }
+    }
+
+    public void validateMoveCountInputProcess(String input) {
+        checkInputIsNumber(input);
+        checkInputIsGreaterThanZero(input);
     }
 
     public void checkInputIsNumber(String input) {

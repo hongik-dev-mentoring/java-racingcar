@@ -14,9 +14,12 @@ public class InputProcess {
 
     private final Scanner sc = new Scanner(System.in);
 
+    private final Validation validation = new Validation();
+
     public List<Car> getCarList() {
         System.out.println(INPUT_CAR_NAMES);
         String input = sc.nextLine();
+        validation.validateCarNameInputProcess(input);
         List<Car> carList = Arrays.stream(input.split(","))
                 .map(s -> new Car(s.trim())).collect(Collectors.toList());
         return carList;
@@ -25,6 +28,7 @@ public class InputProcess {
     public Integer getMoveCount() {
         System.out.println(INPUT_MOVE_COUNT);
         String input = sc.nextLine();
+        validation.validateMoveCountInputProcess(input);
         return Integer.parseInt(input);
     }
 }

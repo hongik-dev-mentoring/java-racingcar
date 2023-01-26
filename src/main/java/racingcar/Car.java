@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Car {
     private final String name;
-    private int position = 0;
+    private Integer position = 0;
 
     public Car(String name) {
         this.name = name;
@@ -22,7 +22,7 @@ public class Car {
         return rand.nextInt(10);
     }
 
-    public void go() {
+    public void move() {
         if (pickRandomNumber() >= 4) {
             this.position++;
         }
@@ -36,7 +36,11 @@ public class Car {
         System.out.println(sb);
     }
 
-    public int getPosition() {
+    public Integer getPosition() {
         return this.position;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }

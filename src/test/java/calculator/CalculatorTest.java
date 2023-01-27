@@ -23,4 +23,22 @@ class CalculatorTest {
 		assertThat(result).isEqualTo(6);
 	}
 
+	@Test
+	public void splitAndSum_null() throws Exception {
+		int result = Calculator.splitAndSum(null);
+		assertThat(result).isEqualTo(0);
+	}
+
+	@Test
+	public void splitAndSum_빈문자() throws Exception {
+		int result = Calculator.splitAndSum("");
+		assertThat(result).isEqualTo(0);
+	}
+
+	@Test
+	public void splitAndSum_숫자하나() throws Exception {
+		int result = Calculator.splitAndSum("1");
+		assertThat(result).isEqualTo(1);
+	}
+
 }

@@ -2,7 +2,7 @@ package racingcar.util.generator;
 
 public class NumberGenerator {
 
-	public static int generateNuamber(String attemptNumber) {
-		return 0;
+	public static int generateNumber(String attemptNumber) {
+		return Integer.parseInt(attemptNumber);
 	}
 }

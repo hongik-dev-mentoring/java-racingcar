@@ -24,8 +24,8 @@ public class NameValidator {
 		checkCarNameLength(carName);
 	}
 
-	private static void checkCarNameIsNull(String carNames) {
-		if (carNames == null) {
+	private static void checkCarNameIsNull(String carName) {
+		if (carName == null) {
 			throw new IllegalArgumentException(NULL_CAR_NAME_MESSAGE);
 		}
 	}
@@ -37,7 +37,7 @@ public class NameValidator {
 	}
 
 	private static boolean isBlank(String carName) {
-		return carName.isBlank();
+		return carName.isEmpty() || carName.trim().isEmpty();
 	}
 
 	private static void checkCarNameIsDuplicate(String carNames) {

@@ -17,7 +17,7 @@ class CarsTest {
 
 	@BeforeEach
 	void initialize() {
-		cars.add(Arrays.asList("chan", "dong", "ho"));
+		cars.addCarNames(Arrays.asList("chan", "dong", "ho"));
 		List<Car> cars = this.cars.getCars(); // return immutable list
 		car1 = cars.get(0);
 		car2 = cars.get(1);

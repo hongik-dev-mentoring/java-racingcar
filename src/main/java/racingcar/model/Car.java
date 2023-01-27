@@ -35,4 +35,12 @@ public class Car {
 		}
 		return false;
 	}
+
+	@Override
+	public String toString() {
+		return "Car{" +
+			"name='" + name + '\'' +
+			", position=" + position +
+			'}';
+	}
 }

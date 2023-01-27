@@ -13,13 +13,13 @@ class NumberValidatorTest {
 	@ValueSource(strings = {"-1", "0"})
 	void 시도횟수_범위(String input) {
 		assertThatThrownBy(() -> NumberValidator.validateNumber(input))
-			.isInstanceOf(RuntimeException.class);
+			.isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@ParameterizedTest(name = "{index} : 숫자가 아닌 문자 {0} 입력")
 	@ValueSource(strings = {"a", "B", "input"})
 	void 숫자_미입력(String input) {
 		assertThatThrownBy(() -> NumberValidator.validateNumber(input))
-			.isInstanceOf(RuntimeException.class);
+			.isInstanceOf(IllegalArgumentException.class);
 	}
 }

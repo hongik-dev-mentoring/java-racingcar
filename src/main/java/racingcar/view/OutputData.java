@@ -28,7 +28,7 @@ public class OutputData {
 		}
 		printBlankLine();
 	}
-
+	
 	private static StringBuilder printCarsCurrentPosition(Car car) {
 		StringBuilder builder = new StringBuilder();
 		for (int i = 0; i < car.getPosition(); ++i) {

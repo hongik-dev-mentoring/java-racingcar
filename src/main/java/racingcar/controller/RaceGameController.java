@@ -45,7 +45,7 @@ public class RaceGameController {
 	private void addCarNamesToCars() {
 		try {
 			List<String> carNames = NameGenerator.generateCarNames(InputData.getCarNames());
-			cars.add(carNames);
+			cars.addCarNames(carNames);
 		} catch (IllegalArgumentException e) {
 			OutputData.printErrorMessage(e.getMessage()); // [ERROR] + 메시지 출력
 			addCarNamesToCars();

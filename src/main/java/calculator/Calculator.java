@@ -19,18 +19,18 @@ public class Calculator {
 	}
 
 	private static int getSum(String[] inputs) {
-		checkInputIsNegative(inputs);
+		for (String input : inputs) {
+			checkInputIsNegative(input);
+		}
 
 		return Arrays.stream(inputs)
 			.mapToInt(Integer::parseInt)
 			.reduce(0, Integer::sum);
 	}
 
-	private static void checkInputIsNegative(String[] inputs) {
-		for (String input : inputs) {
-			if (getParseInt(input) < 0) {
-				throw new RuntimeException();
-			}
+	private static void checkInputIsNegative(String input) {
+		if (getParseInt(input) < 0) {
+			throw new RuntimeException("숫자 이외의 값 또는 음수는 계산할 수 없습니다.");
 		}
 	}
 

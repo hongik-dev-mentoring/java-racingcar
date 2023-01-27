@@ -1,7 +1,6 @@
 package racingcar.util.validator;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.stream.Stream;
 
@@ -48,13 +47,12 @@ public class NameValidatorTest {
 			.isInstanceOf(IllegalArgumentException.class);
 	}
 
-	@ParameterizedTest(name = "자동차 이름 : {0}, 결과 : {1}")
+	@ParameterizedTest(name = "{index}번 자동차 이름 : {0}, 결과 : {1}")
 	@DisplayName("자동차 이름 유효성 검사")
 	@MethodSource("invalidCarNames")
 	void validate_car_name(String carName, String expectedResult) {
-		assertThrows(IllegalArgumentException.class, () ->
-			new Car(carName)
-		);
+		assertThatThrownBy(() -> new Car(carName))
+			.isInstanceOf(IllegalArgumentException.class);
 	}
 
 	static Stream<Arguments> invalidCarNames() {

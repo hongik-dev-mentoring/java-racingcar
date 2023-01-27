@@ -15,5 +15,9 @@ public class NameValidatorTest {
 	}
 
 	@Test
-	@DisplayName("")
+	@DisplayName("자동차 이름은 5자 이하만 가능하다.")
+	void validate_car_name_length() {
+		car = new Car("euichan");
+		NameValidator.validateCarNames(car.getName());
+	}
 }

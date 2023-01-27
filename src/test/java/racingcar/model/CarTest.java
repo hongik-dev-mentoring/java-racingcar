@@ -1,12 +1,10 @@
-package racingcar;
+package racingcar.model;
 
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import racingcar.model.Car;
 
 class CarTest {
 
@@ -34,4 +32,5 @@ class CarTest {
 	void first_position_car_equals_zero() {
 		assertThat(car.getPosition()).isEqualTo(0);
 	}
+	
 }

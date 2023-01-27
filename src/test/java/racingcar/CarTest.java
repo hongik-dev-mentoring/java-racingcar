@@ -28,4 +28,10 @@ class CarTest {
 	void validate_car_name() {
 		assertThat(car.getName()).isEqualTo("chan");
 	}
+
+	@Test
+	@DisplayName("자동차의 초기 위치는 0이어야 한다.")
+	void first_position_car_equals_zero() {
+		assertThat(car.getPosition()).isEqualTo(0);
+	}
 }

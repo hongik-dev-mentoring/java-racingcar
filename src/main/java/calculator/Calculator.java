@@ -1,8 +1,12 @@
 package calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Calculator {
 
 	private static final String SPLIT_REGEX = "[,:]";
+	private static final String CUSTOM_SPLIT_REGEX = "//(.)\\n(.*)";
 
 	public static int splitAndSum(String input) {
 		if (isEmpty(input)) {
@@ -21,7 +25,20 @@ public class Calculator {
 	}
 
 	private static String[] split(String input) {
+		Matcher matcher = getMatcher(input);
+		if (isCustom(matcher)) { // 커스텀 구분자를 사용한다면
+			String customDelimiter = matcher.group(1);
+			return matcher.group(2).split(customDelimiter);
+		}
 		return input.split(SPLIT_REGEX);
+	}
+
+	private static boolean isCustom(Matcher matcher) {
+		return matcher.find();
+	}
+
+	private static Matcher getMatcher(String input) {
+		return Pattern.compile(CUSTOM_SPLIT_REGEX).matcher(input);
 	}
 
 	private static boolean isEmpty(String input) {

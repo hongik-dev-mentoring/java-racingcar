@@ -37,7 +37,7 @@ class CarTest {
 	}
 
 	@Test
-	void 랜덤값이_4이상일경우_전진한다() {
+	void 랜덤값이_4이상이면_전진한다() {
 		assertThat(car.shouldMove(4)).isTrue();
 		assertThat(car.shouldMove(3)).isFalse();
 	}

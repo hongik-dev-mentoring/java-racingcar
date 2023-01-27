@@ -3,7 +3,6 @@ package racingcar.model;
 import static java.util.stream.Collectors.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import racingcar.util.generator.RandomNumberGenerator;
@@ -22,8 +21,7 @@ public class Cars {
 	}
 
 	public List<Car> getCars() {
-		return cars.stream()
-			.collect(collectingAndThen(toList(), Collections::unmodifiableList));
+		return List.copyOf(cars);
 	}
 
 	public void moveForward() {

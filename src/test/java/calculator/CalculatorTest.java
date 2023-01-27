@@ -41,4 +41,10 @@ class CalculatorTest {
 		assertThat(result).isEqualTo(1);
 	}
 
+	@Test
+	public void splitAndSum_negative() throws Exception {
+		assertThatThrownBy(() -> Calculator.splitAndSum("-1,2,3"))
+			.isInstanceOf(RuntimeException.class);
+	}
+
 }

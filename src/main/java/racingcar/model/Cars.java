@@ -32,6 +32,16 @@ public class Cars {
 	}
 
 	public int findMaxPosition() {
-		return 0;
+		return cars.stream()
+			.mapToInt(Car::getPosition)
+			.max()
+			.orElse(0);
+	}
+
+	public List<String> findWinnersName() {
+		return cars.stream()
+			.filter(car -> car.isWinner(findMaxPosition()))
+			.map(Car::getName)
+			.collect(toList());
 	}
 }

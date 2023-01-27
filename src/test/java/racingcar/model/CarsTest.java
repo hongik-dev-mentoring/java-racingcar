@@ -29,7 +29,33 @@ class CarsTest {
 		for (int i = 0; i < 3; ++i) {
 			car1.moveForward(5);
 		}
+
 		assertThat(cars.findMaxPosition()).isEqualTo(3);
+	}
+
+	@Test
+	@DisplayName("자동차 게임 단독 우승자 찾기")
+	void find_winner() {
+		for (int i = 0; i < 3; ++i) {
+			car1.moveForward(5);
+		}
+
+		List<String> winners = cars.findWinnersName();
+
+		assertThat(winners.get(0)).isEqualTo("chan");
+	}
+
+	@Test
+	@DisplayName("자동차 게임 공동 우승자 찾기")
+	void find_winners() {
+		for (int i = 0; i < 3; ++i) {
+			car1.moveForward(5);
+			car2.moveForward(5);
+		}
+
+		List<String> winners = cars.findWinnersName();
+
+		assertThat(winners.size()).isEqualTo(2);
 	}
 
 }

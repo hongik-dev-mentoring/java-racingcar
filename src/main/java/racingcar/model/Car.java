@@ -28,4 +28,11 @@ public class Car {
 	public boolean shouldMove(int randomNumber) {
 		return randomNumber >= 4;
 	}
+
+	public boolean isWinner(int maxPosition) {
+		if (this.getPosition() == maxPosition) {
+			return true;
+		}
+		return false;
+	}
 }

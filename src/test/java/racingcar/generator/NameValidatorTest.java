@@ -30,7 +30,7 @@ public class NameValidatorTest {
 
 	@Test
 	@DisplayName("자동차 이름은 Null일 수 없다.")
-	void validate_car_name_length() {
+	void car_name_should_not_be_null() {
 		assertThatThrownBy(() -> NameValidator.validateCarNames(car1.getName()))
 			.isInstanceOf(IllegalArgumentException.class);
 	}

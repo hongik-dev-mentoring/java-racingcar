@@ -5,6 +5,7 @@ import racingcar.util.validator.NameValidator;
 public class Car {
 	private final String name;
 	private int position = 0;
+	private static final int MOVE_FORWARD_RANDOM_NUMBER_STANDARD = 4;
 
 	public Car(String name) {
 		this.name = name;
@@ -26,7 +27,7 @@ public class Car {
 	}
 
 	public boolean shouldMove(int randomNumber) {
-		return randomNumber >= 4;
+		return randomNumber >= MOVE_FORWARD_RANDOM_NUMBER_STANDARD;
 	}
 
 	public boolean isWinner(int maxPosition) {

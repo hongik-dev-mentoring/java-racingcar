@@ -3,6 +3,7 @@ package racingcar.view;
 import java.util.List;
 
 import racingcar.model.Car;
+import racingcar.model.Cars;
 
 public class OutputData {
 	private static final String ERROR_MESSAGE = "[ERROR] ";
@@ -34,5 +35,9 @@ public class OutputData {
 			builder.append("-");
 		}
 		return builder;
+	}
+
+	public static void printWinners(Cars cars) {
+		
 	}
 }

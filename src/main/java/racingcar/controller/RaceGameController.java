@@ -27,7 +27,8 @@ public class RaceGameController {
 	}
 
 	public void announceWinner() {
-		
+		// 자동차 경주 게임 최종 우승자 발표
+		OutputData.printWinners(cars);
 	}
 
 	private static void printResultHeader() {

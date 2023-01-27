@@ -30,4 +30,8 @@ public class Cars {
 			car.moveForward(randomNumber);
 		}
 	}
+
+	public int findMaxPosition() {
+		return 0;
+	}
 }

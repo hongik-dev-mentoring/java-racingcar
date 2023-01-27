@@ -18,4 +18,14 @@ public class Car {
 	public int getPosition() {
 		return position;
 	}
+
+	public void moveForward(int randomNumber) {
+		if (shouldMove(randomNumber)) {
+			this.position++;
+		}
+	}
+
+	public boolean shouldMove(int randomNumber) {
+		return randomNumber >= 4;
+	}
 }

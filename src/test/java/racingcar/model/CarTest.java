@@ -1,11 +1,14 @@
 package racingcar.model;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.DisplayNameGenerator.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.Test;
 
+@DisplayNameGeneration(ReplaceUnderscores.class)
 class CarTest {
 
 	private Car car;
@@ -33,4 +36,23 @@ class CarTest {
 		assertThat(car.getPosition()).isEqualTo(0);
 	}
 
+	@Test
+	void 랜덤값이_4이상일경우_전진한다() {
+		assertThat(car.shouldMove(4)).isTrue();
+		assertThat(car.shouldMove(3)).isFalse();
+	}
+
+	@Test
+	@DisplayName("자동차가 전진하지 못하면 위치는 그대로이다.")
+	void not_move_forward_car() {
+		car.moveForward(3);
+		assertThat(car.getPosition()).isEqualTo(0);
+	}
+
+	@Test
+	@DisplayName("자동차를 전진시키면 위치가 1 증가해야 한다.")
+	void move_forward_car() {
+		car.moveForward(4);
+		assertThat(car.getPosition()).isEqualTo(1);
+	}
 }

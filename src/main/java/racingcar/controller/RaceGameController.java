@@ -5,7 +5,6 @@ import java.util.List;
 import racingcar.model.Cars;
 import racingcar.util.generator.NameGenerator;
 import racingcar.util.generator.NumberGenerator;
-import racingcar.util.generator.RandomNumberGenerator;
 import racingcar.view.InputData;
 import racingcar.view.OutputData;
 
@@ -37,9 +36,8 @@ public class RaceGameController {
 	}
 
 	private void moveCarsForwardByAttemptNumber() {
-		int randomNumber = RandomNumberGenerator.generateRandomNumber();
 		for (int i = 0; i < attemptNumber; ++i) {
-			cars.moveForward(randomNumber);
+			cars.moveForward();
 			OutputData.printCarsPosition(cars.getCars());
 		}
 	}

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import racingcar.util.generator.RandomNumberGenerator;
 import racingcar.util.validator.NameValidator;
 
 public class Cars {
@@ -24,9 +25,9 @@ public class Cars {
 			.collect(collectingAndThen(toList(), Collections::unmodifiableList));
 	}
 
-	public void moveForward(int randomNumber) {
-
+	public void moveForward() {
 		for (Car car : cars) {
+			int randomNumber = RandomNumberGenerator.generateRandomNumber();
 			car.moveForward(randomNumber);
 		}
 	}

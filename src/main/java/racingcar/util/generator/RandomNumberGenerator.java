@@ -5,5 +5,4 @@ public class RandomNumberGenerator {
 		double num = Math.random();
 		return (int)(num * 10);
 	}
-	
 }

@@ -23,4 +23,11 @@ public class Cars {
 		return cars.stream()
 			.collect(collectingAndThen(toList(), Collections::unmodifiableList));
 	}
+
+	public void moveForward(int randomNumber) {
+
+		for (Car car : cars) {
+			car.moveForward(randomNumber);
+		}
+	}
 }

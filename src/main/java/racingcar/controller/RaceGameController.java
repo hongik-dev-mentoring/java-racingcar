@@ -5,6 +5,7 @@ import java.util.List;
 import racingcar.model.Cars;
 import racingcar.util.generator.NameGenerator;
 import racingcar.util.generator.NumberGenerator;
+import racingcar.util.generator.RandomNumberGenerator;
 import racingcar.view.InputData;
 import racingcar.view.OutputData;
 
@@ -21,7 +22,8 @@ public class RaceGameController {
 	}
 
 	public void run() {
-
+		// 자동차 경주 게임 시작
+		moveCarsForwardByAttemptNumber();
 	}
 
 	public void announceWinner() {
@@ -31,6 +33,14 @@ public class RaceGameController {
 	private static void printResultHeader() {
 		OutputData.printBlankLine();
 		OutputData.printGameResultHeader();
+	}
+
+	private void moveCarsForwardByAttemptNumber() {
+		int randomNumber = RandomNumberGenerator.generateRandomNumber();
+		for (int i = 0; i < attemptNumber; ++i) {
+			cars.moveForward(randomNumber);
+			OutputData.printCarsPosition(cars.getCars());
+		}
 	}
 
 	private void addCarNamesToCars() {

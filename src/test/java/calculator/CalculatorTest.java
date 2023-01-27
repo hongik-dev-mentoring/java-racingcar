@@ -43,7 +43,13 @@ class CalculatorTest {
 
 	@Test
 	public void splitAndSum_negative() throws Exception {
-		assertThatThrownBy(() -> Calculator.splitAndSum("-1,2,3"))
+		assertThatThrownBy(() -> Calculator.splitAndSum("-1,-2,-3"))
+			.isInstanceOf(RuntimeException.class);
+	}
+
+	@Test
+	public void splitAndSum_숫자이외의값() throws Exception {
+		assertThatThrownBy(() -> Calculator.splitAndSum("a, b, C"))
 			.isInstanceOf(RuntimeException.class);
 	}
 }

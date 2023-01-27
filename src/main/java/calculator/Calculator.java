@@ -7,6 +7,8 @@ public class Calculator {
 
 	private static final String SPLIT_REGEX = "[,:]";
 	private static final String CUSTOM_SPLIT_REGEX = "//(.)\\n(.*)";
+	private static final int DELIMITER_NUMBER = 1;
+	private static final int INPUT_GROUP = 2;
 
 	public static int splitAndSum(String input) {
 		if (isEmpty(input)) {
@@ -19,23 +21,27 @@ public class Calculator {
 		int sum = 0;
 		for (String input : inputs) {
 			checkInputIsNegative(input);
-			int number = Integer.parseInt(input);
+			int number = getParseInt(input);
 			sum += number;
 		}
 		return sum;
 	}
 
 	private static void checkInputIsNegative(String input) {
-		if (Integer.parseInt(input) < 0) {
+		if (getParseInt(input) < 0) {
 			throw new RuntimeException();
 		}
+	}
+
+	private static int getParseInt(String input) {
+		return Integer.parseInt(input);
 	}
 
 	private static String[] split(String input) {
 		Matcher matcher = getMatcher(input);
 		if (isCustom(matcher)) { // 커스텀 구분자를 사용한다면
-			String customDelimiter = matcher.group(1);
-			return matcher.group(2).split(customDelimiter);
+			String customDelimiter = matcher.group(DELIMITER_NUMBER);
+			return matcher.group(INPUT_GROUP).split(customDelimiter);
 		}
 		return input.split(SPLIT_REGEX);
 	}

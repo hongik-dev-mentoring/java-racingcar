@@ -1,4 +1,4 @@
-package racingcar.generator;
+package racingcar.util.generator;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import racingcar.util.generator.NameGenerator;
 
 public class NameGeneratorTest {
 	@Test

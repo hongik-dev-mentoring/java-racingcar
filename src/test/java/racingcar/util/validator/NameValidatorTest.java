@@ -1,4 +1,4 @@
-package racingcar.generator;
+package racingcar.util.validator;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 import racingcar.model.Car;
 import racingcar.model.Cars;
-import racingcar.util.validator.NameValidator;
 
 public class NameValidatorTest {
 	private final Cars cars = new Cars();

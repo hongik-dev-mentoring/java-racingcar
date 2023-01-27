@@ -11,7 +11,9 @@ public class Cars {
 	private List<Car> cars = new ArrayList<>();
 
 	public void add(List<String> cars) {
-
+		for (String carName : cars) {
+			this.cars.add(new Car(carName));
+		}
 	}
 
 	public List<Car> getCars() {

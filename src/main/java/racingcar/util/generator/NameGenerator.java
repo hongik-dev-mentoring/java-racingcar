@@ -1,4 +1,4 @@
-package racingcar.generator;
+package racingcar.util.generator;
 
 import java.util.Arrays;
 import java.util.List;

@@ -7,6 +7,8 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import racingcar.util.generator.NameGenerator;
+
 public class NameGeneratorTest {
 	@Test
 	@DisplayName("자동차 이름 생성에 성공")

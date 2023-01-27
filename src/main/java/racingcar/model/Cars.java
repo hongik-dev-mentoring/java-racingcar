@@ -6,11 +6,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import racingcar.util.validator.NameValidator;
+
 public class Cars {
 
 	private List<Car> cars = new ArrayList<>();
 
 	public void add(List<String> cars) {
+		NameValidator.validateCarNames(cars.toString());
 		for (String carName : cars) {
 			this.cars.add(new Car(carName));
 		}

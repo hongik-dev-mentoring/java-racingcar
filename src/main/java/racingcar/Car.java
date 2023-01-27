@@ -15,10 +15,8 @@ public class Car {
         this.position = position;
     }
 
-
     private int pickRandomNumber() {
         Random rand = new Random();
-        rand.setSeed(System.currentTimeMillis());
         return rand.nextInt(10);
     }
 

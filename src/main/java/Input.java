@@ -7,18 +7,20 @@ public class Input {
 
 	public static ArrayList<String> readNames(){
 		Scanner sc = new Scanner(System.in);
+		System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 		while(true){
 			String input = sc.nextLine();
-			if (noExceptionAtStrings(input) == true) break;
+			if (noExceptionAtStrings(input)) break;
 		}
 		return strings;
 	}
 
 	public static int readNum(){
 		Scanner sc = new Scanner(System.in);
+		System.out.println("시도할 회수는 몇회인가요?");
 		while(true){
 			String input = sc.nextLine();
-			if(noExceptionAtNum(input) == true) break;
+			if(noExceptionAtNum(input)) break;
 		}
 		return tryNum;
 	}
@@ -40,8 +42,7 @@ public class Input {
 		try{
 			InputException.ifNull(input);
 			InputException.ifEmpty(input);
-			String[] split = input.split(",");
-			InputException.ifLong(strings, split);
+			InputException.ifLong(strings, input.split(","));
 			return true;
 		}catch(IllegalArgumentException e){
 			System.out.println(e.getMessage());

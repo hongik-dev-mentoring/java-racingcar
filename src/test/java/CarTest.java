@@ -36,7 +36,7 @@ class CarTest {
 
 	@Test
 	@DisplayName("차 움직이기")
-	void moveOrNot(){
+	void move(){
 		Car car = new Car("tae");
 
 		boolean isMove = car.move();
@@ -45,6 +45,16 @@ class CarTest {
 			()->assumingThat(isMove == true, ()->assertThat(car.getPosition()).isEqualTo(1)),
 			()->assumingThat(isMove == false, ()->assertThat(car.getPosition()).isEqualTo(0))
 		);
+	}
+
+	@Test
+	@DisplayName("winNum 1 올리기")
+	void increaseWinNum(){
+		Car tae = new Car("tae");
+
+		tae.increaseWinNum();
+
+		assertThat(tae.getWinNum()).isEqualTo(1);
 	}
 
 

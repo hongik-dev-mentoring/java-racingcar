@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,18 +19,18 @@ public class Calculator {
 	}
 
 	private static int getSum(String[] inputs) {
-		int sum = 0;
-		for (String input : inputs) {
-			checkInputIsNegative(input);
-			int number = getParseInt(input);
-			sum += number;
-		}
-		return sum;
+		checkInputIsNegative(inputs);
+
+		return Arrays.stream(inputs)
+			.mapToInt(Integer::parseInt)
+			.reduce(0, Integer::sum);
 	}
 
-	private static void checkInputIsNegative(String input) {
-		if (getParseInt(input) < 0) {
-			throw new RuntimeException();
+	private static void checkInputIsNegative(String[] inputs) {
+		for (String input : inputs) {
+			if (getParseInt(input) < 0) {
+				throw new RuntimeException();
+			}
 		}
 	}
 

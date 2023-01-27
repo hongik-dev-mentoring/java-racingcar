@@ -11,7 +11,7 @@ class CarTest {
 	private Car car;
 
 	@BeforeEach
-	void initiateCar() {
+	void initialize() {
 		car = new Car("chan");
 	}
 
@@ -32,5 +32,5 @@ class CarTest {
 	void first_position_car_equals_zero() {
 		assertThat(car.getPosition()).isEqualTo(0);
 	}
-	
+
 }

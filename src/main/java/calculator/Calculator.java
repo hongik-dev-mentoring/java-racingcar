@@ -18,10 +18,17 @@ public class Calculator {
 	private static int getSum(String[] inputs) {
 		int sum = 0;
 		for (String input : inputs) {
+			checkInputIsNegative(input);
 			int number = Integer.parseInt(input);
 			sum += number;
 		}
 		return sum;
+	}
+
+	private static void checkInputIsNegative(String input) {
+		if (Integer.parseInt(input) < 0) {
+			throw new RuntimeException();
+		}
 	}
 
 	private static String[] split(String input) {

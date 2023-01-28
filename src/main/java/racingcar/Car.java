@@ -2,9 +2,11 @@ package racingcar;
 
 import java.util.Random;
 
+import static racingcar.message.Constant.*;
+
 public class Car {
     private final String name;
-    private Integer position = 0;
+    private Integer position = START_LINE;
 
     public Car(String name) {
         this.name = name;
@@ -16,21 +18,20 @@ public class Car {
     }
 
     public void move() {
-        if (pickRandomNumber() >= 4) {
+        if (pickRandomNumber() >= CAN_MOVE_MIN_NUMBER) {
             this.position++;
         }
     }
 
     private int pickRandomNumber() {
         Random rand = new Random();
-        return rand.nextInt(10);
+        return rand.nextInt(RANGE_0_AND_10);
     }
 
     public void printPosition() {
         StringBuilder sb = new StringBuilder(name);
-        sb.append(" : ");
-        String step = "-";
-        sb.append(step.repeat(position));
+        sb.append(COLLON);
+        sb.append(ONE_MOVE_MARK.repeat(position));
         System.out.println(sb);
     }
 

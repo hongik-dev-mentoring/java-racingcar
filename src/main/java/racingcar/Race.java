@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import static racingcar.message.ConsoleMessage.RESULT_TEXT;
 import static racingcar.message.ConsoleMessage.WINNER_TEXT;
+import static racingcar.message.Constant.COMMA_IN_RESULT_TEXT;
 
 public class Race {
 
@@ -77,7 +78,7 @@ public class Race {
         StringBuilder sb = new StringBuilder();
         for (Car winner : winners) {
             sb.append(winner.getName());
-            sb.append(", ");
+            sb.append(COMMA_IN_RESULT_TEXT);
         }
         deleteLastCommaFromResult(sb);
         sb.append(WINNER_TEXT);

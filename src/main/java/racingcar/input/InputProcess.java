@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import static racingcar.message.ConsoleMessage.INPUT_CAR_NAMES;
 import static racingcar.message.ConsoleMessage.INPUT_MOVE_COUNT;
+import static racingcar.message.Constant.COMMA_DELIMITER;
 
 public class InputProcess {
 
@@ -34,7 +35,7 @@ public class InputProcess {
     }
 
     private void createCarList(String input) {
-        carList = Arrays.stream(input.split(","))
+        carList = Arrays.stream(input.split(COMMA_DELIMITER))
                 .map(s -> new Car(s.trim())).collect(Collectors.toList());
     }
 

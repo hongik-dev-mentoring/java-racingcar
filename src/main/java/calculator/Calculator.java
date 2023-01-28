@@ -6,8 +6,10 @@ import java.util.regex.Pattern;
 
 public class Calculator {
 
-    private final String customDelimiterPattern = "//(.)\n(.*)";
-    private final String defaultDelimiterPattern = ",|:";
+    private static final String customDelimiterPattern = "//(.)\n(.*)";
+    private static final String defaultDelimiterPattern = ",|:";
+
+    private static final Pattern COMPILED_CUSTOM_SPLIT_REGEX = Pattern.compile(customDelimiterPattern);
 
     public int splitAndSum(String input) {
         if (isInputNullOrEmpty(input)) {
@@ -31,24 +33,30 @@ public class Calculator {
     }
 
     private int calculateWithCustomDelimiter(String input) {
-        Matcher m = Pattern.compile(customDelimiterPattern)
-                .matcher(input); // 이 부분도 고쳐야 함
-        String[] tokens = new String[0];
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            tokens = m.group(2)
-                    .split(customDelimiter);
-            Arrays.stream(tokens).forEach(System.out::println);
-        }
-        checkTokensAreInvalid(tokens);
+        checkTokensAreInvalid(input);
+        String s = input.replaceAll("[\\D]", " ")
+                .trim();
+        String[] tokens = s.split(" ");
         return calculateSum(tokens);
     }
 
-    private void checkTokensAreInvalid(String[] tokens) {
+    private void checkTokensAreInvalid(String input) {
         try {
-            Arrays.stream(tokens).map(s -> Integer.parseInt(s.trim()));
+            splitCustomInputAndParseToInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("지정된 커스텀 구분자로 숫자를 구분해야 합니다.");
+        }
+    }
+
+    private void splitCustomInputAndParseToInt(String input) {
+        Matcher m = COMPILED_CUSTOM_SPLIT_REGEX.matcher(input);
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+            String[] tokens = m.group(2)
+                    .split(customDelimiter);
+            Arrays.stream(tokens).forEach(token -> {
+                Integer.parseInt(token.trim());
+            });
         }
     }
 

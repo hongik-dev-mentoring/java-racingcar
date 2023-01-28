@@ -81,7 +81,7 @@ public class CalculatorTest {
 
     @DisplayName("'//'와 '\n' 문자 사이에 커스텀 구분자를 지정할 수 있다.")
     @ParameterizedTest(name = "#{index} {displayName}")
-    @ValueSource(strings = {"//;\n1;2;3", "//-\n1-2-3"})
+    @ValueSource(strings = {"//.\n1.2.3", "//;\n1;2;3", "//-\n1-2-3"})
     public void numbersWithCustomSeparatorInputTest(String input) {
         // given
         Calculator calculator = new Calculator();

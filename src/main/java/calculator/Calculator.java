@@ -4,16 +4,16 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static calculator.Constant.*;
+
 public class Calculator {
 
-    private static final String customDelimiterPattern = "//(.)\n(.*)";
-    private static final String defaultDelimiterPattern = ",|:";
-
-    private static final Pattern COMPILED_CUSTOM_SPLIT_REGEX = Pattern.compile(customDelimiterPattern);
+    private static final Pattern COMPILED_CUSTOM_SPLIT_REGEX =
+            Pattern.compile(CUSTOM_DELIMITER_PATTERN);
 
     public int splitAndSum(String input) {
         if (isInputNullOrEmpty(input)) {
-            return 0;
+            return RESULT_OF_EMPTY_INPUT;
         }
         if (customSeparatorExists(input)) {
             return calculateWithCustomDelimiter(input);
@@ -29,14 +29,14 @@ public class Calculator {
     }
 
     private boolean customSeparatorExists(String input) {
-        return input.matches(customDelimiterPattern);
+        return input.matches(CUSTOM_DELIMITER_PATTERN);
     }
 
     private int calculateWithCustomDelimiter(String input) {
         checkTokensAreInvalid(input);
-        String s = input.replaceAll("[\\D]", " ")
+        String s = input.replaceAll(NON_DIGIT_CHARACTER_PATTERN, BLANK)
                 .trim();
-        String[] tokens = s.split(" ");
+        String[] tokens = s.split(BLANK);
         return calculateSum(tokens);
     }
 
@@ -51,8 +51,8 @@ public class Calculator {
     private void splitCustomInputAndParseToInt(String input) {
         Matcher m = COMPILED_CUSTOM_SPLIT_REGEX.matcher(input);
         if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] tokens = m.group(2)
+            String customDelimiter = m.group(CUSTOM_DELIMITER_GROUP_INDEX);
+            String[] tokens = m.group(CUSTOM_INPUT_NUMBER_GROUP_INDEX)
                     .split(customDelimiter);
             Arrays.stream(tokens).forEach(token -> {
                 Integer.parseInt(token.trim());
@@ -63,20 +63,20 @@ public class Calculator {
     private Integer calculateSum(String[] tokens) {
         return Arrays.stream(tokens)
                 .map(s -> Integer.parseInt(s.trim()))
-                .reduce(0, (a, b) -> a + b);
+                .reduce(INITIAL_VALUE_OF_SUM, (a, b) -> a + b);
     }
 
     private boolean isInputOneNumberString(String input) {
         String[] tokens = splitInputString(input);
-        return tokens.length == 1;
+        return tokens.length == ONE_INPUT_NUMBER;
     }
 
     private String[] splitInputString(String input) {
-        return input.trim().split(defaultDelimiterPattern);
+        return input.trim().split(DEFAULT_DELIMITER_PATTERN);
     }
 
     private int calculateOneNumberInputString(String input) {
-        String result = splitInputString(input)[0];
+        String result = splitInputString(input)[FIRST_INDEX_OF_SPLIT_RESULT];
         return Integer.parseInt(result);
     }
 
@@ -94,7 +94,7 @@ public class Calculator {
     }
 
     private void checkIfNumberIsNegative(int number) {
-        if (number < 0) {
+        if (number < ZERO_INPUT_NUMBER) {
             throw new RuntimeException("음수는 계산할 수 없습니다.");
         }
     }

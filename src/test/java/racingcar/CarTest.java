@@ -2,6 +2,7 @@ package racingcar;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -17,17 +18,21 @@ public class CarTest {
         System.setOut(new PrintStream(outputStream));
     }
 
-    public String getOutput() {
-        return outputStream.toString();
-    }
-
     @Test
+    @DisplayName("자동차 Position 출력 테스트")
     public void printPositionTest() {
+        // given
         Car car = new Car("abc", 3);
+        // when
         int actual = car.getPosition();
-        Assertions.assertThat(actual).isEqualTo(3);
         car.printPosition();
         String output = getOutput();
+        // then
+        Assertions.assertThat(actual).isEqualTo(3);
         Assertions.assertThat(output).contains("abc : ---");
+    }
+
+    public String getOutput() {
+        return outputStream.toString();
     }
 }

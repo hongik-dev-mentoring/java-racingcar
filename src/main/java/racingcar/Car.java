@@ -15,15 +15,15 @@ public class Car {
         this.position = position;
     }
 
-    private int pickRandomNumber() {
-        Random rand = new Random();
-        return rand.nextInt(10);
-    }
-
     public void move() {
         if (pickRandomNumber() >= 4) {
             this.position++;
         }
+    }
+
+    private int pickRandomNumber() {
+        Random rand = new Random();
+        return rand.nextInt(10);
     }
 
     public void printPosition() {

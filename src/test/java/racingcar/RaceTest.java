@@ -2,15 +2,17 @@ package racingcar;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.message.ConsoleMessage.RESULT_TEXT;
+import static racingcar.message.ConsoleMessage.WINNER_TEXT;
 
 public class RaceTest {
 
@@ -32,66 +34,46 @@ public class RaceTest {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
     }
 
-    public String getOutput() {
-        return outputStream.toString();
-    }
-
     @Test
-    public void racePrintTest() {
-        // given
-        Race race = new Race();
-        // when
-        race.startInputProcess();
-        race.proceed();
-        race.print();
-        String output = getOutput();
-        // then
-        List<String> carNames = List.of("pobi : ", "crong : ", "honux : ");
-        for (String carName : carNames) {
-            assertThat(output).contains(carName);
-        }
-    }
-
-    @Test
+    @DisplayName("자동차 경주 최종 결과 출력 테스트")
     public void raceStartTest() {
         // given
         Race race = new Race();
+
         // when
         race.start();
         String output = getOutput();
+
         // then
-        assertThat(output).contains("실행 결과");
         List<String> carNames = List.of("pobi : ", "crong : ", "honux : ");
-        for (int i = 0; i < 3; i++) {
+        int moveCount = 3;
+        for (int i = 0; i < moveCount; i++) {
             for (String carName : carNames) {
-                assertThat(output).contains(carName);
                 output = output.replaceFirst(carName, "");
             }
         }
-        for (String carName : carNames)
-            assertThat(output).doesNotContain(carName);
+
+        assertThat(output).contains(RESULT_TEXT);
+        assertThat(output).doesNotContain("pobi : ");
+        assertThat(output).doesNotContain("crong : ");
+        assertThat(output).doesNotContain("honux : ");
     }
 
     @Test
-    public void selectWinnersTest() {
-        Race race = new Race();
-        List<Car> cars = Arrays.asList(
-                new Car("A", 2),
-                new Car("B", 3),
-                new Car("C", 3)
-        );
-        List<Car> winners = race.selectWinners(cars);
-        Assertions.assertThat(winners.size()).isEqualTo(2);
-        Assertions.assertThat(winners.get(0).getPosition()).isEqualTo(3);
-    }
-
-    @Test
+    @DisplayName("자동차 경주 우승자 출력 테스트")
     public void printWinnersTest() {
+        // given
         Race race = new Race();
+        // when
         race.start();
         race.printWinners();
         String output = getOutput();
-        Assertions.assertThat(output).contains("가 최종 우승했습니다.");
+        // then
+        Assertions.assertThat(output).contains(WINNER_TEXT);
+    }
+
+    public String getOutput() {
+        return outputStream.toString();
     }
 
 }

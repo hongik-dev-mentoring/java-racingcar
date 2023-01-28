@@ -25,13 +25,17 @@ public class InputProcess {
             System.out.println(INPUT_CAR_NAMES);
             String input = sc.nextLine();
             validation.validateCarNameInputProcess(input);
-            carList = Arrays.stream(input.split(","))
-                    .map(s -> new Car(s.trim())).collect(Collectors.toList());
+            createCarList(input);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             getCarList();
         }
         return carList;
+    }
+
+    private void createCarList(String input) {
+        carList = Arrays.stream(input.split(","))
+                .map(s -> new Car(s.trim())).collect(Collectors.toList());
     }
 
     public Integer getMoveCount() {

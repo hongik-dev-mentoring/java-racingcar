@@ -18,20 +18,20 @@ public class Validation {
 
     public void checkInputContainsBlank(String input) {
         if (input.contains(" ")) {
-            throw new IllegalArgumentException(INPUT_CONTAINS_BLANK.toString());
+            throw new IllegalArgumentException(INPUT_CONTAINS_BLANK);
         }
     }
 
     public void checkInputHasEnoughCars(String input) {
         if (input.split(",").length < 2) {
-            throw new IllegalArgumentException(NOT_ENOUGH_CARS.toString());
+            throw new IllegalArgumentException(NOT_ENOUGH_CARS);
         }
     }
 
     public void checkCarNameLength(String carName) {
         int length = carName.length();
         if (length < 1 || length > 5) {
-            throw new IllegalArgumentException(NOT_PROPER_NAME_LENGTH.toString());
+            throw new IllegalArgumentException(NOT_PROPER_NAME_LENGTH);
         }
     }
 
@@ -39,7 +39,7 @@ public class Validation {
         String[] strings = input.split(",");
         HashSet<String> hashSet = new HashSet<>(List.of(strings));
         if (strings.length != hashSet.size()) {
-            throw (new IllegalArgumentException(DUPLICATED_NAMES.toString()));
+            throw (new IllegalArgumentException(DUPLICATED_NAMES));
         }
     }
 
@@ -52,13 +52,13 @@ public class Validation {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(INPUT_IS_NOT_NUMBER.toString());
+            throw new IllegalArgumentException(INPUT_IS_NOT_NUMBER);
         }
     }
 
     public void checkInputIsGreaterThanZero(String input) {
         if (Integer.parseInt(input) < 1) {
-            throw new IllegalArgumentException(INPUT_IS_UNDER_ONE.toString());
+            throw new IllegalArgumentException(INPUT_IS_UNDER_ONE);
         }
     }
 }

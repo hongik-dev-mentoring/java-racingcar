@@ -10,8 +10,6 @@ public class Constant {
 
     public final static String BLANK = " ";
 
-//    public final static String INPUT_NULL = new String((String) null);
-
 
     public final static Integer RESULT_OF_EMPTY_INPUT = 0;
 

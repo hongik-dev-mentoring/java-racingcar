@@ -6,12 +6,12 @@ import java.util.stream.Collectors;
 
 public class Racing {
 
-    private final List<Car> cars;
+    private final List<RandomMovingCar> cars;
     private final StringBuilder winnerString = new StringBuilder("최종 우승자 : ");
     private final StringBuilder currentCarPositionString = new StringBuilder();
     private int gameCount;
 
-    public Racing(List<Car> cars, int gameCount) {
+    public Racing(List<RandomMovingCar> cars, int gameCount) {
         this.cars = cars;
         this.gameCount = gameCount;
     }
@@ -31,19 +31,20 @@ public class Racing {
     }
 
     private void raceAllCar() {
-        cars.forEach(Car::race);
+        cars.forEach(RandomMovingCar::race);
     }
 
     private void printCurrentRaceResult() {
-        cars.forEach(car -> System.out.println(buildCurrentPositionString(car)));
+        cars.forEach(
+            randomMovingCar -> System.out.println(buildCurrentPositionString(randomMovingCar)));
         System.out.println();
     }
 
     private int getLeadCarPosition() {
-        Car leadCar = cars.stream()
-            .max(Comparator.comparing(Car::getPosition))
+        RandomMovingCar leadRandomMovingCar = cars.stream()
+            .max(Comparator.comparing(RandomMovingCar::getPosition))
             .get();
-        return leadCar.getPosition();
+        return leadRandomMovingCar.getPosition();
     }
 
     private void printWinner() {
@@ -54,20 +55,20 @@ public class Racing {
 
     private void buildWinnerString(int leadCarPosition) {
         List<String> winners = cars.stream()
-            .filter(car -> car.getPosition() == leadCarPosition)
-            .map(Car::getName)
+            .filter(randomMovingCar -> randomMovingCar.getPosition() == leadCarPosition)
+            .map(RandomMovingCar::getName)
             .collect(Collectors.toList());
 
         String winnerNamesString = String.join(", ", winners);
         winnerString.append(winnerNamesString);
     }
 
-    private StringBuilder buildCurrentPositionString(Car car) {
+    private StringBuilder buildCurrentPositionString(RandomMovingCar randomMovingCar) {
         currentCarPositionString.setLength(0);
         currentCarPositionString
-            .append(car.getName())
+            .append(randomMovingCar.getName())
             .append(" : ")
-            .append("-".repeat(car.getPosition()));
+            .append("-".repeat(randomMovingCar.getPosition()));
 
         return currentCarPositionString;
     }

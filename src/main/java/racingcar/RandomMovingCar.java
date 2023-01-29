@@ -1,13 +1,13 @@
 package racingcar;
 
-public class Car {
+public class RandomMovingCar {
 
     private static final int STANDARD_CAN_MOVING = 4;
     private final String name;
     private final RangedRandomNumberPicker randomNumberPicker;
     private int position = 0;
 
-    public Car(String name, RangedRandomNumberPicker randomNumberPicker) {
+    public RandomMovingCar(String name, RangedRandomNumberPicker randomNumberPicker) {
         this.name = name;
         this.randomNumberPicker = randomNumberPicker;
     }

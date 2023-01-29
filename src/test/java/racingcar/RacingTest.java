@@ -31,11 +31,11 @@ public class RacingTest {
         RangedRandomNumberPicker moveNumberPicker = new RangedRandomNumberPicker(4, 9);
         RangedRandomNumberPicker stayNumberPicker = new RangedRandomNumberPicker(0, 3);
 
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car("jinho1", moveNumberPicker));
-        cars.add(new Car("jinho2", stayNumberPicker));
+        List<RandomMovingCar> randomMovingCars = new ArrayList<>();
+        randomMovingCars.add(new RandomMovingCar("jinho1", moveNumberPicker));
+        randomMovingCars.add(new RandomMovingCar("jinho2", stayNumberPicker));
 
-        Racing racing = new Racing(cars, 3);
+        Racing racing = new Racing(randomMovingCars, 3);
 
         print_레이싱_테스트_ExpectedOutput();
         String expectedOutputString = output.toString();
@@ -72,11 +72,11 @@ public class RacingTest {
         // given
         RangedRandomNumberPicker moveNumberPicker = new RangedRandomNumberPicker(4, 9);
 
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car("jinho1", moveNumberPicker));
-        cars.add(new Car("jinho2", moveNumberPicker));
+        List<RandomMovingCar> randomMovingCars = new ArrayList<>();
+        randomMovingCars.add(new RandomMovingCar("jinho1", moveNumberPicker));
+        randomMovingCars.add(new RandomMovingCar("jinho2", moveNumberPicker));
 
-        Racing racing = new Racing(cars, 3);
+        Racing racing = new Racing(randomMovingCars, 3);
 
         print_레이싱_공동_우승자_출력_테스트_ExpectedOutput();
         String expectedOutputString = output.toString();

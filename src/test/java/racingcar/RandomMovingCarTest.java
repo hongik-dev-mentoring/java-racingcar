@@ -8,7 +8,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class CarTest {
+public class RandomMovingCarTest {
 
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
 
@@ -27,10 +27,10 @@ public class CarTest {
     void 자동차_이름을_저장할_수_있다() {
         // given
         String carName = "Jinho";
-        Car car = new Car(carName, new RangedRandomNumberPicker(0, 9));
+        RandomMovingCar randomMovingCar = new RandomMovingCar(carName, new RangedRandomNumberPicker(0, 9));
 
         // when
-        String result = car.getName();
+        String result = randomMovingCar.getName();
 
         // then
         assertThat(result).isEqualTo(carName);
@@ -43,17 +43,17 @@ public class CarTest {
         final int TO = 9;
 
         RangedRandomNumberPicker randomNumberPicker = new RangedRandomNumberPicker(FROM, TO);
-        Car car = new Car("jinho", randomNumberPicker);
+        RandomMovingCar randomMovingCar = new RandomMovingCar("jinho", randomNumberPicker);
 
         // when
-        car.race();
-        car.race();
-        car.race();
-        car.race();
-        car.race();
+        randomMovingCar.race();
+        randomMovingCar.race();
+        randomMovingCar.race();
+        randomMovingCar.race();
+        randomMovingCar.race();
 
         // then
-        assertThat(car.getPosition()).isEqualTo(5);
+        assertThat(randomMovingCar.getPosition()).isEqualTo(5);
     }
 
     @Test
@@ -63,16 +63,16 @@ public class CarTest {
         final int TO = 3;
 
         RangedRandomNumberPicker randomNumberPicker = new RangedRandomNumberPicker(FROM, TO);
-        Car car = new Car("jinho", randomNumberPicker);
+        RandomMovingCar randomMovingCar = new RandomMovingCar("jinho", randomNumberPicker);
 
         // when
-        car.race();
-        car.race();
-        car.race();
-        car.race();
-        car.race();
+        randomMovingCar.race();
+        randomMovingCar.race();
+        randomMovingCar.race();
+        randomMovingCar.race();
+        randomMovingCar.race();
 
         // then
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(randomMovingCar.getPosition()).isEqualTo(0);
     }
 }

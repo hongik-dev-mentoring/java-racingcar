@@ -75,48 +75,4 @@ public class CarTest {
         // then
         assertThat(car.getPosition()).isEqualTo(0);
     }
-
-    @Test
-    void 자동차_진행_가능_범위_포지션_출력() {
-        // given
-        final int FROM = 4;
-        final int TO = 9;
-
-        String name = "jinho";
-        RangedRandomNumberPicker randomNumberPicker = new RangedRandomNumberPicker(FROM, TO);
-        Car car = new Car(name, randomNumberPicker);
-
-        // when
-        car.race();
-        car.race();
-        car.race();
-        car.race();
-
-        car.printCurrentPosition();
-
-        // then
-        assertThat(output.toString().trim()).isEqualTo(name + " : ----");
-    }
-
-    @Test
-    void 자동차_진행_불가능_범위_포지션_출력() {
-        // given
-        final int FROM = 0;
-        final int TO = 3;
-
-        String name = "jinho";
-        RangedRandomNumberPicker randomNumberPicker = new RangedRandomNumberPicker(FROM, TO);
-        Car car = new Car(name, randomNumberPicker);
-
-        // when
-        car.race();
-        car.race();
-        car.race();
-        car.race();
-
-        car.printCurrentPosition();
-
-        // then
-        assertThat(output.toString().trim()).isEqualTo(name + " :");
-    }
 }

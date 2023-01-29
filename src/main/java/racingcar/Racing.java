@@ -8,6 +8,7 @@ public class Racing {
 
     public final List<Car> cars;
     private final StringBuilder winnerString = new StringBuilder("최종 우승자 : ");
+    private final StringBuilder currentCarPositionString = new StringBuilder();
     private int gameCount;
 
     public Racing(List<Car> cars, int gameCount) {
@@ -34,7 +35,7 @@ public class Racing {
     }
 
     private void printCurrentRaceResult() {
-        cars.forEach(Car::printCurrentPosition);
+        cars.forEach(car -> System.out.println(buildCurrentPositionString(car)));
         System.out.println();
     }
 
@@ -59,5 +60,15 @@ public class Racing {
 
         String winnerNamesString = String.join(", ", winners);
         winnerString.append(winnerNamesString);
+    }
+
+    private StringBuilder buildCurrentPositionString(Car car) {
+        currentCarPositionString.setLength(0);
+        currentCarPositionString
+            .append(car.getName())
+            .append(" : ")
+            .append("-".repeat(car.getPosition()));
+
+        return currentCarPositionString;
     }
 }

@@ -95,6 +95,34 @@ class InputRacingGameCountTest {
         }
     }
 
+    @Test
+    void 게임_횟수_입력시_음수를_입력하는_경우_입력_다시_받기() {
+        //given
+        setOutPrintStream();
+        System.out.println("시도할 횟수는 몇회인가요?");
+        System.out.println("[ERROR] 음수를 입력하셨습니다. 다시 입력하세요.");
+        System.out.println("시도할 횟수는 몇회인가요?");
+        String expectedOutput = output.toString();
+        resetOutputStream();
+
+        Input input = new Input();
+
+        try {
+            // when
+            String inputString = "-5";
+            inputStream = new ByteArrayInputStream(inputString.getBytes());
+            System.setIn(inputStream);
+            input.getRacingGameCount();
+            failBecauseExceptionWasNotThrown(NoSuchElementException.class);
+        } catch (NoSuchElementException e) {
+            // then
+            String actualOutput = output.toString();
+            assertThat(actualOutput).isEqualTo(expectedOutput);
+        } finally {
+            resetOutputStream();
+        }
+    }
+
     void setOutPrintStream() {
         System.setOut(new PrintStream(output));
     }

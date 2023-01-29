@@ -2,7 +2,8 @@ package racingcar;
 
 public class RangedRandomNumberPicker {
 
-    private final int from, to;
+    private final int from;
+    private final int to;
 
     public RangedRandomNumberPicker(int from, int to) {
         this.from = from;

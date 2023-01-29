@@ -4,33 +4,30 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Game {
-	private static List<Car> cars;
-	private static int tryNum;
+	private List<Car> cars;
+	private final int TRY_NUM;
 
 	public Game() {
 		ArrayList<String> carNames = Input.readNames();
-		tryNum = Input.readNum();
+		this.TRY_NUM = Input.readNum();
 
 		cars = createCars(carNames);
 	}
 
-	public static List<Car> createCars(ArrayList<String> carNames){
+	public static List<Car> createCars(ArrayList<String> carNames) {
 		return carNames.stream().map(Car::new).collect(Collectors.toList());
 	}
 
-	public static void play(){
-		System.out.println("실행 결과\n");
-		for(int i = 0 ; i < tryNum; i++){
+	public void play() {
+		for (int i = 0; i < TRY_NUM; i++) {
 			race(cars);
 			recordWinNum(selectRoundWinner(rankRound(cars)));
 		}
-		//최종결과
 		Output.printWinner(selectFinalWinner(rankFinal(cars)));
 	}
 
-
-	public static void race(List<Car> cars) {
-		cars.forEach(m -> m.race(tryNum));
+	public void race(List<Car> cars) {
+		cars.forEach(m -> m.race(TRY_NUM));
 		System.out.println();
 	}
 

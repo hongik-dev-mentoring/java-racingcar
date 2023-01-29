@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class Racing {
 
-    public final List<Car> cars;
+    private final List<Car> cars;
     private final StringBuilder winnerString = new StringBuilder("최종 우승자 : ");
     private final StringBuilder currentCarPositionString = new StringBuilder();
     private int gameCount;

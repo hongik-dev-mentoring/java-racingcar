@@ -6,9 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class NumberValidatorTest {
-
-	private static final String ZERO = "0";
-
+	
 	@ParameterizedTest(name = "{index} : 시도 횟수 {0}번")
 	@ValueSource(strings = {"-1", "0"})
 	void 시도횟수_범위(String input) {

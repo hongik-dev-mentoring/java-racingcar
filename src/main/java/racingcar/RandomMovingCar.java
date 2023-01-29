@@ -2,7 +2,7 @@ package racingcar;
 
 public class RandomMovingCar implements Car {
 
-    private final int STANDARD_CAN_MOVING = 4;
+    private static final int STANDARD_CAN_MOVING = 4;
     private final String name;
     private final RangedRandomNumberPicker randomNumberPicker;
     private final StringBuilder currentPositionString;

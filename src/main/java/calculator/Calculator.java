@@ -42,7 +42,8 @@ public class Calculator {
 		Matcher matcher = getMatcher(input);
 		if (isCustomDelimiter(matcher)) {
 			String customDelimiter = matcher.group(DELIMITER_NUMBER);
-			return matcher.group(INPUT_GROUP).split(customDelimiter);
+			return matcher.group(INPUT_GROUP)
+				.split(customDelimiter);
 		}
 		return input.split(SPLIT_REGEX);
 	}

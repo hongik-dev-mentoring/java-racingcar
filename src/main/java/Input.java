@@ -10,7 +10,7 @@ public class Input {
 		System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 		while (true) {
 			String input = sc.nextLine();
-			if (noExceptionAtStrings(input))
+			if (!isExceptionAtStrings(input))
 				break;
 		}
 		return strings;
@@ -40,7 +40,7 @@ public class Input {
 		}
 	}
 
-	private static boolean noExceptionAtStrings(String input) {
+	private static boolean isExceptionAtStrings(String input) {
 		try {
 			RacingCarInputException.isNull(input);
 			RacingCarInputException.isEmpty(input);

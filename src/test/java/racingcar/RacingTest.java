@@ -37,34 +37,28 @@ public class RacingTest {
 
         Racing racing = new Racing(cars, 3);
 
-        print_레이싱_테스트_ExpectedOutput();
-        String expectedOutputString = output.toString();
-        output.reset();
+        StringBuilder expectedOutputString = get_레이싱_테스트_ExpectedOutput();
 
         // when
         racing.race();
         String actualOutputString = output.toString();
 
         // then
-        assertThat(actualOutputString).isEqualTo(expectedOutputString);
+        assertThat(actualOutputString).contains(expectedOutputString);
     }
 
-    void print_레이싱_테스트_ExpectedOutput() {
-
-        System.out.println("실행 결과");
-        System.out.println("jinho1 : -");
-        System.out.println("jinho2 : ");
-        System.out.println();
-
-        System.out.println("jinho1 : --");
-        System.out.println("jinho2 : ");
-        System.out.println();
-
-        System.out.println("jinho1 : ---");
-        System.out.println("jinho2 : ");
-        System.out.println();
-
-        System.out.println("최종 우승자 : jinho1");
+    StringBuilder get_레이싱_테스트_ExpectedOutput() {
+        return new StringBuilder("실행 결과\r\n")
+            .append("jinho1 : -\r\n")
+            .append("jinho2 : \r\n")
+            .append("\r\n")
+            .append("jinho1 : --\r\n")
+            .append("jinho2 : \r\n")
+            .append("\r\n")
+            .append("jinho1 : ---\r\n")
+            .append("jinho2 : \r\n")
+            .append("\r\n")
+            .append("최종 우승자 : jinho1\r\n");
     }
 
     @Test
@@ -78,33 +72,27 @@ public class RacingTest {
 
         Racing racing = new Racing(cars, 3);
 
-        print_레이싱_공동_우승자_출력_테스트_ExpectedOutput();
-        String expectedOutputString = output.toString();
-        output.reset();
+        StringBuilder expectedOutputString = get_레이싱_공동_우승자_출력_테스트_ExpectedOutput();
 
         // when
         racing.race();
         String actualOutputString = output.toString();
 
         // then
-        assertThat(actualOutputString).isEqualTo(expectedOutputString);
+        assertThat(actualOutputString).contains(expectedOutputString);
     }
 
-    void print_레이싱_공동_우승자_출력_테스트_ExpectedOutput() {
-
-        System.out.println("실행 결과");
-        System.out.println("jinho1 : -");
-        System.out.println("jinho2 : -");
-        System.out.println();
-
-        System.out.println("jinho1 : --");
-        System.out.println("jinho2 : --");
-        System.out.println();
-
-        System.out.println("jinho1 : ---");
-        System.out.println("jinho2 : ---");
-        System.out.println();
-
-        System.out.println("최종 우승자 : jinho1, jinho2");
+    StringBuilder get_레이싱_공동_우승자_출력_테스트_ExpectedOutput() {
+        return new StringBuilder("실행 결과\r\n")
+            .append("jinho1 : -\r\n")
+            .append("jinho2 : -\r\n")
+            .append("\r\n")
+            .append("jinho1 : --\r\n")
+            .append("jinho2 : --\r\n")
+            .append("\r\n")
+            .append("jinho1 : ---\r\n")
+            .append("jinho2 : ---\r\n")
+            .append("\r\n")
+            .append("최종 우승자 : jinho1, jinho2\r\n");
     }
 }

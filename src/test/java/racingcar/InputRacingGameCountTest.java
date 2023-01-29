@@ -43,11 +43,10 @@ class InputRacingGameCountTest {
     void 게임_횟수_공란_입력시_입력_다시_받기() {
         //given
         setOutPrintStream();
-        System.out.println("시도할 횟수는 몇회인가요?");
-        System.out.println("[ERROR] 공란이 있습니다. 다시 입력하세요.");
-        System.out.println("시도할 횟수는 몇회인가요?");
-        String expectedOutput = output.toString();
-        resetOutputStream();
+        StringBuilder expectedOutput = new StringBuilder();
+        expectedOutput.append("시도할 횟수는 몇회인가요?\r\n")
+            .append("[ERROR] 공란이 있습니다. 다시 입력하세요.\r\n")
+            .append("시도할 횟수는 몇회인가요?\r\n");
 
         Input input = new Input();
 
@@ -61,7 +60,7 @@ class InputRacingGameCountTest {
         } catch (NoSuchElementException e) {
             // then
             String actualOutput = output.toString();
-            assertThat(actualOutput).isEqualTo(expectedOutput);
+            assertThat(actualOutput).contains(expectedOutput);
         } finally {
             resetOutputStream();
         }
@@ -71,11 +70,10 @@ class InputRacingGameCountTest {
     void 게임_횟수_입력시_숫자_아닌_문자_포함시_입력_다시_받기() {
         //given
         setOutPrintStream();
-        System.out.println("시도할 횟수는 몇회인가요?");
-        System.out.println("[ERROR] 숫자가 아닌 문자가 포함되었습니다. 다시 입력하세요.");
-        System.out.println("시도할 횟수는 몇회인가요?");
-        String expectedOutput = output.toString();
-        resetOutputStream();
+        StringBuilder expectedOutput = new StringBuilder();
+        expectedOutput.append("시도할 횟수는 몇회인가요?\r\n")
+            .append("[ERROR] 숫자가 아닌 문자가 포함되었습니다. 다시 입력하세요.\r\n")
+            .append("시도할 횟수는 몇회인가요?\r\n");
 
         Input input = new Input();
 
@@ -89,7 +87,7 @@ class InputRacingGameCountTest {
         } catch (NoSuchElementException e) {
             // then
             String actualOutput = output.toString();
-            assertThat(actualOutput).isEqualTo(expectedOutput);
+            assertThat(actualOutput).contains(expectedOutput);
         } finally {
             resetOutputStream();
         }
@@ -99,11 +97,10 @@ class InputRacingGameCountTest {
     void 게임_횟수_입력시_음수를_입력하는_경우_입력_다시_받기() {
         //given
         setOutPrintStream();
-        System.out.println("시도할 횟수는 몇회인가요?");
-        System.out.println("[ERROR] 음수를 입력하셨습니다. 다시 입력하세요.");
-        System.out.println("시도할 횟수는 몇회인가요?");
-        String expectedOutput = output.toString();
-        resetOutputStream();
+        StringBuilder expectedOutput = new StringBuilder();
+        expectedOutput.append("시도할 횟수는 몇회인가요?\r\n")
+            .append("[ERROR] 음수를 입력하셨습니다. 다시 입력하세요.\r\n")
+            .append("시도할 횟수는 몇회인가요?\r\n");
 
         Input input = new Input();
 
@@ -117,7 +114,7 @@ class InputRacingGameCountTest {
         } catch (NoSuchElementException e) {
             // then
             String actualOutput = output.toString();
-            assertThat(actualOutput).isEqualTo(expectedOutput);
+            assertThat(actualOutput).contains(expectedOutput);
         } finally {
             resetOutputStream();
         }

@@ -10,6 +10,7 @@ public class Calculator {
 	private static final String CUSTOM_SPLIT_REGEX = "//(.)\\n(.*)";
 	private static final int DELIMITER_NUMBER = 1;
 	private static final int INPUT_GROUP = 2;
+	private static final int NEGATIVE_NUMBER_STANDARD = 0;
 	private static final Pattern pattern = Pattern.compile(CUSTOM_SPLIT_REGEX);
 
 	public static int splitAndSum(String input) {
@@ -30,7 +31,7 @@ public class Calculator {
 	}
 
 	private static void checkInputIsNegative(String input) {
-		if (getParseInt(input) < 0) {
+		if (getParseInt(input) < NEGATIVE_NUMBER_STANDARD) {
 			throw new RuntimeException("숫자 이외의 값 또는 음수는 계산할 수 없습니다.");
 		}
 	}

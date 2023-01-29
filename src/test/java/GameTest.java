@@ -4,11 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class GameTest {
-
 
 	@Test
 	@DisplayName("입력받고 Car객체 배열 생성")
@@ -49,9 +49,9 @@ class GameTest {
 		List<Car> result = Game.rankFinal(cars);
 
 		assertAll(
-			()-> assertThat(result.get(0).getName()).isEqualTo("joe"),
-			()-> assertThat(result.get(1).getName()).isEqualTo("na"),
-			()-> assertThat(result.get(2).getName()).isEqualTo("tae")
+			() -> assertThat(result.get(0).getName()).isEqualTo("joe"),
+			() -> assertThat(result.get(1).getName()).isEqualTo("na"),
+			() -> assertThat(result.get(2).getName()).isEqualTo("tae")
 		);
 	}
 
@@ -75,9 +75,9 @@ class GameTest {
 		List<Car> result = Game.rankRound(cars);
 
 		assertAll(
-			()-> assertThat(result.get(0).getName()).isEqualTo("joe"),
-			()-> assertThat(result.get(1).getName()).isEqualTo("na"),
-			()-> assertThat(result.get(2).getName()).isEqualTo("tae")
+			() -> assertThat(result.get(0).getName()).isEqualTo("joe"),
+			() -> assertThat(result.get(1).getName()).isEqualTo("na"),
+			() -> assertThat(result.get(2).getName()).isEqualTo("tae")
 		);
 	}
 
@@ -109,6 +109,7 @@ class GameTest {
 	@Test
 	@DisplayName("라운드에서 경주 동점시 2명을 승자를 뽑는다")
 	void selectRoundWinner() {
+		Game game = new Game();
 		Car tae = new Car("tae");
 		tae.setPosition(4);
 		Car joe = new Car("joe");
@@ -133,7 +134,7 @@ class GameTest {
 
 	@Test
 	@DisplayName("승자의 winNum 을 1증가한다.")
-	void recordWinNum(){
+	void recordWinNum() {
 		//given
 		Car tae = new Car("tae");
 		tae.setPosition(4);
@@ -153,9 +154,9 @@ class GameTest {
 		Game.recordWinNum(roundWinner);
 		//then
 		assertAll(
-			()->assertThat(tae.getWinNum()).isEqualTo(1),
-			()->assertThat(joe.getWinNum()).isEqualTo(1),
-			()->assertThat(na.getWinNum()).isEqualTo(0)
+			() -> assertThat(tae.getWinNum()).isEqualTo(1),
+			() -> assertThat(joe.getWinNum()).isEqualTo(1),
+			() -> assertThat(na.getWinNum()).isEqualTo(0)
 		);
 	}
 }

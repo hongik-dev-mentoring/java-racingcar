@@ -29,6 +29,8 @@ public class StringCalculator {
     }
 
     private static void checkMinusInt(int number) {
-        if (number < 0) throw new RuntimeException();
+        if (number < 0) {
+            throw new RuntimeException();
+        }
     }
 }

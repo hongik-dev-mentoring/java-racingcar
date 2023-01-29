@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
-class InputRacingRandomMovingCarNameTest {
+class InputRacingCarNameTest {
 
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
     private InputStream inputStream;

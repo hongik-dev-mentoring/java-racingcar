@@ -43,17 +43,17 @@ public class RandomMovingCarTest {
         final int TO = 9;
 
         RangedRandomNumberPicker randomNumberPicker = new RangedRandomNumberPicker(FROM, TO);
-        RandomMovingCar randomMovingCar = new RandomMovingCar("jinho", randomNumberPicker);
+        RandomMovingCar car = new RandomMovingCar("jinho", randomNumberPicker);
 
         // when
-        randomMovingCar.race();
-        randomMovingCar.race();
-        randomMovingCar.race();
-        randomMovingCar.race();
-        randomMovingCar.race();
+        car.race();
+        car.race();
+        car.race();
+        car.race();
+        car.race();
 
         // then
-        assertThat(randomMovingCar.getPosition()).isEqualTo(5);
+        assertThat(car.getPosition()).isEqualTo(5);
     }
 
     @Test
@@ -63,16 +63,16 @@ public class RandomMovingCarTest {
         final int TO = 3;
 
         RangedRandomNumberPicker randomNumberPicker = new RangedRandomNumberPicker(FROM, TO);
-        RandomMovingCar randomMovingCar = new RandomMovingCar("jinho", randomNumberPicker);
+        RandomMovingCar car = new RandomMovingCar("jinho", randomNumberPicker);
 
         // when
-        randomMovingCar.race();
-        randomMovingCar.race();
-        randomMovingCar.race();
-        randomMovingCar.race();
-        randomMovingCar.race();
+        car.race();
+        car.race();
+        car.race();
+        car.race();
+        car.race();
 
         // then
-        assertThat(randomMovingCar.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }

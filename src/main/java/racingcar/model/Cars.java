@@ -13,9 +13,8 @@ public class Cars {
 	private List<Car> cars = new ArrayList<>();
 
 	public void addCarNames(List<String> cars) {
-		NameValidator.validateCarNames(cars.toString());
+		NameValidator.validateCarNames(cars);
 		for (String carName : cars) {
-			NameValidator.validateCarName(carName);
 			this.cars.add(new Car(carName));
 		}
 	}

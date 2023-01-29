@@ -11,51 +11,41 @@ class CarTest {
 
 	@Test
 	@DisplayName("차 객체 생성")
-	void createCar(){
+	void createCar() {
 		Car car = new Car("tae");
 
-		assertAll(
-			()->assertThat(car.getName()).isEqualTo("tae"),
-			()->assertThat(car.getPosition()).isEqualTo(0)
-		);
+		assertAll(() -> assertThat(car.getName()).isEqualTo("tae"), () -> assertThat(car.getPosition()).isEqualTo(0));
 
 	}
 
 	@Test
 	@DisplayName("랜덤 수 생성")
-	void createRandomNum(){
+	void createRandomNum() {
 		Car car = new Car("tae");
 
 		int num = car.createRandomNum();
 
-		assertAll(
-			()->assertThat(num).isGreaterThanOrEqualTo(0),
-			()->assertThat(num).isLessThanOrEqualTo(9)
-		);
+		assertAll(() -> assertThat(num).isGreaterThanOrEqualTo(0), () -> assertThat(num).isLessThanOrEqualTo(9));
 	}
 
 	@Test
 	@DisplayName("차 움직이기")
-	void move(){
+	void move() {
 		Car car = new Car("tae");
 
 		boolean isMove = car.move();
 
-		assertAll(
-			()->assumingThat(isMove == true, ()->assertThat(car.getPosition()).isEqualTo(1)),
-			()->assumingThat(isMove == false, ()->assertThat(car.getPosition()).isEqualTo(0))
-		);
+		assertAll(() -> assumingThat(isMove == true, () -> assertThat(car.getPosition()).isEqualTo(1)),
+			() -> assumingThat(isMove == false, () -> assertThat(car.getPosition()).isEqualTo(0)));
 	}
 
 	@Test
 	@DisplayName("winNum 1 올리기")
-	void increaseWinNum(){
+	void increaseWinNum() {
 		Car tae = new Car("tae");
 
 		tae.increaseWinNum();
 
 		assertThat(tae.getWinNum()).isEqualTo(1);
 	}
-
-
 }

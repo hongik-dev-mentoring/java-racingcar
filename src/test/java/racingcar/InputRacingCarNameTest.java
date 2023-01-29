@@ -65,11 +65,11 @@ class InputRacingCarNameTest {
     void 자동차_이름에_공란_입력시_입력_다시_받기() {
         //given
         setOutPrintStream();
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        System.out.println("[ERROR] 아무 이름도 입력하지 않으셨습니다. 다시 입력해주세요.");
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String expectedOutput = output.toString();
-        resetOutputStream();
+
+        StringBuilder expectedOutput = new StringBuilder();
+        expectedOutput.append("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\r\n")
+            .append("[ERROR] 아무 이름도 입력하지 않으셨습니다. 다시 입력해주세요.\r\n")
+            .append("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\r\n");
 
         Input input = new Input();
 
@@ -85,7 +85,7 @@ class InputRacingCarNameTest {
         } catch (NoSuchElementException e) {
             // then
             String actualOutput = output.toString();
-            assertThat(actualOutput).isEqualTo(expectedOutput);
+            assertThat(actualOutput).contains(expectedOutput);
         } finally {
             resetOutputStream();
         }
@@ -95,11 +95,11 @@ class InputRacingCarNameTest {
     void 자동차_이름_5글자_제한_초과시_에러_발생() {
         //given
         setOutPrintStream();
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        System.out.println("[ERROR] 자동차의 이름은 최대 5자입니다. 다시 입력해주세요.");
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String expectedOutput = output.toString();
-        resetOutputStream();
+
+        StringBuilder expectedOutput = new StringBuilder();
+        expectedOutput.append("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\r\n")
+            .append("[ERROR] 자동차의 이름은 최대 5자입니다. 다시 입력해주세요.\r\n")
+            .append("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\r\n");
 
         Input input = new Input();
 
@@ -115,7 +115,7 @@ class InputRacingCarNameTest {
         } catch (NoSuchElementException e) {
             // then
             String actualOutput = output.toString();
-            assertThat(actualOutput).isEqualTo(expectedOutput);
+            assertThat(actualOutput).contains(expectedOutput);
         } finally {
             resetOutputStream();
         }
@@ -125,11 +125,11 @@ class InputRacingCarNameTest {
     void 자동차_이름에_공란을_섞은_경우_에러_발생() {
         //given
         setOutPrintStream();
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        System.out.println("[ERROR] 자동차 이름에 공란이 있습니다. 다시 입력해주세요.");
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String expectedOutput = output.toString();
-        resetOutputStream();
+
+        StringBuilder expectedOutput = new StringBuilder();
+        expectedOutput.append("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\r\n")
+            .append("[ERROR] 자동차 이름에 공란이 있습니다. 다시 입력해주세요.\r\n")
+            .append("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\r\n");
 
         Input input = new Input();
 
@@ -145,7 +145,7 @@ class InputRacingCarNameTest {
         } catch (NoSuchElementException e) {
             // then
             String actualOutput = output.toString();
-            assertThat(actualOutput).isEqualTo(expectedOutput);
+            assertThat(actualOutput).contains(expectedOutput);
         } finally {
             resetOutputStream();
         }

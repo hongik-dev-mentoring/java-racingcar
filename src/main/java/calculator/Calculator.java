@@ -10,6 +10,7 @@ public class Calculator {
 	private static final String CUSTOM_SPLIT_REGEX = "//(.)\\n(.*)";
 	private static final int DELIMITER_NUMBER = 1;
 	private static final int INPUT_GROUP = 2;
+	private static final Pattern pattern = Pattern.compile(CUSTOM_SPLIT_REGEX);
 
 	public static int splitAndSum(String input) {
 		if (isEmpty(input)) {
@@ -53,7 +54,7 @@ public class Calculator {
 	}
 
 	private static Matcher getMatcher(String input) {
-		return Pattern.compile(CUSTOM_SPLIT_REGEX).matcher(input);
+		return pattern.matcher(input);
 	}
 
 	private static boolean isEmpty(String input) {

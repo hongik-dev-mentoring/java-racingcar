@@ -39,7 +39,7 @@ public class RandomMovingCarTest {
     @Test
     void 자동차는_진행_가능_범위에서_진행할_수_있다() {
         // given
-        final int FROM = 4;
+        final int FROM = RandomMovingCar.MOVING_STANDARD;
         final int TO = 9;
 
         RangedRandomNumberPicker randomNumberPicker = new RangedRandomNumberPicker(FROM, TO);
@@ -60,7 +60,7 @@ public class RandomMovingCarTest {
     void 자동차는_진행_불가능_범위에서_진행할_수_없다() {
         // given
         final int FROM = 0;
-        final int TO = 3;
+        final int TO = RandomMovingCar.MOVING_STANDARD;
 
         RangedRandomNumberPicker randomNumberPicker = new RangedRandomNumberPicker(FROM, TO);
         RandomMovingCar car = new RandomMovingCar("jinho", randomNumberPicker);

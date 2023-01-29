@@ -2,7 +2,7 @@ package racingcar;
 
 public class RandomMovingCar {
 
-    private static final int STANDARD_CAN_MOVING = 4;
+    public static final int MOVING_STANDARD = 4;
     private final String name;
     private final RangedRandomNumberPicker randomNumberPicker;
     private int position = 0;
@@ -20,7 +20,7 @@ public class RandomMovingCar {
 
     private boolean isPossibleMoveForward() {
         int randomNumber = randomNumberPicker.pickRandomNumber();
-        return randomNumber >= STANDARD_CAN_MOVING;
+        return randomNumber >= MOVING_STANDARD;
     }
 
     public int getPosition() {

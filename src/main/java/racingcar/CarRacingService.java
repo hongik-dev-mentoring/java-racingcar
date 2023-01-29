@@ -23,7 +23,7 @@ public class CarRacingService {
 
     private List<Car> getCars(List<String> carNamesList, RangedRandomNumberPicker numberPicker) {
         return carNamesList.stream()
-            .map(carName -> new RandomMovingCar(carName, numberPicker))
+            .map(carName -> new Car(carName, numberPicker))
             .collect(Collectors.toList());
     }
 }

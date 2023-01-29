@@ -32,8 +32,8 @@ public class RacingTest {
         RangedRandomNumberPicker stayNumberPicker = new RangedRandomNumberPicker(0, 3);
 
         List<Car> cars = new ArrayList<>();
-        cars.add(new RandomMovingCar("jinho1", moveNumberPicker));
-        cars.add(new RandomMovingCar("jinho2", stayNumberPicker));
+        cars.add(new Car("jinho1", moveNumberPicker));
+        cars.add(new Car("jinho2", stayNumberPicker));
 
         Racing racing = new Racing(cars, 3);
 
@@ -73,8 +73,8 @@ public class RacingTest {
         RangedRandomNumberPicker moveNumberPicker = new RangedRandomNumberPicker(4, 9);
 
         List<Car> cars = new ArrayList<>();
-        cars.add(new RandomMovingCar("jinho1", moveNumberPicker));
-        cars.add(new RandomMovingCar("jinho2", moveNumberPicker));
+        cars.add(new Car("jinho1", moveNumberPicker));
+        cars.add(new Car("jinho2", moveNumberPicker));
 
         Racing racing = new Racing(cars, 3);
 

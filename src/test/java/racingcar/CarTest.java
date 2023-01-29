@@ -29,7 +29,7 @@ public class CarTest {
     void 자동차_이름을_저장할_수_있다() {
         // given
         String carName = "Jinho";
-        Car car = new RandomMovingCar(carName, new RangedRandomNumberPicker(0, 9));
+        Car car = new Car(carName, new RangedRandomNumberPicker(0, 9));
 
         // when
         String result = car.getName();
@@ -45,7 +45,7 @@ public class CarTest {
         final int TO = 9;
 
         RangedRandomNumberPicker randomNumberPicker = new RangedRandomNumberPicker(FROM, TO);
-        Car car = new RandomMovingCar("jinho", randomNumberPicker);
+        Car car = new Car("jinho", randomNumberPicker);
 
         // when
         car.race();
@@ -63,7 +63,7 @@ public class CarTest {
         final int TO = 3;
 
         RangedRandomNumberPicker randomNumberPicker = new RangedRandomNumberPicker(FROM, TO);
-        Car car = new RandomMovingCar("jinho", randomNumberPicker);
+        Car car = new Car("jinho", randomNumberPicker);
 
         // when
         car.race();
@@ -82,7 +82,7 @@ public class CarTest {
 
         String name = "jinho";
         RangedRandomNumberPicker randomNumberPicker = new RangedRandomNumberPicker(FROM, TO);
-        Car car = new RandomMovingCar(name, randomNumberPicker);
+        Car car = new Car(name, randomNumberPicker);
 
         // when
         car.race();
@@ -104,7 +104,7 @@ public class CarTest {
 
         String name = "jinho";
         RangedRandomNumberPicker randomNumberPicker = new RangedRandomNumberPicker(FROM, TO);
-        Car car = new RandomMovingCar(name, randomNumberPicker);
+        Car car = new Car(name, randomNumberPicker);
 
         // when
         car.race();

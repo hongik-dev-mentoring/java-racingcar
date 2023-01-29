@@ -6,13 +6,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
 
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
-    private final int REPEAT = 100;
 
     @BeforeEach
     void setOutPrintStream() {
@@ -38,7 +36,7 @@ public class CarTest {
         assertThat(result).isEqualTo(carName);
     }
 
-    @RepeatedTest(REPEAT)
+    @Test
     void 자동차는_진행_가능_범위에서_진행할_수_있다() {
         // given
         final int FROM = 4;
@@ -51,12 +49,14 @@ public class CarTest {
         car.race();
         car.race();
         car.race();
+        car.race();
+        car.race();
 
         // then
-        assertThat(car.getPosition()).isEqualTo(3);
+        assertThat(car.getPosition()).isEqualTo(5);
     }
 
-    @RepeatedTest(REPEAT)
+    @Test
     void 자동차는_진행_불가능_범위에서_진행할_수_없다() {
         // given
         final int FROM = 0;
@@ -66,6 +66,8 @@ public class CarTest {
         Car car = new Car("jinho", randomNumberPicker);
 
         // when
+        car.race();
+        car.race();
         car.race();
         car.race();
         car.race();

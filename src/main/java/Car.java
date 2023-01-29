@@ -1,7 +1,8 @@
 import java.util.Random;
 
 public class Car {
-	private final int MOVE = 4;
+	private static final int MOVE = 4;
+	private final int ZERO_TO_NINE_CONVERTER = 10;
 
 	private String name;
 	private int position = 0;
@@ -11,13 +12,13 @@ public class Car {
 		this.name = name;
 	}
 
-	public void setPosition(int n){
+	public void setPosition(int n) {
 		position = n;
-	}//Test용
+	}
 
-	public void setWinNum(int n){
+	public void setWinNum(int n) {
 		winNum = n;
-	}//Test용
+	}
 
 	public String getName() {
 		return name;
@@ -31,25 +32,25 @@ public class Car {
 		return winNum;
 	}
 
-	public void increaseWinNum(){
+	public void increaseWinNum() {
 		winNum++;
 	}
 
-	public int createRandomNum(){
-		return (int)(Math.random()*10);
+	public int createRandomNum() {
+		return (int)(Math.random() * ZERO_TO_NINE_CONVERTER);
 	}
 
-	public void race(int num){
-		int positionStandard = position;//race 진행 전 postion
-		for(int i = 0; i < num; i++) {
+	public void race(int num) {
+		int positionStandard = position;
+		for (int i = 0; i < num; i++) {
 			move();
 		}
-		position -= positionStandard;//race 진행 후 position
-		Output.printRace(name,position);
+		position -= positionStandard;
+		Output.printRace(name, position);
 	}
 
 	public boolean move() {
-		if(createRandomNum() >= MOVE){
+		if (createRandomNum() >= MOVE) {
 			position++;
 			return true;
 		}

@@ -13,9 +13,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.model.Car;
 
 public class NameValidatorTest {
-
-	private Car car = new Car("chan");
-
 	private static final String DUPLICATE_CAR_NAME = "chan,chan";
 	private static final String LENGTH_EXCEED_CAR_NAME = "euichan";
 

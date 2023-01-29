@@ -65,21 +65,26 @@ public class Input {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
 
-        if (input.isEmpty()) {
-            throw new IllegalArgumentException("[ERROR] 공란이 있습니다. 다시 입력하세요.");
-        }
-
         try {
-            return parseInt(input);
+            validateInput(input);
+            return Integer.parseInt(input);
         } catch (IllegalArgumentException error) {
             System.out.println(error.getMessage());
             return getRacingGameCount();
         }
     }
 
-    private int parseInt(String input) {
+    private void validateInput(String input) {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 공란이 있습니다. 다시 입력하세요.");
+        }
+
         try {
-            return Integer.parseInt(input);
+            int inputNumber = Integer.parseInt(input);
+
+            if (inputNumber < 0) {
+                throw new IllegalArgumentException("[ERROR] 음수를 입력하셨습니다. 다시 입력하세요.");
+            }
         } catch (NumberFormatException error) {
             throw new IllegalArgumentException("[ERROR] 숫자가 아닌 문자가 포함되었습니다. 다시 입력하세요.");
         }

@@ -1,6 +1,7 @@
 package racingcar.util.validator;
 
 import static org.assertj.core.api.Assertions.*;
+import static racingcar.util.validator.NameValidator.*;
 
 import java.util.stream.Stream;
 
@@ -13,35 +14,40 @@ import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.model.Car;
 
 public class NameValidatorTest {
+
 	private static final String DUPLICATE_CAR_NAME = "chan,chan";
 	private static final String LENGTH_EXCEED_CAR_NAME = "euichan";
 
 	@Test
 	@DisplayName("자동차 이름은 Null일 수 없다.")
 	void car_name_should_not_be_null() {
-		assertThatThrownBy(() -> NameValidator.validateCarNames(null))
-			.isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> validateCarNames(null))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining(NULL_CAR_NAME_MESSAGE);
 	}
 
 	@Test
 	@DisplayName("자동차 이름은 비어있을 수 없다.")
 	void car_name_should_not_be_empty() {
-		assertThatThrownBy(() -> NameValidator.validateCarNames(""))
-			.isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> validateCarNames(""))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining(EMPTY_CAR_NAME_MESSAGE);
 	}
 
 	@Test
 	@DisplayName("자동차 이름은 중복될 수 없다.")
 	void car_name_should_not_be_duplicate() {
-		assertThatThrownBy(() -> NameValidator.validateCarNames(DUPLICATE_CAR_NAME))
-			.isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> validateCarNames(DUPLICATE_CAR_NAME))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining(DUPLICATE_CAR_NAME_MESSAGE);
 	}
 
 	@Test
 	@DisplayName("자동차 이름은 5자 이내여야 한다.")
 	void validate_car_name_length() {
-		assertThatThrownBy(() -> NameValidator.validateCarName(LENGTH_EXCEED_CAR_NAME))
-			.isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> validateCarName(LENGTH_EXCEED_CAR_NAME))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining(NAME_LENGTH_EXCEPTION_MESSAGE);
 	}
 
 	@ParameterizedTest(name = "{index}번 자동차 이름 : {0}, 결과 : {1}")

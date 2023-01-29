@@ -40,14 +40,14 @@ public class Calculator {
 
 	private static String[] split(String input) {
 		Matcher matcher = getMatcher(input);
-		if (isCustom(matcher)) { // 커스텀 구분자를 사용한다면
+		if (isCustomDelimiter(matcher)) {
 			String customDelimiter = matcher.group(DELIMITER_NUMBER);
 			return matcher.group(INPUT_GROUP).split(customDelimiter);
 		}
 		return input.split(SPLIT_REGEX);
 	}
 
-	private static boolean isCustom(Matcher matcher) {
+	private static boolean isCustomDelimiter(Matcher matcher) {
 		return matcher.find();
 	}
 

@@ -19,28 +19,6 @@ public class RaceGameController {
 		printResultHeader();
 	}
 
-	public void run() {
-		// 자동차 경주 게임 시작
-		moveCarsForwardByAttemptNumber();
-	}
-
-	public void announceWinner() {
-		// 자동차 경주 게임 최종 우승자 발표
-		OutputData.printWinners(cars);
-	}
-
-	private static void printResultHeader() {
-		OutputData.printBlankLine();
-		OutputData.printGameResultHeader();
-	}
-
-	private void moveCarsForwardByAttemptNumber() {
-		for (int i = 0; i < attemptNumber; ++i) {
-			cars.moveForward();
-			OutputData.printCarsPosition(cars.getCars());
-		}
-	}
-
 	private void addCarNamesToCars() {
 		try {
 			List<String> carNames = NameGenerator.generateCarNames(InputData.getCarNames());
@@ -58,5 +36,25 @@ public class RaceGameController {
 			OutputData.printErrorMessage(e.getMessage());
 			return getAttemptNumber();
 		}
+	}
+
+	private static void printResultHeader() {
+		OutputData.printBlankLine();
+		OutputData.printGameResultHeader();
+	}
+
+	public void run() {
+		moveCarsForwardByAttemptNumber();
+	}
+
+	private void moveCarsForwardByAttemptNumber() {
+		for (int i = 0; i < attemptNumber; ++i) {
+			cars.moveForward();
+			OutputData.printCarsPosition(cars.getCars());
+		}
+	}
+
+	public void announceWinner() {
+		OutputData.printWinners(cars);
 	}
 }

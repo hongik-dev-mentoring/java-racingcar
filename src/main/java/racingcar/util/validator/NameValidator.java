@@ -16,15 +16,6 @@ public class NameValidator {
 		validateNameLength(names);
 	}
 
-	private static void validateDuplicateCarNames(List<String> names) {
-		List<String> uniqueNames = names.stream()
-			.distinct()
-			.collect(Collectors.toList());
-		if (names.size() != uniqueNames.size()) {
-			throw new IllegalArgumentException(DUPLICATE_CAR_NAME_MESSAGE);
-		}
-	}
-
 	private static void validateTheNumberOfCarNames(List<String> names) {
 		if (names == null || isBlank(names)) {
 			throw new IllegalArgumentException(CAR_NAME_NOT_EXIST_MESSAGE);
@@ -34,6 +25,15 @@ public class NameValidator {
 	private static boolean isBlank(List<String> names) {
 		return names.stream()
 			.anyMatch(String::isBlank);
+	}
+
+	private static void validateDuplicateCarNames(List<String> names) {
+		List<String> uniqueNames = names.stream()
+			.distinct()
+			.collect(Collectors.toList());
+		if (names.size() != uniqueNames.size()) {
+			throw new IllegalArgumentException(DUPLICATE_CAR_NAME_MESSAGE);
+		}
 	}
 
 	private static void validateNameLength(List<String> names) {

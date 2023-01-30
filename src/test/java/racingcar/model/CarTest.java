@@ -3,15 +3,12 @@ package racingcar.model;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.DisplayNameGenerator.*;
 
-import java.util.stream.Stream;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 @DisplayNameGeneration(ReplaceUnderscores.class)
 class CarTest {
@@ -42,17 +39,10 @@ class CarTest {
 	}
 
 	@ParameterizedTest(name = "랜덤 숫자 : {0}, 전진 결과 : {1}")
-	@MethodSource("randomNumberGenerate")
+	@CsvSource({"4, true", "3, false"})
 	@DisplayName("랜덤값이 4 이상이면 전진한다.")
 	void move_forward_if_random_number_greater_than_four(int randomNumber, boolean canMove) {
 		assertThat(car.shouldMove(randomNumber)).isEqualTo(canMove);
-	}
-
-	static Stream<Arguments> randomNumberGenerate() {
-		return Stream.of(
-			Arguments.of(4, true),
-			Arguments.of(3, false)
-		);
 	}
 
 	@Test

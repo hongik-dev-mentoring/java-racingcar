@@ -18,10 +18,6 @@ public class OutputView {
 		System.out.println(GAME_RESULT_HEADER);
 	}
 
-	public static void printBlankLine() {
-		System.out.println();
-	}
-
 	public static void printCarsPosition(List<Car> cars) {
 		for (Car car : cars) {
 			System.out.println(car.getName() + " : " + printCarsCurrentPosition(car));
@@ -35,6 +31,10 @@ public class OutputView {
 			builder.append("-");
 		}
 		return builder;
+	}
+
+	public static void printBlankLine() {
+		System.out.println();
 	}
 
 	public static void printWinners(Cars cars) {

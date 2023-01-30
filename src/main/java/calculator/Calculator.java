@@ -32,7 +32,7 @@ public class Calculator {
 
 	private static void checkInputIsNegative(String input) {
 		if (getParseInt(input) < NEGATIVE_NUMBER_STANDARD) {
-			throw new RuntimeException("숫자 이외의 값 또는 음수는 계산할 수 없습니다.");
+			throw new IllegalArgumentException("숫자 이외의 값 또는 음수는 계산할 수 없습니다.");
 		}
 	}
 
@@ -62,3 +62,4 @@ public class Calculator {
 		return input == null || input.isEmpty();
 	}
 }
+

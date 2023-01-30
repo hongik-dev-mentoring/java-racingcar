@@ -27,12 +27,10 @@ public class OutputView {
 
 	private static StringBuilder printCarsCurrentPosition(Car car) {
 		StringBuilder builder = new StringBuilder();
-		for (int i = 0; i < car.getPosition(); ++i) {
-			builder.append("-");
-		}
+		builder.append("-".repeat(Math.max(0, car.getPosition())));
 		return builder;
 	}
-
+	
 	public static void printBlankLine() {
 		System.out.println();
 	}

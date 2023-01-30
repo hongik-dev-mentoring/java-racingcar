@@ -5,7 +5,7 @@ import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 
-public class OutputData {
+public class OutputView {
 	private static final String ERROR_MESSAGE = "[ERROR] ";
 	private static final String GAME_RESULT_HEADER = "실행 결과";
 	private static final String FINAL_WINNER_MESSAGE = "가 최종 우승했습니다.";
@@ -28,7 +28,7 @@ public class OutputData {
 		}
 		printBlankLine();
 	}
-	
+
 	private static StringBuilder printCarsCurrentPosition(Car car) {
 		StringBuilder builder = new StringBuilder();
 		for (int i = 0; i < car.getPosition(); ++i) {

@@ -5,8 +5,8 @@ import java.util.List;
 import racingcar.model.Cars;
 import racingcar.util.generator.NameGenerator;
 import racingcar.util.generator.NumberGenerator;
-import racingcar.view.InputData;
-import racingcar.view.OutputData;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RaceGameController {
 	private Cars cars;
@@ -21,26 +21,26 @@ public class RaceGameController {
 
 	private void addCarNamesToCars() {
 		try {
-			List<String> carNames = NameGenerator.generateCarNames(InputData.getCarNames());
+			List<String> carNames = NameGenerator.generateCarNames(InputView.getCarNames());
 			cars.addCarNames(carNames);
 		} catch (IllegalArgumentException e) {
-			OutputData.printErrorMessage(e.getMessage()); // [ERROR] + 메시지 출력
+			OutputView.printErrorMessage(e.getMessage()); // [ERROR] + 메시지 출력
 			addCarNamesToCars();
 		}
 	}
 
 	private int getAttemptNumber() {
 		try {
-			return NumberGenerator.generateNumber(InputData.getAttemptNumber());
+			return NumberGenerator.generateNumber(InputView.getAttemptNumber());
 		} catch (IllegalArgumentException e) {
-			OutputData.printErrorMessage(e.getMessage());
+			OutputView.printErrorMessage(e.getMessage());
 			return getAttemptNumber();
 		}
 	}
 
 	private static void printResultHeader() {
-		OutputData.printBlankLine();
-		OutputData.printGameResultHeader();
+		OutputView.printBlankLine();
+		OutputView.printGameResultHeader();
 	}
 
 	public void run() {
@@ -50,11 +50,11 @@ public class RaceGameController {
 	private void moveCarsForwardByAttemptNumber() {
 		for (int i = 0; i < attemptNumber; ++i) {
 			cars.moveForward();
-			OutputData.printCarsPosition(cars.getCars());
+			OutputView.printCarsPosition(cars.getCars());
 		}
 	}
 
 	public void announceWinner() {
-		OutputData.printWinners(cars);
+		OutputView.printWinners(cars);
 	}
 }

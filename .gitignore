@@ -1,3 +1,7 @@
+calculator/HELP.md
+calculator/.gradle
+calculator/build/
+
 HELP.md
 .gradle
 build/
@@ -15,6 +19,13 @@ build/
 .sts4-cache
 
 ### IntelliJ IDEA ###
+
+calculator/.idea
+calculator/*.iws
+calculator/*.iml
+calculator/*.ipr
+calculator/out/
+
 .idea
 *.iws
 *.iml

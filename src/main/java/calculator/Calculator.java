@@ -61,4 +61,3 @@ public class Calculator {
 		return input == null || input.isEmpty();
 	}
 }
-

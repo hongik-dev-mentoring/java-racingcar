@@ -13,5 +13,4 @@ public class NumberGeneratorTest {
 	void attempt_number_input_success() {
 		assertThat(NumberGenerator.generateNumber(ATTEMPT_NUMBER)).isEqualTo(3);
 	}
-
 }

@@ -56,5 +56,4 @@ class CarsTest {
 
 		assertThat(winners.size()).isEqualTo(2);
 	}
-
 }

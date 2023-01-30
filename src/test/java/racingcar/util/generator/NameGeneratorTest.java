@@ -12,5 +12,4 @@ public class NameGeneratorTest {
 		assertThat(NameGenerator.generateCarNames("chan,dong,ho"))
 			.contains("chan", "dong", "ho");
 	}
-
 }

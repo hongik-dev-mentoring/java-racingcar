@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class NameGenerator {
-
 	private static final String SEPARATE_BY_COMMA = ",";
 
 	public static List<String> generateCarNames(String carNames) {

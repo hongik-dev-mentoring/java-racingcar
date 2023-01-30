@@ -9,7 +9,6 @@ import racingcar.view.InputData;
 import racingcar.view.OutputData;
 
 public class RaceGameController {
-
 	private Cars cars;
 	private int attemptNumber;
 

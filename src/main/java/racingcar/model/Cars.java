@@ -9,7 +9,6 @@ import racingcar.util.generator.RandomNumberGenerator;
 import racingcar.util.validator.NameValidator;
 
 public class Cars {
-
 	private List<Car> cars = new ArrayList<>();
 
 	public void addCarNames(List<String> cars) {

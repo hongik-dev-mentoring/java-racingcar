@@ -11,7 +11,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class NameValidatorTest {
-
 	private final List<String> emptyNames = List.of("");
 	private final List<String> duplicateNames = List.of("chan", "chan");
 

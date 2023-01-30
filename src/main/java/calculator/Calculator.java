@@ -5,7 +5,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Calculator {
-
 	private static final String SPLIT_REGEX = "[,:]";
 	private static final String CUSTOM_SPLIT_REGEX = "//(.)\\n(.*)";
 	private static final int DELIMITER_NUMBER = 1;

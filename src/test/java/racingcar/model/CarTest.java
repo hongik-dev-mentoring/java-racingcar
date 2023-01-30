@@ -12,7 +12,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 @DisplayNameGeneration(ReplaceUnderscores.class)
 class CarTest {
-
 	private Car car;
 
 	@BeforeEach

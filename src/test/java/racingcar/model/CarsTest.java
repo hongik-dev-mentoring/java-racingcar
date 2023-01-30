@@ -10,7 +10,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarsTest {
-
 	private final Cars cars = new Cars();
 	private Car car1;
 	private Car car2;

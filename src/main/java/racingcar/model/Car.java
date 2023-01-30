@@ -28,10 +28,7 @@ public class Car {
 	}
 
 	public boolean isWinner(int maxPosition) {
-		if (this.getPosition() == maxPosition) {
-			return true;
-		}
-		return false;
+		return this.getPosition() == maxPosition;
 	}
 
 	@Override

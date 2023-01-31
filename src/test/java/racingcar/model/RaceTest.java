@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.model;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,8 +11,6 @@ import java.io.PrintStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.message.ConsoleMessage.RESULT_TEXT;
-import static racingcar.message.ConsoleMessage.WINNER_TEXT;
 
 public class RaceTest {
 
@@ -53,7 +51,7 @@ public class RaceTest {
             }
         }
 
-        assertThat(output).contains(RESULT_TEXT);
+        assertThat(output).contains("실행 결과");
         assertThat(output).doesNotContain("pobi : ");
         assertThat(output).doesNotContain("crong : ");
         assertThat(output).doesNotContain("honux : ");
@@ -69,7 +67,7 @@ public class RaceTest {
         race.printWinners();
         String output = getOutput();
         // then
-        Assertions.assertThat(output).contains(WINNER_TEXT);
+        Assertions.assertThat(output).contains("가 최종 우승했습니다.");
     }
 
     public String getOutput() {

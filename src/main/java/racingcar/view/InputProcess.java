@@ -1,24 +1,21 @@
-package racingcar.input;
+package racingcar.view;
 
-import racingcar.Car;
+import racingcar.model.Car;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import static racingcar.message.ConsoleMessage.INPUT_CAR_NAMES;
-import static racingcar.message.ConsoleMessage.INPUT_MOVE_COUNT;
-import static racingcar.message.Constant.COMMA_DELIMITER;
-
 public class InputProcess {
 
+    private static final String COMMA_DELIMITER = ",";
+    private static final String INPUT_CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,) 기준으로 구분).";
+    private static final String INPUT_MOVE_COUNT = "시도할 회수는 몇회인가요?";
+
     private final Scanner sc = new Scanner(System.in);
-
     private final Validation validation = new Validation();
-
     private List<Car> carList;
-
     private Integer moveCount;
 
     public List<Car> getCarList() {

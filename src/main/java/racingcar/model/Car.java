@@ -1,10 +1,15 @@
-package racingcar;
+package racingcar.model;
 
 import java.util.Random;
 
-import static racingcar.message.Constant.*;
-
 public class Car {
+
+    private static final Integer START_LINE = 0;
+    private static final Integer CAN_MOVE_MIN_NUMBER = 4;
+    private static final Integer RANGE_0_AND_10 = 10;
+    private static final String COLLON = " : ";
+    private static final String ONE_MOVE_MARK = "-";
+
     private final String name;
     private Integer position = START_LINE;
 

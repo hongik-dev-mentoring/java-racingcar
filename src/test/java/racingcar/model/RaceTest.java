@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.view.InputProcess;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -36,7 +37,10 @@ public class RaceTest {
     @DisplayName("자동차 경주 최종 결과 출력 테스트")
     public void raceStartTest() {
         // given
-        Race race = new Race();
+        InputProcess inputProcess = new InputProcess();
+        List<Car> cars = inputProcess.getCarList();
+        Integer moveCount = inputProcess.getMoveCount();
+        Race race = new Race(cars, moveCount);
 
         // when
         race.start();
@@ -44,7 +48,6 @@ public class RaceTest {
 
         // then
         List<String> carNames = List.of("pobi : ", "crong : ", "honux : ");
-        int moveCount = 3;
         for (int i = 0; i < moveCount; i++) {
             for (String carName : carNames) {
                 output = output.replaceFirst(carName, "");
@@ -61,7 +64,10 @@ public class RaceTest {
     @DisplayName("자동차 경주 우승자 출력 테스트")
     public void printWinnersTest() {
         // given
-        Race race = new Race();
+        InputProcess inputProcess = new InputProcess();
+        List<Car> cars = inputProcess.getCarList();
+        Integer moveCount = inputProcess.getMoveCount();
+        Race race = new Race(cars, moveCount);
         // when
         race.start();
         race.printWinners();

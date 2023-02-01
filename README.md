@@ -24,7 +24,6 @@
 ### RandomNumberPicker
 
 - 지정한 범위내에서 난수 생성하기
-- 생성한 난수가 4 이상인지 check하기
 
 ### Car
 

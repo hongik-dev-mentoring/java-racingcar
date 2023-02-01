@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -43,7 +42,7 @@ public class RaceTest {
         Race race = new Race(cars, moveCount);
 
         // when
-        race.start();
+        race.proceedWholeRound();
         String output = getOutput();
 
         // then
@@ -54,26 +53,26 @@ public class RaceTest {
             }
         }
 
-        assertThat(output).contains("실행 결과");
         assertThat(output).doesNotContain("pobi : ");
         assertThat(output).doesNotContain("crong : ");
         assertThat(output).doesNotContain("honux : ");
     }
 
     @Test
-    @DisplayName("자동차 경주 우승자 출력 테스트")
+    @DisplayName("자동차 경주 우승자 select 테스트")
     public void printWinnersTest() {
         // given
         InputProcess inputProcess = new InputProcess();
         List<Car> cars = inputProcess.getCarList();
         Integer moveCount = inputProcess.getMoveCount();
         Race race = new Race(cars, moveCount);
+
         // when
-        race.start();
-        race.printWinners();
-        String output = getOutput();
+        race.proceedWholeRound();
+        List<Car> winners = race.selectWinners();
+
         // then
-        Assertions.assertThat(output).contains("가 최종 우승했습니다.");
+        assertThat(winners.size()).isNotEqualTo(0);
     }
 
     public String getOutput() {

@@ -13,7 +13,8 @@ public class InputException {
 	}
 
 	public static void ifNegativeThenThrow(int num) {
-		if (num < 0)
+		if (num < 0) {
 			throw new RuntimeException("양수를 입력하세요.");
+		}
 	}
 }

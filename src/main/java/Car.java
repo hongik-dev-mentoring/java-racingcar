@@ -12,14 +12,6 @@ public class Car {
 		this.name = name;
 	}
 
-	public void setPosition(int n) {
-		position = n;
-	}
-
-	public void setWinNum(int n) {
-		winNum = n;
-	}
-
 	public String getName() {
 		return name;
 	}

@@ -7,8 +7,8 @@ public class Car {
     private static final Integer START_LINE = 0;
     private static final Integer CAN_MOVE_MIN_NUMBER = 4;
     private static final Integer MIN_RANDOM_NUMBER = 0;
-    private static final Integer MAX_RANDON_NUMBER = 10;
-    private static final String COLLON = " : ";
+    private static final Integer MAX_RANDOM_NUMBER = 9;
+    private static final String COLON = " : ";
     private static final String ONE_MOVE_MARK = "-";
 
     private final String name;
@@ -17,7 +17,7 @@ public class Car {
 
     public Car(String name) {
         this.name = name;
-        this.randomNumberPicker = new RandomNumberPicker(MIN_RANDOM_NUMBER, MAX_RANDON_NUMBER);
+        this.randomNumberPicker = new RandomNumberPicker(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
     }
 
     public Car(String name, RandomNumberPicker randomNumberPicker) {
@@ -38,7 +38,7 @@ public class Car {
 
     public void printPosition() {
         StringBuilder sb = new StringBuilder(name);
-        sb.append(COLLON);
+        sb.append(COLON);
         sb.append(ONE_MOVE_MARK.repeat(position));
         System.out.println(sb);
     }

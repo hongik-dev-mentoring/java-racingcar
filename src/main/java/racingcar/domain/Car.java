@@ -1,4 +1,8 @@
+package racingcar.domain;
+
 import java.util.Random;
+
+import racingcar.view.Output;
 
 public class Car {
 	private static final int MOVE = 4;

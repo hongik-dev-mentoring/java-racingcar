@@ -1,36 +1,39 @@
 package racingcar.model;
 
-import java.util.Random;
+import racingcar.util.RandomNumberPicker;
 
 public class Car {
 
     private static final Integer START_LINE = 0;
     private static final Integer CAN_MOVE_MIN_NUMBER = 4;
-    private static final Integer RANGE_0_AND_10 = 10;
+    private static final Integer MIN_RANDOM_NUMBER = 0;
+    private static final Integer MAX_RANDON_NUMBER = 10;
     private static final String COLLON = " : ";
     private static final String ONE_MOVE_MARK = "-";
 
     private final String name;
     private Integer position = START_LINE;
+    private RandomNumberPicker randomNumberPicker;
 
     public Car(String name) {
         this.name = name;
+        this.randomNumberPicker = new RandomNumberPicker(MIN_RANDOM_NUMBER, MAX_RANDON_NUMBER);
     }
 
-    public Car(String name, int position) {
+    public Car(String name, RandomNumberPicker randomNumberPicker) {
         this.name = name;
-        this.position = position;
+        this.randomNumberPicker = randomNumberPicker;
     }
 
     public void move() {
-        if (pickRandomNumber() >= CAN_MOVE_MIN_NUMBER) {
+        if (checkCanMoveCondition()) {
             this.position++;
         }
     }
 
-    private int pickRandomNumber() {
-        Random rand = new Random();
-        return rand.nextInt(RANGE_0_AND_10);
+    private boolean checkCanMoveCondition() {
+        Integer randomNumber = randomNumberPicker.pickRandomNumber();
+        return randomNumber >= CAN_MOVE_MIN_NUMBER;
     }
 
     public void printPosition() {

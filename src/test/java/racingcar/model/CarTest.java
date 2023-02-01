@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.util.RandomNumberPicker;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -19,16 +20,18 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("자동차 Position 출력 테스트")
-    public void printPositionTest() {
+    @DisplayName("자동차 이동하기, Position 출력하기 테스트")
+    public void moveTest() {
         // given
-        Car car = new Car("abc", 3);
+        RandomNumberPicker randomNumberPicker = new RandomNumberPicker(4, 9);
+        Car car = new Car("abc", randomNumberPicker);
         // when
-        int actual = car.getPosition();
+        car.move();
+        car.move();
+        car.move();
         car.printPosition();
         String output = getOutput();
         // then
-        Assertions.assertThat(actual).isEqualTo(3);
         Assertions.assertThat(output).contains("abc : ---");
     }
 

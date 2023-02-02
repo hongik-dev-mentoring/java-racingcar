@@ -37,7 +37,7 @@ public class Car {
 		position -= positionStandard;
 	}
 
-	public boolean move(int randomNum) {
+	private boolean move(int randomNum) {
 		if (randomNum >= MOVE) {
 			position++;
 			return true;

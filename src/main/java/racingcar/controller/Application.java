@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import racingcar.domain.RacingGame;
 import racingcar.view.InputView;
+import racingcar.view.Output;
 
 public class Application {
 	public static void main(String[] args) {
@@ -11,6 +12,10 @@ public class Application {
 		int tryNum = InputView.readNum();
 
 		RacingGame game = new RacingGame(carNames,tryNum);
-		game.play();
+		while(!game.isEnd()){
+			game.race();
+			Output.printRace(game.getCars());
+		}
+		Output.printWinner(game.getWinners());
 	}
 }

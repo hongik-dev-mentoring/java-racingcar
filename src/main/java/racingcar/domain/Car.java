@@ -42,7 +42,6 @@ public class Car {
 			move();
 		}
 		position -= positionStandard;
-		Output.printRace(name, position);
 	}
 
 	public boolean move() {

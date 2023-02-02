@@ -22,7 +22,6 @@ public class RacingGame {
 		if(countRound == TRY_NUM){
 			return true;
 		}
-
 		countRound++;
 		return false;
 	}
@@ -31,17 +30,17 @@ public class RacingGame {
 		return carNames.stream().map(Car::new).collect(Collectors.toList());
 	}
 
-	public void play() {
-		for (int i = 0; i < TRY_NUM; i++) {
-			race(cars, TRY_NUM);
-			recordWinNum(selectRoundWinner(rankRound(cars)));
-		}
-		Output.printWinner(selectFinalWinner(rankFinal(cars)));
+	public void race() {
+		cars.forEach(m -> m.race(TRY_NUM));
+		recordWinNum(selectRoundWinner(rankRound(cars)));
 	}
 
-	public void race(List<Car> cars, int TRY_NUM) {
-		cars.forEach(m -> m.race(TRY_NUM));
-		System.out.println();
+	public List<Car> getCars() {
+		return cars;
+	}
+
+	public List<Car> getWinners(){
+		return selectFinalWinner(rankFinal(cars));
 	}
 
 	public void recordWinNum(List<Car> winner) {

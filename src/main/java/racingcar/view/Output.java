@@ -7,12 +7,20 @@ import racingcar.domain.Car;
 
 public class Output {
 
-	public static void printRace(String name, int position) {
-		System.out.print(name + " : ");
-		for (int i = 0; i < position; i++) {
-			System.out.print("-");
+	public static void printRace(List<Car> cars) {
+
+		for (Car car : cars) {
+			System.out.print(car.getName() + " : ");
+			printMove(car);
+			System.out.println();
 		}
 		System.out.println();
+	}
+
+	private static void printMove(Car car) {
+		for (int j = 0; j < car.getPosition(); j++) {
+			System.out.print("-");
+		}
 	}
 
 	public static void printWinner(List<Car> winner) {

@@ -1,8 +1,9 @@
 package racingcar.domain;
 
+import racingcar.util.RandomNum;
+
 public class Car {
 	private static final int MOVE = 4;
-	private final int ZERO_TO_NINE_CONVERTER = 10;
 
 	private String name;
 	private int position = 0;
@@ -28,20 +29,16 @@ public class Car {
 		winNum++;
 	}
 
-	public int createRandomNum() {
-		return (int)(Math.random() * ZERO_TO_NINE_CONVERTER);
-	}
-
 	public void race(int num) {
 		int positionStandard = position;
 		for (int i = 0; i < num; i++) {
-			move();
+			move(RandomNum.createRandomNum());
 		}
 		position -= positionStandard;
 	}
 
-	public boolean move() {
-		if (createRandomNum() >= MOVE) {
+	public boolean move(int randomNum) {
+		if (randomNum >= MOVE) {
 			position++;
 			return true;
 		}

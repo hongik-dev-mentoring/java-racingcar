@@ -5,9 +5,9 @@ import java.util.List;
 
 import racingcar.domain.Car;
 
-public class Output {
+public class ResultView {
 
-	public static void printRace(List<Car> cars) {
+	public static void printCars(List<Car> cars) {
 		for (Car car : cars) {
 			System.out.print(car.getName() + " : ");
 			printMove(car);

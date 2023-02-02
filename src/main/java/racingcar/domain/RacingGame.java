@@ -5,9 +5,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import racingcar.view.InputView;
-import racingcar.view.Output;
-
 public class RacingGame {
 	private List<Car> cars;
 	private final int TRY_NUM;

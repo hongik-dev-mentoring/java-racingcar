@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
-import racingcar.view.Output;
 
 class GameTest {
 

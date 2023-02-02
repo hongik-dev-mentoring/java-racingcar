@@ -27,7 +27,7 @@ public class RacingCarInputException {
 	}
 
 	private static void isDelimiterInName(String s) {
-		if(s.contains(",")){
+		if (s.contains(",")) {
 			throw new IllegalArgumentException("이름 사이에는 ,가 들어갈 수 없습니다.");
 		}
 	}
@@ -39,7 +39,7 @@ public class RacingCarInputException {
 	}
 
 	private static void isDuplicatedName(ArrayList<String> strings, String s) {
-		if(strings.contains(s)){
+		if (strings.contains(s)) {
 			throw new IllegalArgumentException("중복된 이름입니다. 다른이름을 입력하세요.");
 		}
 	}

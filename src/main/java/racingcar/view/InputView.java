@@ -48,7 +48,7 @@ public class InputView {
 		try {
 			RacingCarInputException.isNull(input);
 			RacingCarInputException.isEmpty(input);
-			RacingCarInputException.isLong(strings, input.split(","));
+			RacingCarInputException.checkValidation(strings, input.split(","));
 			return true;
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());

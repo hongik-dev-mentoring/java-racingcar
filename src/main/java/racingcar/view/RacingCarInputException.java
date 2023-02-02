@@ -17,12 +17,23 @@ public class RacingCarInputException {
 		}
 	}
 
-	public static void isLong(ArrayList<String> strings, String[] input) {
+	public static void checkValidation(ArrayList<String> strings, String[] input) {
 		for (String s : input) {
-			if (s.length() > MAX_LENGTH) {
-				throw new IllegalArgumentException("5이하의 문자열을 입력하세요.");
-			}
+			isLessThanFiveLetters(s);
+			isDuplicatedName(strings, s);
 			strings.add(s);
+		}
+	}
+
+	private static void isLessThanFiveLetters(String s) {
+		if (s.length() > MAX_LENGTH) {
+			throw new IllegalArgumentException("5이하의 문자열을 입력하세요.");
+		}
+	}
+
+	private static void isDuplicatedName(ArrayList<String> strings, String s) {
+		if(strings.contains(s)){
+			throw new IllegalArgumentException("중복된 이름입니다. 다른이름을 입력하세요.");
 		}
 	}
 

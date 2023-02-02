@@ -1,7 +1,7 @@
 package racingcar.controller;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
@@ -15,24 +15,25 @@ public class RaceGameController {
 	private int attemptNumber;
 
 	public void ready() {
-		cars = new Cars(createCars());
+		cars = createCars();
 		attemptNumber = getAttemptNumber();
 		printResultHeader();
 	}
 
-	private List<Car> createCars() {
-		List<String> carNames = NameGenerator.generateCarNames(InputView.getCarNames());
-		List<Car> cars = new ArrayList<>();
+	private Cars createCars() {
 		try {
-			for (String carName : carNames) {
-				Car car = new Car(carName);
-				cars.add(car);
-			}
-		} catch (Exception e) {
+			return new Cars(addCars());
+		} catch (IllegalArgumentException e) {
 			OutputView.printErrorMessage(e.getMessage());
 			return createCars();
 		}
-		return cars;
+	}
+
+	private List<Car> addCars() {
+		List<String> carNames = NameGenerator.generateCarNames(InputView.getCarNames());
+		return carNames.stream()
+			.map(Car::new)
+			.collect(Collectors.toList());
 	}
 
 	private int getAttemptNumber() {

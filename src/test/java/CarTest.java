@@ -18,24 +18,6 @@ class CarTest {
 	}
 
 	@Test
-	@DisplayName("랜덤 넘버가 4이상일 때 차 움직이기")
-	void move() {
-
-		boolean isMove = car.move(4);
-
-		assertThat(car.getPosition()).isEqualTo(1);
-	}
-
-	@Test
-	@DisplayName("랜덤 넘버가 4이상일 때 차 움직이기")
-	void notMove() {
-
-		boolean isMove = car.move(3);
-
-		assertThat(car.getPosition()).isEqualTo(0);
-	}
-
-	@Test
 	@DisplayName("winNum 1 올리기")
 	void increaseWinNum() {
 

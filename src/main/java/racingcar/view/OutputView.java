@@ -4,6 +4,7 @@ import java.util.List;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.Position;
 
 public class OutputView {
 	private static final String ERROR_MESSAGE = "[ERROR] ";
@@ -20,14 +21,14 @@ public class OutputView {
 
 	public static void printCarsPosition(List<Car> cars) {
 		for (Car car : cars) {
-			System.out.println(car.getName() + " : " + printCarsCurrentPosition(car));
+			System.out.println(car.getName().getValue() + " : " + printCarsCurrentPosition(car.getPosition()));
 		}
 		printBlankLine();
 	}
 
-	private static StringBuilder printCarsCurrentPosition(Car car) {
+	private static StringBuilder printCarsCurrentPosition(Position position) {
 		StringBuilder builder = new StringBuilder();
-		builder.append("-".repeat(Math.max(0, car.getPosition())));
+		builder.append("-".repeat(Math.max(0, position.getValue())));
 		return builder;
 	}
 

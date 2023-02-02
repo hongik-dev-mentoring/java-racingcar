@@ -13,13 +13,12 @@ import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
 class CarsTest {
-	private final Cars cars = new Cars();
+	private final Cars cars = new Cars(Arrays.asList(new Car("chan")));
 	private Car car1;
 	private Car car2;
 
 	@BeforeEach
 	void initialize() {
-		cars.addCarNames(Arrays.asList("chan", "dong", "ho"));
 		List<Car> cars = this.cars.getCars(); // return immutable list
 		car1 = cars.get(0);
 		car2 = cars.get(1);

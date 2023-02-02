@@ -2,19 +2,26 @@ package racingcar.domain;
 
 import static java.util.stream.Collectors.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import racingcar.util.generator.RandomNumberGenerator;
-import racingcar.util.validator.NameValidator;
 
 public class Cars {
-	private List<Car> cars = new ArrayList<>();
+	private static final String DUPLICATE_CAR_NAME_MESSAGE = "자동차의 이름은 중복일 수 없습니다.";
+	private final List<Car> cars;
 
-	public void addCarNames(List<String> cars) {
-		NameValidator.validateCarNames(cars);
-		for (String carName : cars) {
-			this.cars.add(new Car(carName));
+	public Cars(List<Car> cars) {
+		this.cars = cars;
+		validateDuplicateCarNames(cars);
+	}
+
+	private void validateDuplicateCarNames(List<Car> cars) {
+		List<String> uniqueNames = cars.stream()
+			.map(car -> car.getName().getValue())
+			.distinct()
+			.collect(toList());
+		if (cars.size() != uniqueNames.size()) {
+			throw new IllegalArgumentException(DUPLICATE_CAR_NAME_MESSAGE);
 		}
 	}
 
@@ -31,7 +38,7 @@ public class Cars {
 
 	public int findMaxPosition() {
 		return cars.stream()
-			.mapToInt(Car::getPosition)
+			.mapToInt(car -> car.getPosition().getValue())
 			.max()
 			.orElse(0);
 	}
@@ -39,7 +46,7 @@ public class Cars {
 	public List<String> findWinnersName() {
 		return cars.stream()
 			.filter(car -> car.isWinner(findMaxPosition()))
-			.map(Car::getName)
+			.map(car -> car.getName().getValue())
 			.collect(toList());
 	}
 }

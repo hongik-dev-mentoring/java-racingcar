@@ -1,7 +1,9 @@
 package racingcar.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.util.generator.NameGenerator;
 import racingcar.util.generator.NumberGenerator;
@@ -13,20 +15,24 @@ public class RaceGameController {
 	private int attemptNumber;
 
 	public void ready() {
-		cars = new Cars();
-		addCarNamesToCars();
+		cars = new Cars(createCars());
 		attemptNumber = getAttemptNumber();
 		printResultHeader();
 	}
 
-	private void addCarNamesToCars() {
+	private List<Car> createCars() {
+		List<String> carNames = NameGenerator.generateCarNames(InputView.getCarNames());
+		List<Car> cars = new ArrayList<>();
 		try {
-			List<String> carNames = NameGenerator.generateCarNames(InputView.getCarNames());
-			cars.addCarNames(carNames);
-		} catch (IllegalArgumentException e) {
-			OutputView.printErrorMessage(e.getMessage()); // [ERROR] + 메시지 출력
-			addCarNamesToCars();
+			for (String carName : carNames) {
+				Car car = new Car(carName);
+				cars.add(car);
+			}
+		} catch (Exception e) {
+			OutputView.printErrorMessage(e.getMessage());
+			return createCars();
 		}
+		return cars;
 	}
 
 	private int getAttemptNumber() {

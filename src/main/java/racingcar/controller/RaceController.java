@@ -1,7 +1,7 @@
 package racingcar.controller;
 
-import racingcar.model.Car;
-import racingcar.model.Race;
+import racingcar.domain.Car;
+import racingcar.domain.Race;
 import racingcar.view.InputProcess;
 
 import java.util.List;

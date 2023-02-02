@@ -3,7 +3,7 @@ package racingcar.view;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Input {
+public class InputView {
 	private static ArrayList<String> strings = new ArrayList<>();
 	private static int TRY_NUM;
 

@@ -16,12 +16,12 @@ import racingcar.view.Output;
 class GameTest {
 
 	RacingGame game;
-	final static ArrayList<String> NAMES = new ArrayList<>(Arrays.asList("na","tae","joe"));
+	final static ArrayList<String> NAMES = new ArrayList<>(Arrays.asList("na", "tae", "joe"));
 	final static int TRY_NUM = 4;
 
 	@BeforeEach
 	void setup() {
-		game = new RacingGame(NAMES,TRY_NUM);
+		game = new RacingGame(NAMES, TRY_NUM);
 	}
 
 	@Test
@@ -44,10 +44,10 @@ class GameTest {
 
 	@Test
 	@DisplayName("게임 종료 테스트")
-	void end(){
+	void end() {
 		int count = 0;
 
-		while(!game.isEnd()){
+		while (!game.isEnd()) {
 			count++;
 		}
 

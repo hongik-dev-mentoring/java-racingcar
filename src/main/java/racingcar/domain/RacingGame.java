@@ -15,8 +15,8 @@ public class RacingGame {
 		this.TRY_NUM = TRY_NUM;
 	}
 
-	public boolean isEnd(){
-		if(countRound == TRY_NUM){
+	public boolean isEnd() {
+		if (countRound == TRY_NUM) {
 			return true;
 		}
 		countRound++;
@@ -24,7 +24,9 @@ public class RacingGame {
 	}
 
 	public List<Car> createCars(ArrayList<String> carNames) {
-		return carNames.stream().map(Car::new).collect(Collectors.toList());
+		return carNames.stream()
+			.map(Car::new)
+			.collect(Collectors.toList());
 	}
 
 	public void race() {
@@ -36,7 +38,7 @@ public class RacingGame {
 		return cars;
 	}
 
-	public List<Car> getWinners(){
+	public List<Car> getWinners() {
 		return selectFinalWinner(rankFinal(cars));
 	}
 
@@ -53,7 +55,9 @@ public class RacingGame {
 	}
 
 	public List<Car> selectFinalWinner(List<Car> carRanking) {
-		int maxWin = carRanking.get(0).getWinNum();
+		int maxWin = carRanking
+			.get(0)
+			.getWinNum();
 
 		return carRanking.stream()
 			.filter((m) -> m.getWinNum() == maxWin)

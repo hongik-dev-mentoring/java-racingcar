@@ -51,4 +51,16 @@ class RacingCarInputExceptionTest {
 		);
 	}
 
+	@Test
+	@DisplayName("이름 사이에 , 예외 테스트")
+	void nameTest(){
+		String[] test = {"na","ta,e","joe"};
+		ArrayList<String> result = new ArrayList<>();
+
+		assertAll(
+			()-> assertThrows(IllegalArgumentException.class, () -> RacingCarInputException.checkValidation(result, test)),
+			()-> assertThat(result.size()).isEqualTo(1)
+		);
+	}
+
 }

@@ -21,7 +21,14 @@ public class RacingCarInputException {
 		for (String s : input) {
 			isLessThanFiveLetters(s);
 			isDuplicatedName(strings, s);
+			isDelimiterInName(s);
 			strings.add(s);
+		}
+	}
+
+	private static void isDelimiterInName(String s) {
+		if(s.contains(",")){
+			throw new IllegalArgumentException("이름 사이에는 ,가 들어갈 수 없습니다.");
 		}
 	}
 

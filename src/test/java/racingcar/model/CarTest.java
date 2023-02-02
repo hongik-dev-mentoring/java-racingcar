@@ -30,13 +30,13 @@ class CarTest {
 	@Test
 	@DisplayName("자동차 이름 검증 테스트")
 	void validate_car_name() {
-		assertThat(car.getName()).isEqualTo("chan");
+		assertThat(car.getName().getValue()).isEqualTo("chan");
 	}
 
 	@Test
 	@DisplayName("자동차의 초기 위치는 0이어야 한다.")
 	void first_position_car_equals_zero() {
-		assertThat(car.getPosition()).isEqualTo(0);
+		assertThat(car.getPosition().getValue()).isEqualTo(0);
 	}
 
 	@ParameterizedTest(name = "랜덤 숫자 : {0}, 전진 결과 : {1}")
@@ -50,13 +50,13 @@ class CarTest {
 	@DisplayName("자동차가 전진하지 못하면 위치는 그대로이다.")
 	void not_move_forward_car() {
 		car.moveForward(3);
-		assertThat(car.getPosition()).isEqualTo(0);
+		assertThat(car.getPosition().getValue()).isEqualTo(0);
 	}
 
 	@Test
 	@DisplayName("자동차를 전진시키면 위치가 1 증가해야 한다.")
 	void move_forward_car() {
 		car.moveForward(4);
-		assertThat(car.getPosition()).isEqualTo(1);
+		assertThat(car.getPosition().getValue()).isEqualTo(1);
 	}
 }

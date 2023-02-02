@@ -10,15 +10,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import racingcar.domain.Car;
-import racingcar.domain.Game;
+import racingcar.domain.RacingGame;
 
 class GameTest {
 
-	Game game;
+	RacingGame game;
 
 	@BeforeEach
 	void setup() {
-		game = new Game();
+		final ArrayList<String> NAMES = new ArrayList<>(Arrays.asList("na","tae","joe"));
+		final int TRY_NUM = 4;
+		game = new RacingGame(NAMES,TRY_NUM);
 	}
 
 	@Test

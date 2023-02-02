@@ -5,22 +5,23 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import racingcar.domain.Car;
-import racingcar.view.Input;
+import racingcar.view.InputView;
 import racingcar.view.Output;
 
-public class Game {
+public class RacingGame {
 	private List<Car> cars;
+	private final int TRY_NUM;
+
+	public RacingGame(ArrayList<String> carNames, int TRY_NUM) {
+		cars = createCars(carNames);
+		this.TRY_NUM = TRY_NUM;
+	}
 
 	public List<Car> createCars(ArrayList<String> carNames) {
 		return carNames.stream().map(Car::new).collect(Collectors.toList());
 	}
 
 	public void play() {
-		ArrayList<String> carNames = Input.readNames();
-		final int TRY_NUM = Input.readNum();
-		cars = createCars(carNames);
-
 		for (int i = 0; i < TRY_NUM; i++) {
 			race(cars, TRY_NUM);
 			recordWinNum(selectRoundWinner(rankRound(cars)));

@@ -15,11 +15,11 @@ import racingcar.domain.RacingGame;
 class GameTest {
 
 	RacingGame game;
+	final static ArrayList<String> NAMES = new ArrayList<>(Arrays.asList("na","tae","joe"));
+	final static int TRY_NUM = 4;
 
 	@BeforeEach
 	void setup() {
-		final ArrayList<String> NAMES = new ArrayList<>(Arrays.asList("na","tae","joe"));
-		final int TRY_NUM = 4;
 		game = new RacingGame(NAMES,TRY_NUM);
 	}
 
@@ -28,7 +28,6 @@ class GameTest {
 	void createCars() {
 		//given
 		ArrayList<String> carNames = new ArrayList<>(Arrays.asList("nae", "tae", "joe"));
-		int num = carNames.size();
 
 		//when
 		List<Car> cars = game.createCars(carNames);
@@ -40,6 +39,18 @@ class GameTest {
 			() -> assertThat(cars.get(2).getName()).isEqualTo("joe")
 		);
 
+	}
+
+	@Test
+	@DisplayName("게임 종료 테스트")
+	void end(){
+		int count = 0;
+
+		while(!game.isEnd()){
+			count++;
+		}
+
+		assertThat(count).isEqualTo(TRY_NUM);
 	}
 
 	@Test

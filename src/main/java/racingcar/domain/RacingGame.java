@@ -11,10 +11,20 @@ import racingcar.view.Output;
 public class RacingGame {
 	private List<Car> cars;
 	private final int TRY_NUM;
+	private int countRound = 0;
 
 	public RacingGame(ArrayList<String> carNames, int TRY_NUM) {
 		cars = createCars(carNames);
 		this.TRY_NUM = TRY_NUM;
+	}
+
+	public boolean isEnd(){
+		if(countRound == TRY_NUM){
+			return true;
+		}
+
+		countRound++;
+		return false;
 	}
 
 	public List<Car> createCars(ArrayList<String> carNames) {

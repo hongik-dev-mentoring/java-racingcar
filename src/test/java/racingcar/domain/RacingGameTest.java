@@ -1,3 +1,5 @@
+package racingcar.domain;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,10 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import racingcar.domain.Car;
-import racingcar.domain.RacingGame;
-
-class GameTest {
+class RacingGameTest {
 
 	RacingGame game;
 	final ArrayList<String> NAMES = new ArrayList<>(Arrays.asList("na", "tae", "joe"));

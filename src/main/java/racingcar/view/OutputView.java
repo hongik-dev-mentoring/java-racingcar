@@ -2,8 +2,8 @@ package racingcar.view;
 
 import java.util.List;
 
-import racingcar.model.Car;
-import racingcar.model.Cars;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 public class OutputView {
 	private static final String ERROR_MESSAGE = "[ERROR] ";
@@ -30,7 +30,7 @@ public class OutputView {
 		builder.append("-".repeat(Math.max(0, car.getPosition())));
 		return builder;
 	}
-	
+
 	public static void printBlankLine() {
 		System.out.println();
 	}

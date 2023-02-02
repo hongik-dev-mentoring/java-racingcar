@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 
-import racingcar.model.Cars;
+import racingcar.domain.Cars;
 import racingcar.util.generator.NameGenerator;
 import racingcar.util.generator.NumberGenerator;
 import racingcar.view.InputView;

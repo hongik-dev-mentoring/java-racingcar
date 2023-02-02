@@ -1,8 +1,8 @@
 package racingcar.domain;
 
 public class Position {
-	private static final int POSITION_IS_NOT_NEGATIVE = 0;
 	private static final String POSITION_NEGATIVE_MESSAGE = "자동차의 위치는 음수일 수 없습니다.";
+	private static final int POSITION_IS_NOT_NEGATIVE = 0;
 	private int position = 0;
 
 	public Position(int position) {

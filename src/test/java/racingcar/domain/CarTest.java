@@ -11,7 +11,7 @@ class CarTest {
 	Car car;
 
 	@BeforeEach
-	void setup(){
+	void setup() {
 		car = new Car("tae");
 	}
 
@@ -22,5 +22,16 @@ class CarTest {
 		car.increaseWinNum();
 
 		assertThat(car.getWinNum()).isEqualTo(1);
+	}
+
+	@Test
+	@DisplayName("정상적으로 race 테스트")
+	void race() {
+
+		int tryNum = 4;
+
+		car.race(tryNum);
+
+		assertThat(car.getPosition()).isLessThanOrEqualTo(tryNum);
 	}
 }

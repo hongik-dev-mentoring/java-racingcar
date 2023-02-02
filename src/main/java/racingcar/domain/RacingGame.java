@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class RacingGame {
 	private List<Car> cars;
 	private final int TRY_NUM;
-	private int countRound = 0;
+	private int countEnd = 0;
 
 	public RacingGame(ArrayList<String> carNames, int TRY_NUM) {
 		cars = createCars(carNames);
@@ -16,10 +16,10 @@ public class RacingGame {
 	}
 
 	public boolean isEnd() {
-		if (countRound == TRY_NUM) {
+		if (countEnd == TRY_NUM) {
 			return true;
 		}
-		countRound++;
+		countEnd++;
 		return false;
 	}
 
@@ -55,9 +55,7 @@ public class RacingGame {
 	}
 
 	public List<Car> selectFinalWinner(List<Car> carRanking) {
-		int maxWin = carRanking
-			.get(0)
-			.getWinNum();
+		int maxWin = carRanking.get(0).getWinNum();
 
 		return carRanking.stream()
 			.filter((m) -> m.getWinNum() == maxWin)

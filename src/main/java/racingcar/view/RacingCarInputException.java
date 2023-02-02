@@ -49,4 +49,8 @@ public class RacingCarInputException {
 			throw new IllegalArgumentException("1회 이상의 수를 입력하세요.");
 		}
 	}
+
+	public static int isNum(String input) {
+		return Integer.parseInt(input);
+	}
 }

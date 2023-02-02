@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -10,7 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarsTest {
-	private final Cars cars = new Cars(Arrays.asList(new Car("chan")));
+	private final Cars cars = new Cars(List.of(new Car("chan"), new Car("dong")));
 	private Car car1;
 	private Car car2;
 

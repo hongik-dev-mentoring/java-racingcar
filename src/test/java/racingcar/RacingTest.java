@@ -28,56 +28,22 @@ public class RacingTest {
     }
 
     @Test
-    void 레이싱_테스트() {
-        // given
-        RangedRandomNumberPicker moveNumberPicker = new RangedRandomNumberPicker(4, 9);
-        RangedRandomNumberPicker stayNumberPicker = new RangedRandomNumberPicker(0, 3);
-
-        List<RandomMovingCar> cars = new ArrayList<>();
-        cars.add(new RandomMovingCar("jinho1", moveNumberPicker));
-        cars.add(new RandomMovingCar("jinho2", stayNumberPicker));
-
-        Racing racing = new Racing(cars, 3);
-
-        StringBuilder expectedOutputString = get_레이싱_테스트_ExpectedOutput();
-
-        // when
-        racing.race();
-        String actualOutputString = output.toString();
-
-        // then
-        assertThat(actualOutputString).contains(expectedOutputString);
-    }
-
-    StringBuilder get_레이싱_테스트_ExpectedOutput() {
-        return new StringBuilder("실행 결과\r\n")
-            .append("jinho1 : -\r\n")
-            .append("jinho2 : \r\n")
-            .append("\r\n")
-            .append("jinho1 : --\r\n")
-            .append("jinho2 : \r\n")
-            .append("\r\n")
-            .append("jinho1 : ---\r\n")
-            .append("jinho2 : \r\n")
-            .append("\r\n")
-            .append("최종 우승자 : jinho1\r\n");
-    }
-
-    @Test
     void 레이싱_공동_우승자_출력_테스트() {
         // given
-        RangedRandomNumberPicker moveNumberPicker = new RangedRandomNumberPicker(4, 9);
-
         List<RandomMovingCar> cars = new ArrayList<>();
-        cars.add(new RandomMovingCar("jinho1", moveNumberPicker));
-        cars.add(new RandomMovingCar("jinho2", moveNumberPicker));
+        cars.add(new RandomMovingCar("jinho1"));
+        cars.add(new RandomMovingCar("jinho2"));
 
         Racing racing = new Racing(cars, 3);
+
+        RangedRandomNumberPicker moveNumberPicker = new RangedRandomNumberPicker(4, 9);
+        int movingStandard = 4;
+        MovingStrategy movingStrategy = new RandomMovingStrategy(moveNumberPicker, movingStandard);
 
         StringBuilder expectedOutputString = get_레이싱_공동_우승자_출력_테스트_ExpectedOutput();
 
         // when
-        racing.race();
+        racing.race(movingStrategy);
         String actualOutputString = output.toString();
 
         // then

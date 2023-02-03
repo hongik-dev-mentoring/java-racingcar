@@ -4,17 +4,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Cars;
 import racingcar.domain.Racing;
-import racingcar.domain.Car;
 import racingcar.domain.movingstrategy.AlwaysMovingStrategy;
 import racingcar.domain.movingstrategy.MovingStrategy;
-import racingcar.view.CarNamesList;
+import racingcar.view.CarNames;
 
 public class RacingTest {
 
@@ -34,8 +31,8 @@ public class RacingTest {
     @Test
     void 레이싱_공동_우승자_출력_테스트() {
         // given
-        CarNamesList carNamesList = CarNamesList.getCarNamesListByCarNames("jinh1, jinh2");
-        Cars cars = Cars.getCarsFromCarNamesList(carNamesList);
+        CarNames carNames = CarNames.getCarNamesFromCarNamesString("jinh1, jinh2");
+        Cars cars = Cars.getCarsFromCarNames(carNames);
         Racing racing = new Racing(cars, 3);
 
         MovingStrategy movingStrategy = new AlwaysMovingStrategy();

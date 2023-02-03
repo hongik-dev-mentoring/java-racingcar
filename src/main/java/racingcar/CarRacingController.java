@@ -4,6 +4,7 @@ import java.util.List;
 import racingcar.domain.movingstrategy.MovingStrategy;
 import racingcar.domain.movingstrategy.RandomMovingStrategy;
 import racingcar.domain.movingstrategy.RangedRandomNumberPicker;
+import racingcar.view.CarNamesList;
 import racingcar.view.Input;
 
 public class CarRacingController {
@@ -14,7 +15,7 @@ public class CarRacingController {
 
     public static void initCarRacingGame() {
         Input input = new Input();
-        List<String> carNamesList = input.getCarNamesList();
+        CarNamesList carNamesList = input.getCarNamesList();
         int raceGameCount = input.getRacingGameCount();
 
         MovingStrategy movingStrategy = getRandomMovingStrategy();

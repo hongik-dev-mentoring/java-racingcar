@@ -17,12 +17,17 @@ public class CarRacingController {
         List<String> carNamesList = input.getCarNamesList();
         int raceGameCount = input.getRacingGameCount();
 
-        RangedRandomNumberPicker rangedRandomNumberPicker = new RangedRandomNumberPicker(0, 9);
-        int movingStandard = 4;
-        MovingStrategy randomMovingStrategy = new RandomMovingStrategy(rangedRandomNumberPicker,
-            movingStandard);
-
+        MovingStrategy movingStrategy = getRandomMovingStrategy();
         CarRacingService.getInstance()
-            .carRacingGame(carNamesList, raceGameCount, randomMovingStrategy);
+            .carRacingGame(carNamesList, raceGameCount, movingStrategy);
+    }
+
+    private static MovingStrategy getRandomMovingStrategy() {
+        final int movingStandard = 4;
+        final int FROM = 0;
+        final int TO = 0;
+
+        RangedRandomNumberPicker rangedRandomNumberPicker = new RangedRandomNumberPicker(FROM, TO);
+        return new RandomMovingStrategy(rangedRandomNumberPicker, movingStandard);
     }
 }

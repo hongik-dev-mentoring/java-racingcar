@@ -9,10 +9,12 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Cars;
 import racingcar.domain.Racing;
 import racingcar.domain.Car;
 import racingcar.domain.movingstrategy.AlwaysMovingStrategy;
 import racingcar.domain.movingstrategy.MovingStrategy;
+import racingcar.view.CarNamesList;
 
 public class RacingTest {
 
@@ -32,10 +34,8 @@ public class RacingTest {
     @Test
     void 레이싱_공동_우승자_출력_테스트() {
         // given
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car("jinho1"));
-        cars.add(new Car("jinho2"));
-
+        CarNamesList carNamesList = CarNamesList.getCarNamesListByCarNames("jinh1, jinh2");
+        Cars cars = Cars.getCarsFromCarNamesList(carNamesList);
         Racing racing = new Racing(cars, 3);
 
         MovingStrategy movingStrategy = new AlwaysMovingStrategy();
@@ -51,15 +51,15 @@ public class RacingTest {
 
     StringBuilder get_레이싱_공동_우승자_출력_테스트_ExpectedOutput() {
         return new StringBuilder("실행 결과\r\n")
-            .append("jinho1 : -\r\n")
-            .append("jinho2 : -\r\n")
+            .append("jinh1 : -\r\n")
+            .append("jinh2 : -\r\n")
             .append("\r\n")
-            .append("jinho1 : --\r\n")
-            .append("jinho2 : --\r\n")
+            .append("jinh1 : --\r\n")
+            .append("jinh2 : --\r\n")
             .append("\r\n")
-            .append("jinho1 : ---\r\n")
-            .append("jinho2 : ---\r\n")
+            .append("jinh1 : ---\r\n")
+            .append("jinh2 : ---\r\n")
             .append("\r\n")
-            .append("최종 우승자 : jinho1, jinho2\r\n");
+            .append("최종 우승자 : jinh1, jinh2\r\n");
     }
 }

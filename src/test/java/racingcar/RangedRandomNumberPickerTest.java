@@ -3,6 +3,7 @@ package racingcar;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.RepeatedTest;
+import racingcar.domain.movingstrategy.RangedRandomNumberPicker;
 
 public class RangedRandomNumberPickerTest {
 

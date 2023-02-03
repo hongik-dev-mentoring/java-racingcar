@@ -35,11 +35,9 @@ public class RaceControllerTest {
     public void raceStartTest() {
         // given
         RaceController raceController = new RaceController();
-
         // when
         raceController.startRace();
         String output = getOutput();
-
         // then
         assertThat(output).contains("실행 결과");
     }
@@ -49,12 +47,10 @@ public class RaceControllerTest {
     public void printWinnersTest() {
         // given
         RaceController raceController = new RaceController();
-
         // when
         raceController.startRace();
         raceController.printWinners();
         String output = getOutput();
-
         // then
         Assertions.assertThat(output).contains("가 최종 우승했습니다.");
     }

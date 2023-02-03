@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Validation {
-
     private static final String BLANK = " ";
     private static final String COMMA_DELIMITER = ",";
     private static final String INPUT_CONTAINS_BLANK = "자동차 이름에 공백문자가 포함될 수 없습니다.";

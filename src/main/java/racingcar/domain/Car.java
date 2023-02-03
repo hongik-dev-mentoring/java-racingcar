@@ -1,28 +1,25 @@
 package racingcar.domain;
 
-import racingcar.util.RandomNumberPicker;
+import racingcar.util.RandomNumberGenerator;
 
 public class Car {
-
     private static final Integer START_LINE = 0;
     private static final Integer CAN_MOVE_MIN_NUMBER = 4;
     private static final Integer MIN_RANDOM_NUMBER = 0;
     private static final Integer MAX_RANDOM_NUMBER = 9;
-    private static final String COLON = " : ";
-    private static final String ONE_MOVE_MARK = "-";
 
     private final String name;
+    private final RandomNumberGenerator randomNumberGenerator;
     private Integer position = START_LINE;
-    private RandomNumberPicker randomNumberPicker;
 
     public Car(String name) {
         this.name = name;
-        this.randomNumberPicker = new RandomNumberPicker(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+        this.randomNumberGenerator = new RandomNumberGenerator(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
     }
 
-    public Car(String name, RandomNumberPicker randomNumberPicker) {
+    public Car(String name, RandomNumberGenerator randomNumberGenerator) {
         this.name = name;
-        this.randomNumberPicker = randomNumberPicker;
+        this.randomNumberGenerator = randomNumberGenerator;
     }
 
     public void move() {
@@ -32,15 +29,12 @@ public class Car {
     }
 
     private boolean checkCanMoveCondition() {
-        Integer randomNumber = randomNumberPicker.pickRandomNumber();
+        Integer randomNumber = randomNumberGenerator.generate();
         return randomNumber >= CAN_MOVE_MIN_NUMBER;
     }
 
-    public void printPosition() {
-        StringBuilder sb = new StringBuilder(name);
-        sb.append(COLON);
-        sb.append(ONE_MOVE_MARK.repeat(position));
-        System.out.println(sb);
+    public boolean isAtPosition(Integer maxPosition) {
+        return this.position.equals(maxPosition);
     }
 
     public Integer getPosition() {

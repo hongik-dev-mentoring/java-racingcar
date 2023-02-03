@@ -2,6 +2,8 @@ package racingcar;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.domain.Racing;
+import racingcar.domain.RandomMovingCar;
 
 public class CarRacingService {
 

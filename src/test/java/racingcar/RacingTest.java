@@ -10,7 +10,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Racing;
-import racingcar.domain.RandomMovingCar;
+import racingcar.domain.Car;
+import racingcar.domain.movingstrategy.AlwaysMovingStrategy;
+import racingcar.domain.movingstrategy.MovingStrategy;
 
 public class RacingTest {
 
@@ -30,16 +32,13 @@ public class RacingTest {
     @Test
     void 레이싱_공동_우승자_출력_테스트() {
         // given
-        List<RandomMovingCar> cars = new ArrayList<>();
-        cars.add(new RandomMovingCar("jinho1"));
-        cars.add(new RandomMovingCar("jinho2"));
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("jinho1"));
+        cars.add(new Car("jinho2"));
 
         Racing racing = new Racing(cars, 3);
 
-        RangedRandomNumberPicker moveNumberPicker = new RangedRandomNumberPicker(4, 9);
-        int movingStandard = 4;
-        MovingStrategy movingStrategy = new RandomMovingStrategy(moveNumberPicker, movingStandard);
-
+        MovingStrategy movingStrategy = new AlwaysMovingStrategy();
         StringBuilder expectedOutputString = get_레이싱_공동_우승자_출력_테스트_ExpectedOutput();
 
         // when

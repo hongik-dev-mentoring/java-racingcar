@@ -1,9 +1,6 @@
 package racingcar.view;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Input {
 
@@ -38,7 +35,7 @@ public class Input {
             throw new IllegalArgumentException("[ERROR] 아무 이름도 입력하지 않으셨습니다. 다시 입력해주세요.");
         }
 
-        return new CarNamesList(input);
+        return CarNamesList.getCarNamesListByCarNames(input);
     }
 
     private int inputGameCountString() {

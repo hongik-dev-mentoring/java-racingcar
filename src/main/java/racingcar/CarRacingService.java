@@ -2,8 +2,9 @@ package racingcar;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.domain.movingstrategy.MovingStrategy;
 import racingcar.domain.Racing;
-import racingcar.domain.RandomMovingCar;
+import racingcar.domain.Car;
 
 public class CarRacingService {
 
@@ -17,15 +18,15 @@ public class CarRacingService {
     }
 
     public void carRacingGame(List<String> carNamesList, int raceGameCount,
-        RangedRandomNumberPicker numberPicker) {
-        List<RandomMovingCar> cars = getCars(carNamesList, numberPicker);
+        MovingStrategy movingStrategy) {
+        List<Car> cars = getCars(carNamesList);
         Racing racing = new Racing(cars, raceGameCount);
-        racing.race();
+        racing.race(movingStrategy);
     }
 
-    private List<RandomMovingCar> getCars(List<String> carNamesList, RangedRandomNumberPicker numberPicker) {
+    private List<Car> getCars(List<String> carNamesList) {
         return carNamesList.stream()
-            .map(carName -> new RandomMovingCar(carName, numberPicker))
+            .map(Car::new)
             .collect(Collectors.toList());
     }
 }

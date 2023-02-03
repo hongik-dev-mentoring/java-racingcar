@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import racingcar.view.CarNamesList;
 import racingcar.view.Input;
 
 class InputRacingCarNameTest {
@@ -36,10 +37,10 @@ class InputRacingCarNameTest {
         Input input = new Input();
 
         // when
-        List<String> carNamesList = input.getCarNamesList();
+        CarNamesList carNamesList = input.getCarNamesList();
 
         // then
-        assertThat(carNamesList.get(0)).isEqualTo(inputString);
+        assertThat(carNamesList.getCarNamesList().get(0)).isEqualTo(inputString);
     }
 
     @Test
@@ -52,13 +53,13 @@ class InputRacingCarNameTest {
         Input input = new Input();
 
         // when
-        List<String> carNamesList = input.getCarNamesList();
+        CarNamesList carNamesList = input.getCarNamesList();
 
         // then
         assertAll(
-            () -> assertThat(carNamesList.get(0)).isEqualTo("jinho"),
-            () -> assertThat(carNamesList.get(1)).isEqualTo("dongh"),
-            () -> assertThat(carNamesList.get(2)).isEqualTo("skull")
+            () -> assertThat(carNamesList.getCarNamesList().get(0)).isEqualTo("jinho"),
+            () -> assertThat(carNamesList.getCarNamesList().get(1)).isEqualTo("dongh"),
+            () -> assertThat(carNamesList.getCarNamesList().get(2)).isEqualTo("skull")
         );
     }
 

@@ -10,11 +10,19 @@ public class CarNamesList {
 
     private final List<String> carNamesList;
 
-    CarNamesList(String carNames) {
-        this.carNamesList = getCarNamesList(carNames);
+    private CarNamesList(String carNames) {
+        this.carNamesList = parseCarNames(carNames);
     }
 
-    private List<String> getCarNamesList(String carNames) {
+    public static CarNamesList getCarNamesListByCarNames(String carNames) {
+        return new CarNamesList(carNames);
+    }
+
+    public List<String> getCarNamesList() {
+        return carNamesList;
+    }
+
+    private List<String> parseCarNames(String carNames) {
         return Arrays.stream(carNames.split(","))
             .map(CarNamesList::trimStringAndCheckEmptyName)
             .peek(CarNamesList::checkCarNameLengthIsLessThanOrEqualToLimit)

@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import racingcar.domain.movingstrategy.MovingStrategy;
 import racingcar.domain.Racing;
 import racingcar.domain.Car;
+import racingcar.view.CarNamesList;
 
 public class CarRacingService {
 
@@ -17,7 +18,7 @@ public class CarRacingService {
         return INSTANCE;
     }
 
-    public void carRacingGame(List<String> carNamesList, int raceGameCount,
+    public void carRacingGame(CarNamesList carNamesList, int raceGameCount,
         MovingStrategy movingStrategy) {
         List<Car> cars = getCars(carNamesList);
         Racing racing = new Racing(cars, raceGameCount);

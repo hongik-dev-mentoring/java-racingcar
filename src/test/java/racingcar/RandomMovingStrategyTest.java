@@ -3,7 +3,9 @@ package racingcar;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
-import racingcar.RangedRandomNumberPicker;
+import racingcar.domain.movingstrategy.MovingStrategy;
+import racingcar.domain.movingstrategy.RandomMovingStrategy;
+import racingcar.domain.movingstrategy.RangedRandomNumberPicker;
 
 class RandomMovingStrategyTest {
     int movingStandard;

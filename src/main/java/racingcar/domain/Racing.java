@@ -7,8 +7,6 @@ import java.util.stream.Collectors;
 public class Racing {
 
     private final List<RandomMovingCar> cars;
-    private final StringBuilder winnerString = new StringBuilder("최종 우승자 : ");
-    private final StringBuilder currentCarPositionString = new StringBuilder();
     private int gameCount;
 
     public Racing(List<RandomMovingCar> cars, int gameCount) {
@@ -49,27 +47,24 @@ public class Racing {
 
     private void printWinner() {
         int leadCarPosition = getLeadCarPosition();
-        buildWinnerString(leadCarPosition);
+        String winnerString = buildWinnderString(leadCarPosition).toString();
         System.out.println(winnerString);
     }
 
-    private void buildWinnerString(int leadCarPosition) {
+    private StringBuilder buildWinnderString(int leadCarPosition) {
         List<String> winners = cars.stream()
             .filter(randomMovingCar -> randomMovingCar.getPosition() == leadCarPosition)
             .map(RandomMovingCar::getName)
             .collect(Collectors.toList());
 
-        String winnerNamesString = String.join(", ", winners);
-        winnerString.append(winnerNamesString);
+        return new StringBuilder("최종 우승자 : ")
+            .append(String.join(", ", winners));
     }
 
     private StringBuilder buildCurrentPositionString(RandomMovingCar randomMovingCar) {
-        currentCarPositionString.setLength(0);
-        currentCarPositionString
-            .append(randomMovingCar.getName())
+
+        return new StringBuilder(randomMovingCar.getName())
             .append(" : ")
             .append("-".repeat(randomMovingCar.getPosition()));
-
-        return currentCarPositionString;
     }
 }

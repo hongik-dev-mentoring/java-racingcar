@@ -11,6 +11,7 @@ import java.io.PrintStream;
 import java.util.NoSuchElementException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import racingcar.view.Input;
 
 class InputRacingGameCountTest {
 

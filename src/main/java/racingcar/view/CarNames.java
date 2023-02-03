@@ -4,28 +4,28 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CarNamesList {
+public class CarNames {
 
     private static final int CAR_NAME_LENGTH_LIMIT = 5;
 
-    private final List<String> carNamesList;
+    private final List<String> carNames;
 
-    private CarNamesList(String carNames) {
-        this.carNamesList = parseCarNames(carNames);
+    private CarNames(String carNames) {
+        this.carNames = parseCarNames(carNames);
     }
 
-    public static CarNamesList getCarNamesListByCarNames(String carNames) {
-        return new CarNamesList(carNames);
+    public static CarNames getCarNamesFromCarNamesString(String carNames) {
+        return new CarNames(carNames);
     }
 
-    public List<String> getCarNamesList() {
-        return carNamesList;
+    public List<String> getCarNames() {
+        return carNames;
     }
 
     private List<String> parseCarNames(String carNames) {
         return Arrays.stream(carNames.split(","))
-            .map(CarNamesList::trimStringAndCheckEmptyName)
-            .peek(CarNamesList::checkCarNameLengthIsLessThanOrEqualToLimit)
+            .map(CarNames::trimStringAndCheckEmptyName)
+            .peek(CarNames::checkCarNameLengthIsLessThanOrEqualToLimit)
             .collect(Collectors.toList());
     }
 

@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import racingcar.util.generator.ForwardNumberGenerator;
+
 class CarsTest {
 	private final Cars cars = new Cars(List.of(new Car("chan"), new Car("dong")));
 	private Car car1;
@@ -24,9 +26,9 @@ class CarsTest {
 	@DisplayName("가장 멀리 간 위치 찾기")
 	void max_position() {
 		for (int i = 0; i < 3; ++i) {
-			car1.moveForward(5);
+			car1.moveForward(new ForwardNumberGenerator());
 		}
-		car2.moveForward(5);
+		car2.moveForward(new ForwardNumberGenerator());
 
 		assertThat(cars.findMaxPosition()).isEqualTo(3);
 	}
@@ -35,7 +37,7 @@ class CarsTest {
 	@DisplayName("자동차 게임 단독 우승자 찾기")
 	void find_winner() {
 		for (int i = 0; i < 3; ++i) {
-			car1.moveForward(5);
+			car1.moveForward(new ForwardNumberGenerator());
 		}
 
 		List<String> winners = cars.findWinnersName();
@@ -47,8 +49,8 @@ class CarsTest {
 	@DisplayName("자동차 게임 공동 우승자 찾기")
 	void find_winners() {
 		for (int i = 0; i < 3; ++i) {
-			car1.moveForward(5);
-			car2.moveForward(5);
+			car1.moveForward(new ForwardNumberGenerator());
+			car2.moveForward(new ForwardNumberGenerator());
 		}
 
 		List<String> winners = cars.findWinnersName();

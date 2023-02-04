@@ -13,14 +13,8 @@ public class Car {
 		this.position = new Position(DEFAULT_POSITION);
 	}
 
-	public void moveForward1(NumberGenerator numberGenerator) {
+	public void moveForward(NumberGenerator numberGenerator) {
 		if (numberGenerator.generate() >= CAN_MOVE_MIN_NUMBER) {
-			position.moveCarForward();
-		}
-	}
-
-	public void moveForward(int randomNumber) {
-		if (shouldMove(randomNumber)) {
 			position.moveCarForward();
 		}
 	}

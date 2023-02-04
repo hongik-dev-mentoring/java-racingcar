@@ -31,7 +31,7 @@ public class Cars {
 
 	public void moveForward() {
 		for (Car car : cars) {
-			car.moveForward1(new RandomNumberGenerator());
+			car.moveForward(new RandomNumberGenerator());
 		}
 	}
 

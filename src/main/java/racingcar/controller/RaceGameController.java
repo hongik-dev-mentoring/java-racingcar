@@ -45,7 +45,7 @@ public class RaceGameController {
 		}
 	}
 
-	private static void printResultHeader() {
+	private void printResultHeader() {
 		OutputView.printBlankLine();
 		OutputView.printGameResultHeader();
 	}

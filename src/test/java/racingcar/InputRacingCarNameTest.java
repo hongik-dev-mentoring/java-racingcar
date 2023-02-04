@@ -10,9 +10,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.List;
 import java.util.NoSuchElementException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Cars;
 import racingcar.view.CarNames;
 import racingcar.view.Input;
 
@@ -36,10 +38,10 @@ class InputRacingCarNameTest {
         Input input = new Input();
 
         // when
-        CarNames carNames = input.getCarNames();
-
+        Cars cars = input.getCars();
+        List<String> carNamesString = cars.getCarsByPosition(0);
         // then
-        assertThat(carNames.getCarNames().get(0)).isEqualTo(inputString);
+        assertThat(carNamesString.get(0)).isEqualTo(inputString);
     }
 
     @Test
@@ -52,13 +54,14 @@ class InputRacingCarNameTest {
         Input input = new Input();
 
         // when
-        CarNames carNames = input.getCarNames();
+        Cars cars = input.getCars();
+        List<String> carNamesString = cars.getCarsByPosition(0);
 
         // then
         assertAll(
-            () -> assertThat(carNames.getCarNames().get(0)).isEqualTo("jinho"),
-            () -> assertThat(carNames.getCarNames().get(1)).isEqualTo("dongh"),
-            () -> assertThat(carNames.getCarNames().get(2)).isEqualTo("skull")
+            () -> assertThat(carNamesString.get(0)).isEqualTo("jinho"),
+            () -> assertThat(carNamesString.get(1)).isEqualTo("dongh"),
+            () -> assertThat(carNamesString.get(2)).isEqualTo("skull")
         );
     }
 
@@ -80,7 +83,7 @@ class InputRacingCarNameTest {
             inputStream = new ByteArrayInputStream(inputString.getBytes());
             System.setIn(inputStream);
 
-            input.getCarNames();
+            input.getCars();
 
             failBecauseExceptionWasNotThrown(NoSuchElementException.class);
         } catch (NoSuchElementException e) {
@@ -110,7 +113,7 @@ class InputRacingCarNameTest {
             inputStream = new ByteArrayInputStream(inputString.getBytes());
             System.setIn(inputStream);
 
-            input.getCarNames();
+            input.getCars();
 
             failBecauseExceptionWasNotThrown(NoSuchElementException.class);
         } catch (NoSuchElementException e) {
@@ -140,7 +143,7 @@ class InputRacingCarNameTest {
             inputStream = new ByteArrayInputStream(inputString.getBytes());
             System.setIn(inputStream);
 
-            input.getCarNames();
+            input.getCars();
 
             failBecauseExceptionWasNotThrown(NoSuchElementException.class);
         } catch (NoSuchElementException e) {

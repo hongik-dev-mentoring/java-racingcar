@@ -16,7 +16,7 @@ public class CarNames {
         this.carNames = parseCarNames(carNames);
     }
 
-    public static CarNames getCarNamesFromCarNamesString(String carNames) {
+    public static CarNames createCarNamesFromCarNamesString(String carNames) {
         return new CarNames(carNames);
     }
 

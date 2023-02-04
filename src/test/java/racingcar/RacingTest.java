@@ -31,7 +31,7 @@ public class RacingTest {
     @Test
     void 레이싱_공동_우승자_출력_테스트() {
         // given
-        CarNames carNames = CarNames.getCarNamesFromCarNamesString("jinh1, jinh2");
+        CarNames carNames = CarNames.createCarNamesFromCarNamesString("jinh1, jinh2");
         Cars cars = carNames.createCars();
         Racing racing = new Racing(cars, 3);
 

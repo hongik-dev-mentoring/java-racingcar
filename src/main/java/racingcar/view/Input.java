@@ -35,7 +35,7 @@ public class Input {
             throw new IllegalArgumentException("[ERROR] 아무 이름도 입력하지 않으셨습니다. 다시 입력해주세요.");
         }
 
-        return CarNames.getCarNamesFromCarNamesString(input);
+        return CarNames.createCarNamesFromCarNamesString(input);
     }
 
     private int inputGameCountString() {

@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import racingcar.util.Random;
+
 class CarTest {
 
 	Car car;
@@ -16,22 +18,35 @@ class CarTest {
 	}
 
 	@Test
-	@DisplayName("winNum 1 올리기")
-	void increaseWinNum() {
+	@DisplayName("4이상의 숫자에 car의 move 테스트")
+	void moveForward() {
 
-		car.increaseWinNum();
+		car.move(new ForwardNumGenerator());
 
-		assertThat(car.getWinNum()).isEqualTo(1);
+		assertThat(car.getPosition()).isEqualTo(1);
 	}
 
 	@Test
-	@DisplayName("정상적으로 race 테스트")
-	void race() {
+	@DisplayName("4미만의 숫자에 car의 안움직이는지 테스트")
+	void stop() {
 
-		int tryNum = 4;
+		car.move(new StopNumGenerator());
 
-		car.race(tryNum);
-
-		assertThat(car.getPosition()).isLessThanOrEqualTo(tryNum);
+		assertThat(car.getPosition()).isEqualTo(0);
 	}
+
+	class ForwardNumGenerator implements Random {
+		@Override
+		public int generator() {
+			return 4;
+		}
+	}
+
+	class StopNumGenerator implements Random {
+		@Override
+		public int generator() {
+			return 3;
+		}
+	}
+
 }

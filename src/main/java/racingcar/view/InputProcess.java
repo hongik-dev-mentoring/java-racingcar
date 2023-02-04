@@ -10,30 +10,26 @@ public class InputProcess {
     private static final String INPUT_MOVE_COUNT = "시도할 회수는 몇회인가요?";
 
     private final Scanner sc = new Scanner(System.in);
-    private CarList carList;
-    private MoveCount moveCount;
 
     public CarList getCarList() {
         try {
             System.out.println(INPUT_CAR_NAMES);
             String input = sc.nextLine();
-            carList = new CarList(input);
+            return new CarList(input);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            getCarList();
+            return getCarList();
         }
-        return carList;
     }
 
     public MoveCount getMoveCount() {
         try {
             System.out.println(INPUT_MOVE_COUNT);
             String input = sc.nextLine();
-            moveCount = new MoveCount(input);
+            return new MoveCount(input);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            getMoveCount();
+            return getMoveCount();
         }
-        return moveCount;
     }
 }

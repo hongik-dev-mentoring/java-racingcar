@@ -27,10 +27,6 @@ public class CarNames {
         return new Cars(cars);
     }
 
-    public List<String> getCarNames() {
-        return carNames;
-    }
-
     private List<String> parseCarNames(String carNames) {
         return Arrays.stream(carNames.split(","))
             .map(CarNames::trimStringAndCheckEmptyName)

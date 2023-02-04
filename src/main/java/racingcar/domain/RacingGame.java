@@ -50,7 +50,7 @@ public class RacingGame {
 		int maxPosition = carRanking.get(0).getPosition();
 
 		return carRanking.stream()
-			.filter((m) -> m.getPosition() == maxPosition)
+			.filter((car) -> car.isSamePosition(maxPosition))
 			.collect(Collectors.toList());
 	}
 
@@ -58,7 +58,7 @@ public class RacingGame {
 		int maxWin = carRanking.get(0).getWinNum();
 
 		return carRanking.stream()
-			.filter((m) -> m.getWinNum() == maxWin)
+			.filter((car) -> car.isSameWinNum(maxWin))
 			.collect(Collectors.toList());
 	}
 

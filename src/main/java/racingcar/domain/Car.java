@@ -25,6 +25,10 @@ public class Car {
 		return winNum;
 	}
 
+	public boolean isSamePosition(int position) {
+		return this.position == position;
+	}
+
 	public void increaseWinNum() {
 		winNum++;
 	}
@@ -37,11 +41,13 @@ public class Car {
 		position -= positionStandard;
 	}
 
-	private boolean move(int randomNum) {
+	private void move(int randomNum) {
 		if (randomNum >= MOVE) {
 			position++;
-			return true;
 		}
-		return false;
+	}
+
+	public boolean isSameWinNum(int maxWin) {
+		return this.winNum == maxWin;
 	}
 }

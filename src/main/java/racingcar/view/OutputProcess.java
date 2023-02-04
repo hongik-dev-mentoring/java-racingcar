@@ -34,7 +34,7 @@ public class OutputProcess {
         System.out.println(sb);
     }
 
-    public static void printFinalResultText(CarList winners) {
+    public static void printFinalResult(CarList winners) {
         List<String> winnerNames = winners.getCars()
                 .stream()
                 .map(Car::getName)

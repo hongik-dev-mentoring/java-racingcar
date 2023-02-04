@@ -30,11 +30,8 @@ public class InputView {
 			RacingCarInputException.isNull(input);
 			TRY_NUM = RacingCarInputException.isNum(input);
 			RacingCarInputException.isPositive(TRY_NUM);
-		} catch (NumberFormatException e) {
-			System.out.println("숫자를 입력하세요.");
-			intInputProcess(sc);
-		} catch (IllegalArgumentException e) {
-			System.out.println(e.getMessage());
+		} catch (Exception e) {
+			System.out.println("1이상의 숫자를 입력하세요.");
 			intInputProcess(sc);
 		}
 	}

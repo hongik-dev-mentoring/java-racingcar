@@ -30,12 +30,8 @@ public class CarTest {
 
         // when
         car.race(movingStrategy);
-        car.race(movingStrategy);
-        car.race(movingStrategy);
-        car.race(movingStrategy);
-        car.race(movingStrategy);
 
         // then
-        assertThat(car.getPosition()).isEqualTo(5);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 }

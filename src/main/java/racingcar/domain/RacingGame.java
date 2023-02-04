@@ -30,8 +30,7 @@ public class RacingGame {
 	}
 
 	public void race() {
-		cars.forEach(car -> car.race(TRY_NUM));
-		recordWinNum(selectRoundWinner(rankRound(cars)));
+		cars.forEach(Car::move);
 	}
 
 	public List<Car> getCars() {
@@ -42,11 +41,7 @@ public class RacingGame {
 		return selectFinalWinner(rankFinal(cars));
 	}
 
-	public void recordWinNum(List<Car> winner) {
-		winner.forEach(Car::increaseWinNum);
-	}
-
-	public List<Car> selectRoundWinner(List<Car> carRanking) {
+	public List<Car> selectFinalWinner(List<Car> carRanking) {
 		int maxPosition = carRanking.get(0).getPosition();
 
 		return carRanking.stream()
@@ -54,23 +49,9 @@ public class RacingGame {
 			.collect(Collectors.toList());
 	}
 
-	public List<Car> selectFinalWinner(List<Car> carRanking) {
-		int maxWin = carRanking.get(0).getWinNum();
-
-		return carRanking.stream()
-			.filter((car) -> car.isSameWinNum(maxWin))
-			.collect(Collectors.toList());
-	}
-
-	public List<Car> rankRound(List<Car> cars) {
-		return cars.stream()
-			.sorted(Comparator.comparing(Car::getPosition).reversed())
-			.collect(Collectors.toList());
-	}
-
 	public List<Car> rankFinal(List<Car> cars) {
 		return cars.stream()
-			.sorted(Comparator.comparing(Car::getWinNum).reversed())
+			.sorted(Comparator.comparing(Car::getPosition).reversed())
 			.collect(Collectors.toList());
 	}
 }

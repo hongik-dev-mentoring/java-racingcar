@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import racingcar.util.Random;
-import racingcar.util.RandomNum;
 
 public class Car {
 	private static final int CRITICAL_POINT_OF_MOVING = 4;

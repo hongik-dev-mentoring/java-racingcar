@@ -8,17 +8,18 @@ import racingcar.domain.movingstrategy.RandomMovingStrategy;
 import racingcar.domain.movingstrategy.RangedRandomNumberPicker;
 
 class RandomMovingStrategyTest {
+
     int movingStandard;
-    int FROM;
-    int TO;
+    int from;
+    int to;
 
     @Test
     void RandomMovingStrategy는_전진_가능_범위에서_true를_반환한다() {
         // given
         movingStandard = 4;
-        FROM = movingStandard;
-        TO = 9;
-        RangedRandomNumberPicker randomNumberPicker = new RangedRandomNumberPicker(FROM, TO);
+        from = movingStandard;
+        to = 9;
+        RangedRandomNumberPicker randomNumberPicker = new RangedRandomNumberPicker(from, to);
 
         // when
         MovingStrategy randomMovingStrategy = new RandomMovingStrategy(randomNumberPicker, movingStandard);
@@ -32,9 +33,9 @@ class RandomMovingStrategyTest {
     void RandomMovingStrategy는_전진_불가능_범위에서_false를_반환한다() {
         // given
         movingStandard = 4;
-        FROM = 0;
-        TO = movingStandard - 1;
-        RangedRandomNumberPicker randomNumberPicker = new RangedRandomNumberPicker(FROM, TO);
+        from = 0;
+        to = movingStandard - 1;
+        RangedRandomNumberPicker randomNumberPicker = new RangedRandomNumberPicker(from, to);
 
         // when
         MovingStrategy randomMovingStrategy = new RandomMovingStrategy(randomNumberPicker, movingStandard);

@@ -1,18 +1,18 @@
 package racingcar.view;
 
 import java.util.Scanner;
+import racingcar.domain.Cars;
 
 public class Input {
 
-
-    public CarNames getCarNames() {
+    public Cars getCars() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
         try {
-            return inputCarNamesString();
+            return createCarsFromInput();
         } catch (IllegalArgumentException error) {
             System.out.println(error.getMessage());
-            return getCarNames();
+            return getCars();
         }
     }
 
@@ -25,6 +25,11 @@ public class Input {
             System.out.println(error.getMessage());
             return getRacingGameCount();
         }
+    }
+
+    private Cars createCarsFromInput() {
+        CarNames carNames = inputCarNamesString();
+        return carNames.createCars();
     }
 
     private CarNames inputCarNamesString() {

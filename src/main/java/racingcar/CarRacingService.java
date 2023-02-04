@@ -3,7 +3,6 @@ package racingcar;
 import racingcar.domain.Cars;
 import racingcar.domain.movingstrategy.MovingStrategy;
 import racingcar.domain.Racing;
-import racingcar.view.CarNames;
 
 public class CarRacingService {
 
@@ -16,9 +15,8 @@ public class CarRacingService {
         return INSTANCE;
     }
 
-    public void carRacingGame(CarNames carNames, int raceGameCount,
+    public void carRacingGame(Cars cars, int raceGameCount,
         MovingStrategy movingStrategy) {
-        Cars cars = carNames.createCars();
         Racing racing = new Racing(cars, raceGameCount);
         racing.race(movingStrategy);
     }

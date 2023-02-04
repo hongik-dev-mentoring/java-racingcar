@@ -13,7 +13,7 @@ public class Car {
 
     public void race(MovingStrategy movingStrategy) {
         if (movingStrategy.isPossibleMoveForward()) {
-            position += 1;
+            position++;
         }
     }
 

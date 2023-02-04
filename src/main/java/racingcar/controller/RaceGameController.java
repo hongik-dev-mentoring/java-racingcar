@@ -38,7 +38,7 @@ public class RaceGameController {
 
 	private int getAttemptNumber() {
 		try {
-			return AttemptNumber.convertNumber(InputView.getAttemptNumber());
+			return new AttemptNumber(InputView.getAttemptNumber()).getAttemptNumber();
 		} catch (IllegalArgumentException e) {
 			OutputView.printErrorMessage(e.getMessage());
 			return getAttemptNumber();

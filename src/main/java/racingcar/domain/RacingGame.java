@@ -7,16 +7,16 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
 	private List<Car> cars;
-	private final int TRY_NUM;
+	private final int tryNum;
 	private int countEnd = 0;
 
-	public RacingGame(ArrayList<String> carNames, int TRY_NUM) {
+	public RacingGame(ArrayList<String> carNames, int tryNum) {
 		cars = createCars(carNames);
-		this.TRY_NUM = TRY_NUM;
+		this.tryNum = tryNum;
 	}
 
 	public boolean isEnd() {
-		if (countEnd == TRY_NUM) {
+		if (countEnd == tryNum) {
 			return true;
 		}
 		countEnd++;

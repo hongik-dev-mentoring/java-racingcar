@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Cars;
 import racingcar.domain.Racing;
-import racingcar.domain.movingstrategy.AlwaysMovingStrategy;
 import racingcar.domain.movingstrategy.MovingStrategy;
 import racingcar.view.CarNames;
 

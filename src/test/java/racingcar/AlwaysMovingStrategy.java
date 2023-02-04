@@ -1,4 +1,6 @@
-package racingcar.domain.movingstrategy;
+package racingcar;
+
+import racingcar.domain.movingstrategy.MovingStrategy;
 
 public class AlwaysMovingStrategy implements MovingStrategy {
 

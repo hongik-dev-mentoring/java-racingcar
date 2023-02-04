@@ -9,7 +9,7 @@ public class NameGeneratorTest {
 	@Test
 	@DisplayName("자동차 이름 생성에 성공")
 	void create_name_success() {
-		assertThat(NameGenerator.generateCarNames("chan,dong,ho"))
+		assertThat(NameConvertor.generateCarNames("chan,dong,ho"))
 			.contains("chan", "dong", "ho");
 	}
 }

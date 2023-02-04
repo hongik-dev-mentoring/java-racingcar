@@ -26,6 +26,7 @@ class CarsTest {
 		for (int i = 0; i < 3; ++i) {
 			car1.moveForward(5);
 		}
+		car2.moveForward(5);
 
 		assertThat(cars.findMaxPosition()).isEqualTo(3);
 	}

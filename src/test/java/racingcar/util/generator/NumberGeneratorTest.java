@@ -11,6 +11,6 @@ public class NumberGeneratorTest {
 	@Test
 	@DisplayName("시도횟수 정상 입력")
 	void attempt_number_input_success() {
-		assertThat(NumberGenerator.generateNumber(ATTEMPT_NUMBER)).isEqualTo(3);
+		assertThat(NumberConvertor.generateNumber(ATTEMPT_NUMBER)).isEqualTo(3);
 	}
 }

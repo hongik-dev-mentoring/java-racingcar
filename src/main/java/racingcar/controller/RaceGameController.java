@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.util.generator.NameGenerator;
-import racingcar.util.generator.NumberGenerator;
+import racingcar.util.generator.NameConvertor;
+import racingcar.util.generator.NumberConvertor;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -30,7 +30,7 @@ public class RaceGameController {
 	}
 
 	private List<Car> addCars() {
-		List<String> carNames = NameGenerator.generateCarNames(InputView.getCarNames());
+		List<String> carNames = NameConvertor.generateCarNames(InputView.getCarNames());
 		return carNames.stream()
 			.map(Car::new)
 			.collect(Collectors.toList());
@@ -38,7 +38,7 @@ public class RaceGameController {
 
 	private int getAttemptNumber() {
 		try {
-			return NumberGenerator.generateNumber(InputView.getAttemptNumber());
+			return NumberConvertor.generateNumber(InputView.getAttemptNumber());
 		} catch (IllegalArgumentException e) {
 			OutputView.printErrorMessage(e.getMessage());
 			return getAttemptNumber();

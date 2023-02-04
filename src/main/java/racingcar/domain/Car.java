@@ -3,7 +3,7 @@ package racingcar.domain;
 import racingcar.util.RandomNum;
 
 public class Car {
-	private static final int MOVE = 4;
+	private static final int CRITICAL_POINT_OF_MOVING = 4;
 
 	private String name;
 	private int position = 0;
@@ -25,7 +25,7 @@ public class Car {
 	}
 
 	public void move() {
-		if (RandomNum.createRandomNum() >= MOVE) {
+		if (RandomNum.createRandomNum() >= CRITICAL_POINT_OF_MOVING) {
 			position++;
 		}
 	}

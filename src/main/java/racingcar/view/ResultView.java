@@ -24,7 +24,7 @@ public class ResultView {
 
 	public static void printWinner(List<Car> winner) {
 		ArrayList<String> names = new ArrayList<>();
-		winner.forEach(m -> names.add(m.getName()));
+		winner.forEach(car -> names.add(car.getName()));
 
 		System.out.print(String.join(",", names));
 		System.out.println("가 우승했습니다.");

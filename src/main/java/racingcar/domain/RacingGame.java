@@ -30,7 +30,7 @@ public class RacingGame {
 	}
 
 	public void race() {
-		cars.forEach(m -> m.race(TRY_NUM));
+		cars.forEach(car -> car.race(TRY_NUM));
 		recordWinNum(selectRoundWinner(rankRound(cars)));
 	}
 

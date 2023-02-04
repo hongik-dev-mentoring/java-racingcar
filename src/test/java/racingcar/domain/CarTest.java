@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import racingcar.util.RandomNumberGenerator;
 
 public class CarTest {
-
     @Test
     @DisplayName("자동차 이동하기 테스트")
     public void moveTest() {

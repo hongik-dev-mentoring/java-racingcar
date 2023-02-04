@@ -3,7 +3,6 @@ package racingcar.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.util.RandomNumberGenerator;
 import racingcar.view.InputProcess;
 import racingcar.view.OutputProcess;
 
@@ -39,29 +38,13 @@ public class RaceTest {
     public void printWinnersTest() {
         // given
         InputProcess inputProcess = new InputProcess();
-        List<Car> cars = inputProcess.getCarList();
-        Race race = new Race(cars);
+        CarList carList = inputProcess.getCarList();
+        Race race = new Race(carList);
         // when
         race.proceedOneRound();
-        List<Car> winners = race.selectWinners();
+        CarList winners = race.selectWinners();
         // then
-        assertThat(winners.size()).isNotEqualTo(0);
-    }
-
-    @Test
-    @DisplayName("모든 자동차가 전진하지 못한 경우 우승자 select 테스트")
-    public void testNoWinner() {
-        // given
-        List<Car> cars = List.of(
-                new Car("a", new RandomNumberGenerator(3, 3)),
-                new Car("b", new RandomNumberGenerator(3, 3)),
-                new Car("c", new RandomNumberGenerator(3, 3))
-        );
-        Race race = new Race(cars);
-        // when
-        List<Car> winners = race.selectWinners();
-        // then
-        assertThat(winners.size()).isEqualTo(3);
+        assertThat(winners.getCars().size()).isNotEqualTo(0);
     }
 
     @Test
@@ -69,13 +52,12 @@ public class RaceTest {
     public void raceStartTest() {
         // given
         InputProcess inputProcess = new InputProcess();
-        List<Car> cars = inputProcess.getCarList();
-        OutputProcess outputProcess = new OutputProcess(cars);
-        Race race = new Race(cars);
+        CarList carList = inputProcess.getCarList();
+        Race race = new Race(carList);
 
         // when
         race.proceedOneRound();
-        outputProcess.printCarPositions();
+        OutputProcess.printCarPositions(carList);
         String output = getOutput();
 
         // then

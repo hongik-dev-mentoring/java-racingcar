@@ -3,14 +3,14 @@ package racingcar.view;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
+import racingcar.domain.CarList;
+import racingcar.domain.MoveCount;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class InputProcessTest {
 
@@ -30,10 +30,10 @@ public class InputProcessTest {
         systemIn(input);
         // when
         InputProcess inputProcess = new InputProcess();
-        List<Car> carNames = inputProcess.getCarList();
+        CarList carList = inputProcess.getCarList();
         // then
         assertThat(getOutput()).contains("경주할 자동차 이름을 입력하세요(이름은 쉼표(,) 기준으로 구분).");
-        assertThat(carNames.size()).isEqualTo(3);
+        assertThat(carList.getCars().size()).isEqualTo(3);
     }
 
     @Test
@@ -44,10 +44,10 @@ public class InputProcessTest {
         systemIn(input);
         // when
         InputProcess inputProcess = new InputProcess();
-        Integer count = inputProcess.getMoveCount();
+        MoveCount moveCount = inputProcess.getMoveCount();
         // then
         assertThat(getOutput()).contains("시도할 회수는 몇회인가요?");
-        assertThat(count).isEqualTo(3);
+        assertThat(moveCount.getNumber()).isEqualTo(3);
     }
 
     public void systemIn(String input) {
@@ -57,6 +57,4 @@ public class InputProcessTest {
     public String getOutput() {
         return outputStream.toString();
     }
-
-
 }

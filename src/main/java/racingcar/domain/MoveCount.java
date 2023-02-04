@@ -26,9 +26,13 @@ public class MoveCount {
     }
 
     private void checkInputIsGreaterThanZero(String input) {
-        if (!(Integer.parseInt(input) >= INPUT_NUMBER_MIN_LIMIT)) {
+        if (isInputNumberGreaterThanZero(input)) {
             throw new IllegalArgumentException(INPUT_IS_UNDER_ONE);
         }
+    }
+
+    private static boolean isInputNumberGreaterThanZero(String input) {
+        return !(Integer.parseInt(input) >= INPUT_NUMBER_MIN_LIMIT);
     }
 
     public Integer getNumber() {

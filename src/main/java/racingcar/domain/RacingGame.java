@@ -5,6 +5,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import racingcar.util.RandomNum;
+
 public class RacingGame {
 	private final List<Car> cars;
 
@@ -19,7 +21,9 @@ public class RacingGame {
 	}
 
 	public void race() {
-		cars.forEach(Car::move);
+		cars.forEach(car -> {
+			car.move(new RandomNum());
+		});
 	}
 
 	public List<Car> getCars() {

@@ -3,10 +3,10 @@ package racingcar.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import racingcar.domain.AttemptNumber;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.util.convertor.NameConvertor;
-import racingcar.util.convertor.NumberConvertor;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -38,7 +38,7 @@ public class RaceGameController {
 
 	private int getAttemptNumber() {
 		try {
-			return NumberConvertor.convertNumber(InputView.getAttemptNumber());
+			return AttemptNumber.convertNumber(InputView.getAttemptNumber());
 		} catch (IllegalArgumentException e) {
 			OutputView.printErrorMessage(e.getMessage());
 			return getAttemptNumber();

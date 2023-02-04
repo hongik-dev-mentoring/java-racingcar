@@ -30,7 +30,7 @@ public class RaceController {
 
     public void printWinners() {
         CarList winners = race.selectWinners();
-        createFinalResultText(winners);
+        printFinalResultText(winners);
     }
 
 }

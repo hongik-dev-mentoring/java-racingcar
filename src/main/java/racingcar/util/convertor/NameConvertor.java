@@ -1,4 +1,4 @@
-package racingcar.util.generator;
+package racingcar.util.convertor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 public class NameConvertor {
 	private static final String SEPARATE_BY_COMMA = ",";
 
-	public static List<String> generateCarNames(String carNames) {
+	public static List<String> convertCarNames(String carNames) {
 		return Arrays.asList(carNames.split(SEPARATE_BY_COMMA));
 	}
 }

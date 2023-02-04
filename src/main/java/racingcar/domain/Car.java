@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.util.Random;
 import racingcar.util.RandomNum;
 
 public class Car {
@@ -24,8 +25,8 @@ public class Car {
 		return this.position == position;
 	}
 
-	public void move() {
-		if (RandomNum.createRandomNum() >= CRITICAL_POINT_OF_MOVING) {
+	public void move(Random RandomNum) {
+		if (RandomNum.generator() >= CRITICAL_POINT_OF_MOVING) {
 			position++;
 		}
 	}

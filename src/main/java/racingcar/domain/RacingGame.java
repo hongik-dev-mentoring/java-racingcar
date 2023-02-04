@@ -6,21 +6,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-	private List<Car> cars;
-	private final int tryNum;
-	private int countEnd = 0;
+	private final List<Car> cars;
 
-	public RacingGame(ArrayList<String> carNames, int tryNum) {
+	public RacingGame(ArrayList<String> carNames) {
 		cars = createCars(carNames);
-		this.tryNum = tryNum;
-	}
-
-	public boolean isEnd() {
-		if (countEnd == tryNum) {
-			return true;
-		}
-		countEnd++;
-		return false;
 	}
 
 	public List<Car> createCars(ArrayList<String> carNames) {

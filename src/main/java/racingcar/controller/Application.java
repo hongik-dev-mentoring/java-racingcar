@@ -11,8 +11,8 @@ public class Application {
 		ArrayList<String> carNames = InputView.readNames();
 		int tryNum = InputView.readNum();
 
-		RacingGame game = new RacingGame(carNames, tryNum);
-		while (!game.isEnd()) {
+		RacingGame game = new RacingGame(carNames);
+		for (int i = 0; i < tryNum; i++) {
 			game.race();
 			ResultView.printCars(game.getCars());
 		}

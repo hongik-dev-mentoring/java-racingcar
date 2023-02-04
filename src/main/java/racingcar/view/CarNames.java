@@ -3,6 +3,8 @@ package racingcar.view;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 public class CarNames {
 
@@ -16,6 +18,13 @@ public class CarNames {
 
     public static CarNames getCarNamesFromCarNamesString(String carNames) {
         return new CarNames(carNames);
+    }
+
+    public Cars createCars() {
+        List<Car> cars = carNames.stream()
+            .map(Car::new)
+            .collect(Collectors.toList());
+        return new Cars(cars);
     }
 
     public List<String> getCarNames() {

@@ -4,21 +4,13 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.movingstrategy.MovingStrategy;
-import racingcar.view.CarNames;
 
 public class Cars {
 
     private final List<Car> cars;
 
-    private Cars(CarNames carNames) {
-        cars = carNames.getCarNames()
-            .stream()
-            .map(Car::new)
-            .collect(Collectors.toList());
-    }
-
-    public static Cars getCarsFromCarNames(CarNames carNames) {
-        return new Cars(carNames);
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public void raceAllCar(MovingStrategy movingStrategy) {

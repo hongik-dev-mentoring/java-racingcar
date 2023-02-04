@@ -32,7 +32,7 @@ public class RacingTest {
     void 레이싱_공동_우승자_출력_테스트() {
         // given
         CarNames carNames = CarNames.getCarNamesFromCarNamesString("jinh1, jinh2");
-        Cars cars = Cars.getCarsFromCarNames(carNames);
+        Cars cars = carNames.createCars();
         Racing racing = new Racing(cars, 3);
 
         MovingStrategy movingStrategy = new AlwaysMovingStrategy();

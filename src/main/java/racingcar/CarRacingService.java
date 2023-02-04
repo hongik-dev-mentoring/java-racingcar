@@ -18,7 +18,7 @@ public class CarRacingService {
 
     public void carRacingGame(CarNames carNames, int raceGameCount,
         MovingStrategy movingStrategy) {
-        Cars cars = Cars.getCarsFromCarNames(carNames);
+        Cars cars = carNames.createCars();
         Racing racing = new Racing(cars, raceGameCount);
         racing.race(movingStrategy);
     }

@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import racingcar.util.generator.ForwardNumberGenerator;
+
 class CarTest {
 	private Car car;
 
@@ -48,10 +50,18 @@ class CarTest {
 		assertThat(car.getPosition().getValue()).isEqualTo(0);
 	}
 
+	// @Test
+	// @DisplayName("자동차를 전진시키면 위치가 1 증가해야 한다.")
+	// void move_forward_car() {
+	// 	car.moveForward(4);
+	// 	assertThat(car.getPosition().getValue()).isEqualTo(1);
+	// }
+
 	@Test
-	@DisplayName("자동차를 전진시키면 위치가 1 증가해야 한다.")
+	@DisplayName("자동차를 전진시키면 위치가 1 증가한다.")
 	void move_forward_car() {
-		car.moveForward(4);
+		car.moveForward1(new ForwardNumberGenerator());
+
 		assertThat(car.getPosition().getValue()).isEqualTo(1);
 	}
 }

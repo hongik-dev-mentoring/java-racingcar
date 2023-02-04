@@ -1,7 +1,9 @@
 package racingcar.domain;
 
+import racingcar.util.generator.NumberGenerator;
+
 public class Car {
-	private static final int MOVE_FORWARD_RANDOM_NUMBER_STANDARD = 4;
+	private static final int CAN_MOVE_MIN_NUMBER = 4;
 	private static final int DEFAULT_POSITION = 0;
 	private final Name name;
 	private final Position position;
@@ -11,6 +13,12 @@ public class Car {
 		this.position = new Position(DEFAULT_POSITION);
 	}
 
+	public void moveForward1(NumberGenerator numberGenerator) {
+		if (numberGenerator.generate() >= CAN_MOVE_MIN_NUMBER) {
+			position.moveCarForward();
+		}
+	}
+
 	public void moveForward(int randomNumber) {
 		if (shouldMove(randomNumber)) {
 			position.moveCarForward();
@@ -18,7 +26,7 @@ public class Car {
 	}
 
 	public boolean shouldMove(int randomNumber) {
-		return randomNumber >= MOVE_FORWARD_RANDOM_NUMBER_STANDARD;
+		return randomNumber >= CAN_MOVE_MIN_NUMBER;
 	}
 
 	public boolean isWinner(int maxPosition) {

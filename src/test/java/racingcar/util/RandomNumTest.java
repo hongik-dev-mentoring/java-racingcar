@@ -14,6 +14,9 @@ class RandomNumTest {
 
 		int num = RandomNum.createRandomNum();
 
-		assertAll(() -> assertThat(num).isGreaterThanOrEqualTo(0), () -> assertThat(num).isLessThanOrEqualTo(9));
+		assertAll(
+			() -> assertThat(num).isGreaterThanOrEqualTo(0),
+			() -> assertThat(num).isLessThanOrEqualTo(9)
+		);
 	}
 }

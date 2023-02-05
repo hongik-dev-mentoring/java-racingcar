@@ -13,7 +13,6 @@ import racingcar.domain.Cars;
 import racingcar.domain.Racing;
 import racingcar.domain.movingstrategy.MovingStrategy;
 import racingcar.view.CarNames;
-import racingcar.view.CarRacingResultView;
 
 public class RacingTest {
 
@@ -28,6 +27,26 @@ public class RacingTest {
     void resetOutputStream() {
         System.setOut(System.out);
         output.reset();
+    }
+
+    @Test
+    void 레이싱을_할_수_있다() {
+        // given
+        CarNames carNames = CarNames.createCarNamesFromCarNamesString("jinh1, jinh2");
+        Cars cars = carNames.createCars();
+        Racing racing = new Racing(cars, 3);
+
+        MovingStrategy movingStrategy = new AlwaysMovingStrategy();
+        StringBuilder expectedOutputString = new StringBuilder("jinh1 : -\r\n")
+            .append("jinh2 : -\r\n");
+
+        // when
+        racing.raceAllCar(movingStrategy);
+        printCurrentRaceResult(racing);
+        String actualOutputString = output.toString();
+
+        // then
+        assertThat(actualOutputString).contains(expectedOutputString);
     }
 
     @Test

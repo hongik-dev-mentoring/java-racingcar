@@ -50,7 +50,7 @@ public class RacingTest {
     }
 
     @Test
-    void 레이싱_공동_우승자_출력_테스트() {
+    void 레이싱_공동_우승자_처리_테스트() {
         // given
         CarNames carNames = CarNames.createCarNamesFromCarNamesString("jinh1, jinh2");
         Cars cars = carNames.createCars();

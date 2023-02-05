@@ -9,7 +9,7 @@ public class CarRacingResultView {
 
     static public void printCurrentRaceResult(Racing racing) {
         Cars cars = racing.getCars();
-        cars.getCarList()
+        cars.getCars()
             .forEach(car -> System.out.println(buildCurrentPositionString(car)));
         System.out.println();
     }

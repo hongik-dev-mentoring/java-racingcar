@@ -14,7 +14,7 @@ public class Racing {
 
     public void raceAllCar(MovingStrategy movingStrategy) {
         gameCount--;
-        cars.getCarList()
+        cars.getCars()
             .forEach(car -> car.race(movingStrategy));
     }
 

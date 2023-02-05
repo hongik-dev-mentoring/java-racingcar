@@ -1,6 +1,8 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.view.CarRacingResultView.printCurrentRaceResult;
+import static racingcar.view.CarRacingResultView.printRacingGameWinner;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -11,6 +13,7 @@ import racingcar.domain.Cars;
 import racingcar.domain.Racing;
 import racingcar.domain.movingstrategy.MovingStrategy;
 import racingcar.view.CarNames;
+import racingcar.view.CarRacingResultView;
 
 public class RacingTest {
 
@@ -35,27 +38,14 @@ public class RacingTest {
         Racing racing = new Racing(cars, 3);
 
         MovingStrategy movingStrategy = new AlwaysMovingStrategy();
-        StringBuilder expectedOutputString = get_레이싱_공동_우승자_출력_테스트_ExpectedOutput();
+        StringBuilder expectedOutputString = new StringBuilder("최종 우승자 : jinh1, jinh2\r\n");
 
         // when
         racing.raceAllCar(movingStrategy);
+        printRacingGameWinner(racing);
         String actualOutputString = output.toString();
 
         // then
         assertThat(actualOutputString).contains(expectedOutputString);
-    }
-
-    StringBuilder get_레이싱_공동_우승자_출력_테스트_ExpectedOutput() {
-        return new StringBuilder("실행 결과\r\n")
-            .append("jinh1 : -\r\n")
-            .append("jinh2 : -\r\n")
-            .append("\r\n")
-            .append("jinh1 : --\r\n")
-            .append("jinh2 : --\r\n")
-            .append("\r\n")
-            .append("jinh1 : ---\r\n")
-            .append("jinh2 : ---\r\n")
-            .append("\r\n")
-            .append("최종 우승자 : jinh1, jinh2\r\n");
     }
 }

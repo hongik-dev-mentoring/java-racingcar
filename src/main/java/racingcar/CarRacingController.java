@@ -22,7 +22,7 @@ public class CarRacingController {
         MovingStrategy movingStrategy = getRandomMovingStrategy();
 
         CarRacingService.getInstance()
-            .carRacingGame(racing, raceGameCount, movingStrategy);
+            .carRacingGame(racing, movingStrategy);
     }
 
     private static MovingStrategy getRandomMovingStrategy() {

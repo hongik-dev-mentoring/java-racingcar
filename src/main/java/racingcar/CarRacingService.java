@@ -17,8 +17,7 @@ public class CarRacingService {
         return INSTANCE;
     }
 
-    public void carRacingGame(Racing racing, int raceGameCount,
-        MovingStrategy movingStrategy) {
+    public void carRacingGame(Racing racing, MovingStrategy movingStrategy) {
         System.out.println("실행 결과");
         while  (racing.isLeftRacing()) {
             racing.raceAllCar(movingStrategy);

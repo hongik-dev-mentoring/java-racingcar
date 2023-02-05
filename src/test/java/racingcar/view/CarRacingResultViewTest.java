@@ -3,6 +3,7 @@ package racingcar.view;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static racingcar.view.CarRacingResultView.printCurrentRaceResult;
+import static racingcar.view.CarRacingResultView.printRacingGameWinner;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

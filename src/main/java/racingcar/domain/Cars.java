@@ -29,18 +29,4 @@ public class Cars {
             .map(Car::getName)
             .collect(Collectors.toList());
     }
-
-
-    public void printRacingGameWinner() {
-        int leadCarPosition = getLeadCarPosition();
-        String winnerString = buildWinnerString(leadCarPosition).toString();
-        System.out.println(winnerString);
-    }
-
-    private StringBuilder buildWinnerString(int leadCarPosition) {
-        List<String> winners = getCarsByPosition(leadCarPosition);
-
-        return new StringBuilder("최종 우승자 : ")
-            .append(String.join(", ", winners));
-    }
 }

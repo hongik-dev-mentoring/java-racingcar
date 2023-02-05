@@ -1,6 +1,7 @@
 package racingcar;
 
 import static racingcar.view.CarRacingResultView.printCurrentRaceResult;
+import static racingcar.view.CarRacingResultView.printRacingGameWinner;
 
 import racingcar.domain.movingstrategy.MovingStrategy;
 import racingcar.domain.Racing;
@@ -23,6 +24,6 @@ public class CarRacingService {
             racing.raceAllCar(movingStrategy);
             printCurrentRaceResult(racing);
         }
-        racing.getCars().printRacingGameWinner();
+        printRacingGameWinner(racing);
     }
 }

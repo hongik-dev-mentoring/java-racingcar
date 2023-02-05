@@ -19,4 +19,18 @@ public class CarRacingResultView {
             .append(" : ")
             .append("-".repeat(car.getPosition()));
     }
+
+    static public void printRacingGameWinner(Racing racing) {
+        Cars cars = racing.getCars();
+        int leadCarPosition = cars.getLeadCarPosition();
+        String winnerString = buildWinnerString(cars, leadCarPosition).toString();
+        System.out.println(winnerString);
+    }
+
+    static private StringBuilder buildWinnerString(Cars cars, int leadCarPosition) {
+        List<String> winners = cars.getCarsByPosition(leadCarPosition);
+
+        return new StringBuilder("최종 우승자 : ")
+            .append(String.join(", ", winners));
+    }
 }

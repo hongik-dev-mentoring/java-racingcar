@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static racingcar.view.CarRacingResultView.printCurrentRaceResult;
@@ -9,8 +9,7 @@ import java.io.PrintStream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Cars;
-import racingcar.domain.Racing;
+import racingcar.domain.movingstrategy.AlwaysMovingStrategy;
 import racingcar.domain.movingstrategy.MovingStrategy;
 import racingcar.view.CarNames;
 

@@ -46,4 +46,21 @@ class CarRacingResultViewTest {
         String actualOutput = output.toString();
         assertThat(actualOutput).contains(expectedOutput);
     }
+
+    @Test
+    void 레이싱의_우승주를_출력_할_수_있다() {
+        List<Car> carList = new LinkedList<>();
+        carList.add(new Car("jinho"));
+
+        Cars cars = new Cars(carList);
+        int gameCount = 0;
+        Racing racing = new Racing(cars, gameCount);
+        printRacingGameWinner(racing);
+
+        StringBuilder expectedOutput = new StringBuilder();
+        expectedOutput.append("최종 우승자 : jinho\r\n");
+
+        String actualOutput = output.toString();
+        assertThat(actualOutput).contains(expectedOutput);
+    }
 }

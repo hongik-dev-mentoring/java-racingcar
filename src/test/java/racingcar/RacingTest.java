@@ -38,7 +38,7 @@ public class RacingTest {
         StringBuilder expectedOutputString = get_레이싱_공동_우승자_출력_테스트_ExpectedOutput();
 
         // when
-        racing.race(movingStrategy);
+        racing.raceAllCar(movingStrategy);
         String actualOutputString = output.toString();
 
         // then

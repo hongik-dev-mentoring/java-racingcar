@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.domain.Cars;
+import racingcar.domain.Racing;
 import racingcar.domain.movingstrategy.MovingStrategy;
 import racingcar.domain.movingstrategy.RandomMovingStrategy;
 import racingcar.domain.movingstrategy.RangedRandomNumberPicker;
@@ -17,9 +18,11 @@ public class CarRacingController {
         Cars cars = input.getCars();
         int raceGameCount = input.getRacingGameCount();
 
+        Racing racing = new Racing(cars, raceGameCount);
         MovingStrategy movingStrategy = getRandomMovingStrategy();
+
         CarRacingService.getInstance()
-            .carRacingGame(cars, raceGameCount, movingStrategy);
+            .carRacingGame(racing, raceGameCount, movingStrategy);
     }
 
     private static MovingStrategy getRandomMovingStrategy() {

@@ -1,6 +1,7 @@
 package racingcar;
 
-import racingcar.domain.Cars;
+import static racingcar.view.CarRacingResultView.printCurrentRaceResult;
+
 import racingcar.domain.movingstrategy.MovingStrategy;
 import racingcar.domain.Racing;
 
@@ -15,9 +16,13 @@ public class CarRacingService {
         return INSTANCE;
     }
 
-    public void carRacingGame(Cars cars, int raceGameCount,
+    public void carRacingGame(Racing racing, int raceGameCount,
         MovingStrategy movingStrategy) {
-        Racing racing = new Racing(cars, raceGameCount);
-        racing.race(movingStrategy);
+        System.out.println("실행 결과");
+        while  (racing.isLeftRacing()) {
+            racing.raceAllCar(movingStrategy);
+            printCurrentRaceResult(racing);
+        }
+        racing.getCars().printRacingGameWinner();
     }
 }

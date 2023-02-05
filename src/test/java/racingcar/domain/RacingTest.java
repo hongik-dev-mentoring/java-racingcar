@@ -1,11 +1,14 @@
 package racingcar.domain;
 
+import static java.util.List.of;
 import static org.assertj.core.api.Assertions.assertThat;
 import static racingcar.view.CarRacingResultView.printCurrentRaceResult;
 import static racingcar.view.CarRacingResultView.printRacingGameWinner;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.LinkedList;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,21 +34,22 @@ public class RacingTest {
     @Test
     void 레이싱을_할_수_있다() {
         // given
-        CarNames carNames = CarNames.createCarNamesFromCarNamesString("jinh1, jinh2");
+        List<String> carNamesList = new LinkedList<>();
+        carNamesList.add("jinh1");
+        carNamesList.add("jinh2");
+
+        CarNames carNames = CarNames.createCarNamesFromCarNamesString(String.join(",", carNamesList));
         Cars cars = carNames.createCars();
-        Racing racing = new Racing(cars, 3);
+        Racing racing = new Racing(cars, 1);
 
         MovingStrategy movingStrategy = new AlwaysMovingStrategy();
-        StringBuilder expectedOutputString = new StringBuilder("jinh1 : -\r\n")
-            .append("jinh2 : -\r\n");
 
         // when
         racing.raceAllCar(movingStrategy);
-        printCurrentRaceResult(racing);
-        String actualOutputString = output.toString();
+        List<String> carsAfterRace = racing.getCars().getCarsByPosition(1);
 
         // then
-        assertThat(actualOutputString).contains(expectedOutputString);
+        assertThat(carsAfterRace).isEqualTo(carNamesList);
     }
 
     @Test

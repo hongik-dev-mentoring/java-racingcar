@@ -48,7 +48,7 @@ class CarRacingResultViewTest {
     }
 
     @Test
-    void 레이싱의_우승주를_출력_할_수_있다() {
+    void 레이싱의_우승자를_출력_할_수_있다() {
         List<Car> carList = new LinkedList<>();
         carList.add(new Car("jinho"));
 

@@ -11,6 +11,7 @@ public class RangedRandomNumberPickerTest {
     int to = 9;
 
     @RepeatedTest(100)
+
     void 범위내의_무작위_숫자를_뽑을_수_있다() {
         // given
         RangedRandomNumberPicker randomNumberPicker = new RangedRandomNumberPicker(form, to);

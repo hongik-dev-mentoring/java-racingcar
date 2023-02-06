@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import racingcar.domain.AttemptNumber;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.Racing;
 import racingcar.util.convertor.NameConvertor;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -16,6 +17,9 @@ public class RaceGameController {
 
 	public void ready() {
 		cars = createCars();
+		attemptNumber = new AttemptNumber(InputView.getAttemptNumber());
+		OutputView.printBlankLine();
+		OutputView.printGameResultHeader();
 	}
 
 	private Cars createCars() {
@@ -35,11 +39,8 @@ public class RaceGameController {
 	}
 
 	public void run() {
-		attemptNumber = new AttemptNumber(InputView.getAttemptNumber());
-		for (int i = 0; i < attemptNumber.getAttemptNumber(); ++i) {
-			cars.moveForward();
-			OutputView.printCarsPosition(cars.getCars());
-		}
+		Racing racing = new Racing(cars, attemptNumber);
+		racing.moveForward();
 	}
 
 	public void announceWinner() {

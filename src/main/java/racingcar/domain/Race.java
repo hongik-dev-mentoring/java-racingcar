@@ -8,46 +8,46 @@ public class Race {
 
     public static final int INITIAL_STATE = 0;
 
-    private final CarList racingCarList;
+    private final CarList racingCars;
     private final MoveCount moveCount;
     private int currentRoundNumber;
 
-    public Race(CarList racingCarList, MoveCount moveCount) {
-        this.racingCarList = racingCarList;
+    public Race(CarList racingCars, MoveCount moveCount) {
+        this.racingCars = racingCars;
         this.moveCount = moveCount;
         this.currentRoundNumber = INITIAL_STATE;
     }
 
     public void proceedOneRound() {
-        for (Car car : racingCarList.getCars()) {
+        for (Car car : racingCars.getCars()) {
             car.move();
         }
         currentRoundNumber++;
     }
 
     public CarList selectWinners() {
-        Integer maxPosition = getMaxPosition(racingCarList);
-        return getCarsAtPosition(racingCarList, maxPosition);
+        Integer maxPosition = getMaxPosition(racingCars);
+        return getCarsAtPosition(racingCars, maxPosition);
     }
 
-    private Integer getMaxPosition(CarList racingCarList) {
-        return racingCarList.getCars()
+    private Integer getMaxPosition(CarList racingCars) {
+        return racingCars.getCars()
                 .stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElseThrow(NoSuchElementException::new);
     }
 
-    private CarList getCarsAtPosition(CarList racingCarList, Integer maxPosition) {
-        List<Car> cars = racingCarList.getCars()
+    private CarList getCarsAtPosition(CarList racingCars, Integer maxPosition) {
+        List<Car> cars = racingCars.getCars()
                 .stream()
                 .filter(car -> car.isAtPosition(maxPosition))
                 .collect(Collectors.toList());
         return new CarList(cars);
     }
 
-    public CarList getRacingCarList() {
-        return racingCarList;
+    public CarList getRacingCars() {
+        return racingCars;
     }
 
     public boolean isEnd() {

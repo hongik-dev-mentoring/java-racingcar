@@ -3,10 +3,6 @@ package racingcar.controller;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.CarList;
-import racingcar.domain.MoveCount;
-import racingcar.domain.Race;
-import racingcar.view.InputProcess;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -37,10 +33,7 @@ public class RaceControllerTest {
     @DisplayName("자동차 경주 최종 결과 출력 테스트")
     public void printWinnersTest() {
         // given
-        InputProcess inputProcess = new InputProcess();
-        CarList racingCarList = inputProcess.getCarList();
-        MoveCount moveCount = inputProcess.getMoveCount();
-        RaceController raceController = new RaceController(new Race(racingCarList, moveCount));
+        RaceController raceController = new RaceController();
         // when
         raceController.completeRace();
         String output = getOutput();

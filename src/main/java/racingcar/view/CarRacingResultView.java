@@ -1,20 +1,20 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.domain.Car;
+import racingcar.CarRacingController.CarDto;
+import racingcar.CarRacingController.CarsDto;
 import racingcar.domain.Cars;
 import racingcar.domain.Racing;
 
 public class CarRacingResultView {
 
-    public static void printCurrentRaceResult(Racing racing) {
-        Cars cars = racing.getCars();
-        cars.getCars()
-            .forEach(car -> System.out.println(buildCurrentPositionString(car)));
+    public static void printCurrentRaceResult(CarsDto cars) {
+        List<CarDto> carList = cars.getCars();
+        carList.forEach(car -> System.out.println(buildCurrentPositionString(car)));
         System.out.println();
     }
 
-    private static StringBuilder buildCurrentPositionString(Car car) {
+    private static StringBuilder buildCurrentPositionString(CarDto car) {
         return new StringBuilder(car.getName())
             .append(" : ")
             .append("-".repeat(car.getPosition()));

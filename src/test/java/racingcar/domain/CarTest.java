@@ -34,7 +34,7 @@ class CarTest {
 	@Test
 	@DisplayName("자동차의 초기 위치는 0이어야 한다.")
 	void first_position_car_equals_zero() {
-		assertThat(car.getPosition().getValue()).isEqualTo(0);
+		assertThat(car.getPosition()).isEqualTo(0);
 	}
 
 	@ParameterizedTest(name = "랜덤 숫자 : {0}, 전진 결과 : {1}")
@@ -48,7 +48,7 @@ class CarTest {
 	@DisplayName("자동차 정지하면 위치는 그대로이다.")
 	void not_move_forward_car() {
 		car.moveForward(new StopNumberGenerator());
-		assertThat(car.getPosition().getValue()).isEqualTo(0);
+		assertThat(car.getPosition()).isEqualTo(0);
 	}
 
 	@Test
@@ -56,6 +56,6 @@ class CarTest {
 	void move_forward_car() {
 		car.moveForward(new ForwardNumberGenerator());
 
-		assertThat(car.getPosition().getValue()).isEqualTo(1);
+		assertThat(car.getPosition()).isEqualTo(1);
 	}
 }

@@ -4,7 +4,6 @@ import java.util.List;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.domain.Position;
 
 public class OutputView {
 	private static final String ERROR_MESSAGE = "[ERROR] ";
@@ -26,9 +25,9 @@ public class OutputView {
 		printBlankLine();
 	}
 
-	private static StringBuilder printCarsCurrentPosition(Position position) {
+	private static StringBuilder printCarsCurrentPosition(int position) {
 		StringBuilder builder = new StringBuilder();
-		builder.append("-".repeat(Math.max(0, position.getValue())));
+		builder.append("-".repeat(Math.max(0, position)));
 		return builder;
 	}
 

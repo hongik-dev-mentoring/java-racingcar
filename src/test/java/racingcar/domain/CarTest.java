@@ -28,7 +28,7 @@ class CarTest {
 	@Test
 	@DisplayName("자동차 이름 검증 테스트")
 	void validate_car_name() {
-		assertThat(car.getName().getValue()).isEqualTo("chan");
+		assertThat(car.getName()).isEqualTo("chan");
 	}
 
 	@Test

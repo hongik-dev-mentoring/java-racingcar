@@ -27,8 +27,8 @@ public class Car {
 		return position.getValue() == maxPosition;
 	}
 
-	public Name getName() {
-		return name;
+	public String getName() {
+		return this.name.getValue();
 	}
 
 	public int getPosition() {

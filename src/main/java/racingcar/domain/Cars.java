@@ -17,7 +17,7 @@ public class Cars {
 
 	private void validateDuplicateCarNames(List<Car> cars) {
 		List<String> uniqueNames = cars.stream()
-			.map(car -> car.getName().getValue())
+			.map(Car::getName)
 			.distinct()
 			.collect(toList());
 		if (cars.size() != uniqueNames.size()) {
@@ -38,7 +38,7 @@ public class Cars {
 	public List<String> findWinnersName() {
 		return cars.stream()
 			.filter(car -> car.isWinner(findMaxPosition()))
-			.map(car -> car.getName().getValue())
+			.map(Car::getName)
 			.collect(toList());
 	}
 

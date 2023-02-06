@@ -20,7 +20,7 @@ public class OutputView {
 
 	public static void printCarsPosition(List<Car> cars) {
 		for (Car car : cars) {
-			System.out.println(car.getName().getValue() + " : " + printCarsCurrentPosition(car.getPosition()));
+			System.out.println(car.getName() + " : " + printCarsCurrentPosition(car.getPosition()));
 		}
 		printBlankLine();
 	}

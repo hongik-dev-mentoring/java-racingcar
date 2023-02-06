@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.List;
 import racingcar.domain.movingstrategy.MovingStrategy;
 
 public class Racing {
@@ -24,5 +25,10 @@ public class Racing {
 
     public Cars getCars() {
         return cars;
+    }
+
+    public List<String> getWinnersName() {
+        int leadCarPosition = cars.getLeadCarPosition();
+        return cars.getCarsByPosition(leadCarPosition);
     }
 }

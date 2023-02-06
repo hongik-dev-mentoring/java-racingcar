@@ -68,8 +68,7 @@ public class RacingTest {
 
         // when
         racing.raceAllCar(movingStrategy);
-        int leadCarPosition = racing.getCars().getLeadCarPosition();
-        List<String> carsAfterRace = racing.getCars().getCarsByPosition(leadCarPosition);
+        List<String> carsAfterRace = racing.getWinnersName();
 
         // then
         assertThat(carsAfterRace).isEqualTo(expectedResult);

@@ -62,14 +62,13 @@ public class Calculator {
     }
 
     private void splitCustomInputAndParseToInt(String input) {
-        Matcher m = COMPILED_CUSTOM_SPLIT_REGEX.matcher(input);
-        if (m.find()) {
-            String customDelimiter = m.group(CUSTOM_DELIMITER_GROUP_INDEX);
-            String[] tokens = m.group(CUSTOM_INPUT_NUMBER_GROUP_INDEX)
+        Matcher customInputMatcher = COMPILED_CUSTOM_SPLIT_REGEX.matcher(input);
+        if (customInputMatcher.find()) {
+            String customDelimiter = customInputMatcher.group(CUSTOM_DELIMITER_GROUP_INDEX);
+            String[] tokens = customInputMatcher.group(CUSTOM_INPUT_NUMBER_GROUP_INDEX)
                     .split(customDelimiter);
-            Arrays.stream(tokens).forEach(token -> {
-                Integer.parseInt(token.trim());
-            });
+            Arrays.stream(tokens)
+                    .forEach(token -> Integer.parseInt(token.trim()));
         }
     }
 

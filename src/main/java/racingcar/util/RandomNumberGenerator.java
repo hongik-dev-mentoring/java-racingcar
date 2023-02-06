@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class RandomNumberGenerator {
 
-    private final Integer minRandomNumber;
-    private final Integer maxRandomNumber;
+    private final int minRandomNumber;
+    private final int maxRandomNumber;
 
     public RandomNumberGenerator(Integer min, Integer max) {
         this.minRandomNumber = min;

@@ -1,9 +1,12 @@
 package racingcar.controller;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.CarList;
+import racingcar.domain.MoveCount;
+import racingcar.domain.Race;
+import racingcar.view.InputProcess;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -31,28 +34,19 @@ public class RaceControllerTest {
     }
 
     @Test
-    @DisplayName("자동차 경주 실행결과 출력 테스트")
-    public void raceStartTest() {
+    @DisplayName("자동차 경주 최종 결과 출력 테스트")
+    public void printWinnersTest() {
         // given
-        RaceController raceController = new RaceController();
+        InputProcess inputProcess = new InputProcess();
+        CarList racingCarList = inputProcess.getCarList();
+        MoveCount moveCount = inputProcess.getMoveCount();
+        RaceController raceController = new RaceController(new Race(racingCarList, moveCount));
         // when
-        raceController.startRace();
+        raceController.completeRace();
         String output = getOutput();
         // then
         assertThat(output).contains("실행 결과");
-    }
-
-    @Test
-    @DisplayName("자동차 경주 우승자 출력 테스트")
-    public void printWinnersTest() {
-        // given
-        RaceController raceController = new RaceController();
-        // when
-        raceController.startRace();
-        raceController.printWinners();
-        String output = getOutput();
-        // then
-        Assertions.assertThat(output).contains("가 최종 우승했습니다.");
+        assertThat(output).contains("가 최종 우승했습니다.");
     }
 
     public String getOutput() {

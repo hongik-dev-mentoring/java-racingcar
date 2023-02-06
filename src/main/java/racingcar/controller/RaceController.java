@@ -1,36 +1,33 @@
 package racingcar.controller;
 
 import racingcar.domain.CarList;
-import racingcar.domain.MoveCount;
 import racingcar.domain.Race;
-import racingcar.view.InputProcess;
 
 import static racingcar.view.OutputProcess.*;
 
 public class RaceController {
-    private final CarList carList;
-    private final MoveCount moveCount;
     private final Race race;
 
-    public RaceController() {
-        InputProcess inputProcess = new InputProcess();
-        carList = inputProcess.getCarList();
-        moveCount = inputProcess.getMoveCount();
-        race = new Race(carList);
+    public RaceController(Race race) {
+        this.race = race;
     }
 
-    public void startRace() {
+    public void completeRace() {
+        startRace();
+        printWinners();
+    }
+
+    private void startRace() {
         printResultHeader();
-        for (int i = 0; i < moveCount.getNumber(); i++) {
+        while (!race.isEnd()) {
             race.proceedOneRound();
-            printCarPositions(carList);
+            printCarPositions(race.getRacingCarList());
             printNewLine();
         }
     }
 
-    public void printWinners() {
+    private void printWinners() {
         CarList winners = race.selectWinners();
         printFinalResult(winners);
     }
-
 }

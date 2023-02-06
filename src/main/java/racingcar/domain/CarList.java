@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.util.RandomNumberGenerator;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -14,16 +16,19 @@ public class CarList {
     private static final String NOT_ENOUGH_CARS = "경주에 참가하는 자동차가 한대 이상이어야 합니다.";
     private static final String NOT_PROPER_NAME_LENGTH = "자동차 이름은 1자 이상 5자 이하만 가능합니다.";
 
-    private static final Integer CAR_NUMBER_LIMIT = 2;
-    private static final Integer CAR_NAME_MIN_LIMIT = 1;
-    private static final Integer CAR_NAME_MAX_LIMIT = 5;
+    private static final int CAR_NUMBER_LIMIT = 2;
+    private static final int CAR_NAME_MIN_LIMIT = 1;
+    private static final int CAR_NAME_MAX_LIMIT = 5;
+    private static final int MIN_RANDOM_NUMBER = 0;
+    private static final int MAX_RANDOM_NUMBER = 9;
 
     private final List<Car> cars;
 
     public CarList(String input) {
         validateCarNameInputProcess(input);
         cars = Arrays.stream(input.split(COMMA_DELIMITER))
-                .map(carName -> new Car(carName.trim())).collect(Collectors.toList());
+                .map(carName -> new Car(carName.trim(), new RandomNumberGenerator(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER)))
+                .collect(Collectors.toList());
     }
 
     public CarList(List<Car> cars) {
@@ -35,7 +40,7 @@ public class CarList {
         checkInputHasEnoughCars(input);
         checkDuplicatedCarNames(input);
         Arrays.stream(input.split(COMMA_DELIMITER))
-                .forEach((carName) -> checkCarNameLength(carName));
+                .forEach(this::checkCarNameLength);
     }
 
     private void checkInputContainsBlank(String input) {

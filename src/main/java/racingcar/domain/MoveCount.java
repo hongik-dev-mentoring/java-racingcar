@@ -3,9 +3,9 @@ package racingcar.domain;
 public class MoveCount {
     private static final String INPUT_IS_NOT_NUMBER = "이동횟수는 숫자만 입력할 수 있습니다.";
     private static final String INPUT_IS_UNDER_ONE = "이동횟수는 1 이상의 숫자만 가능합니다.";
-    private static final Integer INPUT_NUMBER_MIN_LIMIT = 1;
+    private static final int INPUT_NUMBER_MIN_LIMIT = 1;
 
-    private final Integer moveCount;
+    private final int moveCount;
 
     public MoveCount(String input) {
         validateMoveCountInputProcess(input);
@@ -35,7 +35,7 @@ public class MoveCount {
         return !(Integer.parseInt(input) >= INPUT_NUMBER_MIN_LIMIT);
     }
 
-    public Integer getNumber() {
-        return this.moveCount;
+    public int getNumber() {
+        return moveCount;
     }
 }

@@ -39,7 +39,8 @@ public class RaceTest {
         // given
         InputProcess inputProcess = new InputProcess();
         CarList carList = inputProcess.getCarList();
-        Race race = new Race(carList);
+        MoveCount moveCount = inputProcess.getMoveCount();
+        Race race = new Race(carList, moveCount);
         // when
         race.proceedOneRound();
         CarList winners = race.selectWinners();
@@ -53,7 +54,8 @@ public class RaceTest {
         // given
         InputProcess inputProcess = new InputProcess();
         CarList carList = inputProcess.getCarList();
-        Race race = new Race(carList);
+        MoveCount moveCount = inputProcess.getMoveCount();
+        Race race = new Race(carList, moveCount);
 
         // when
         race.proceedOneRound();

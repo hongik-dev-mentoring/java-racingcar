@@ -1,5 +1,8 @@
 package racingcar;
 
+import static racingcar.view.CarRacingResultView.printCurrentRaceResult;
+import static racingcar.view.CarRacingResultView.printRacingGameWinner;
+
 import racingcar.domain.Cars;
 import racingcar.domain.Racing;
 import racingcar.domain.movingstrategy.MovingStrategy;
@@ -21,8 +24,7 @@ public class CarRacingController {
         Racing racing = new Racing(cars, raceGameCount);
         MovingStrategy movingStrategy = getRandomMovingStrategy();
 
-        CarRacingService.getInstance()
-            .carRacingGame(racing, movingStrategy);
+        carRacingGame(racing, movingStrategy);
     }
 
     private static MovingStrategy getRandomMovingStrategy() {
@@ -32,5 +34,14 @@ public class CarRacingController {
 
         RangedRandomNumberPicker rangedRandomNumberPicker = new RangedRandomNumberPicker(FROM, TO);
         return new RandomMovingStrategy(rangedRandomNumberPicker, movingStandard);
+    }
+
+    private static void carRacingGame(Racing racing, MovingStrategy movingStrategy) {
+        System.out.println("실행 결과");
+        while  (racing.isLeftRacing()) {
+            racing.raceAllCar(movingStrategy);
+            printCurrentRaceResult(racing);
+        }
+        printRacingGameWinner(racing);
     }
 }

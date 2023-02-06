@@ -33,6 +33,26 @@ public class RacingTest {
     }
 
     @Test
+    void 레이싱의_우승자들의_이름을_가져올_수_있다() {
+        // given
+        String carName = "jinh1";
+
+        CarNames carNames = CarNames.createCarNamesFromCarNamesString(carName);
+        Cars cars = carNames.createCars();
+        Racing racing = new Racing(cars, 3);
+
+        MovingStrategy movingStrategy = new AlwaysMovingStrategy();
+        List<String> expectedResult =  new LinkedList<>();
+        expectedResult.add(carName);
+
+        // when
+        racing.raceAllCar(movingStrategy);
+        List<String> actualResult = racing.getWinnersName();
+
+        assertThat(actualResult).isEqualTo(expectedResult);
+    }
+
+    @Test
     void 레이싱_공동_우승자_처리_테스트() {
         // given
         List<String> carNamesList = new LinkedList<>();

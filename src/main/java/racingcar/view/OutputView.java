@@ -2,10 +2,10 @@ package racingcar.view;
 
 import java.util.List;
 
-import racingcar.model.Car;
-import racingcar.model.Cars;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
-public class OutputData {
+public class OutputView {
 	private static final String ERROR_MESSAGE = "[ERROR] ";
 	private static final String GAME_RESULT_HEADER = "실행 결과";
 	private static final String FINAL_WINNER_MESSAGE = "가 최종 우승했습니다.";
@@ -18,23 +18,21 @@ public class OutputData {
 		System.out.println(GAME_RESULT_HEADER);
 	}
 
-	public static void printBlankLine() {
-		System.out.println();
-	}
-
 	public static void printCarsPosition(List<Car> cars) {
 		for (Car car : cars) {
-			System.out.println(car.getName() + " : " + printCarsCurrentPosition(car));
+			System.out.println(car.getName() + " : " + printCarsCurrentPosition(car.getPosition()));
 		}
 		printBlankLine();
 	}
-	
-	private static StringBuilder printCarsCurrentPosition(Car car) {
+
+	private static StringBuilder printCarsCurrentPosition(int position) {
 		StringBuilder builder = new StringBuilder();
-		for (int i = 0; i < car.getPosition(); ++i) {
-			builder.append("-");
-		}
+		builder.append("-".repeat(Math.max(0, position)));
 		return builder;
+	}
+
+	public static void printBlankLine() {
+		System.out.println();
 	}
 
 	public static void printWinners(Cars cars) {

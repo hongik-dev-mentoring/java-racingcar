@@ -1,10 +1,18 @@
 package racingcar.util.generator;
 
-public class RandomNumberGenerator {
-	private static final int MULTIPLY_NUMBER = 10;
+import java.util.Random;
 
-	public static int generateRandomNumber() {
-		double num = Math.random();
-		return (int)(num * MULTIPLY_NUMBER);
+public class RandomNumberGenerator implements NumberGenerator {
+	private static final int RANDOM_BOUND = 10;
+	private static final Random random;
+
+	static {
+		random = new Random();
+		random.setSeed(System.currentTimeMillis());
+	}
+
+	@Override
+	public int generate() {
+		return random.nextInt(RANDOM_BOUND);
 	}
 }

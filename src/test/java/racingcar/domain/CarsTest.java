@@ -21,18 +21,7 @@ class CarsTest {
 		car1 = cars.get(0);
 		car2 = cars.get(1);
 	}
-
-	@Test
-	@DisplayName("가장 멀리 간 위치 찾기")
-	void max_position() {
-		for (int i = 0; i < 3; ++i) {
-			car1.moveForward(new ForwardNumberGenerator());
-		}
-		car2.moveForward(new ForwardNumberGenerator());
-
-		assertThat(cars.findMaxPosition()).isEqualTo(3);
-	}
-
+	
 	@Test
 	@DisplayName("자동차 게임 단독 우승자 찾기")
 	void find_winner() {

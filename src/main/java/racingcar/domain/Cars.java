@@ -35,17 +35,17 @@ public class Cars {
 		}
 	}
 
-	public int findMaxPosition() {
-		return cars.stream()
-			.mapToInt(car -> car.getPosition().getValue())
-			.max()
-			.orElse(0);
-	}
-
 	public List<String> findWinnersName() {
 		return cars.stream()
 			.filter(car -> car.isWinner(findMaxPosition()))
 			.map(car -> car.getName().getValue())
 			.collect(toList());
+	}
+
+	private int findMaxPosition() {
+		return cars.stream()
+			.mapToInt(car -> car.getPosition().getValue())
+			.max()
+			.orElse(0);
 	}
 }

@@ -1,22 +1,18 @@
-package racingcar;
+package racingcar.view;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
+import racingcar.domain.Cars;
 
 public class Input {
 
-    private static final int CAR_NAME_LENGTH_LIMIT = 5;
-
-    public List<String> getCarNamesList() {
+    public Cars getCars() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
         try {
-            return inputCarNamesString();
+            return createCarsFromInput();
         } catch (IllegalArgumentException error) {
             System.out.println(error.getMessage());
-            return getCarNamesList();
+            return getCars();
         }
     }
 
@@ -31,7 +27,12 @@ public class Input {
         }
     }
 
-    private List<String> inputCarNamesString() {
+    private Cars createCarsFromInput() {
+        CarNames carNames = inputCarNamesString();
+        return carNames.createCars();
+    }
+
+    private CarNames inputCarNamesString() {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
 
@@ -39,26 +40,7 @@ public class Input {
             throw new IllegalArgumentException("[ERROR] 아무 이름도 입력하지 않으셨습니다. 다시 입력해주세요.");
         }
 
-        return Arrays.stream(input.split(","))
-            .map(Input::trimStringAndCheckEmptyName)
-            .peek(Input::checkCarNameLengthIsLessThanOrEqualToLimit)
-            .collect(Collectors.toList());
-    }
-
-    private static String trimStringAndCheckEmptyName(String string) {
-        String trimString = string.trim();
-
-        if (trimString.isEmpty()) {
-            throw new IllegalArgumentException("[ERROR] 자동차 이름에 공란이 있습니다. 다시 입력해주세요.");
-        }
-
-        return trimString;
-    }
-
-    private static void checkCarNameLengthIsLessThanOrEqualToLimit(String string) {
-        if (string.length() > CAR_NAME_LENGTH_LIMIT) {
-            throw new IllegalArgumentException("[ERROR] 자동차의 이름은 최대 5자입니다. 다시 입력해주세요.");
-        }
+        return CarNames.createCarNamesFromCarNamesString(input);
     }
 
     private int inputGameCountString() {

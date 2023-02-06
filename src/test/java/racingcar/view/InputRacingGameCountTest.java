@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.failBecauseExceptionWasNotThrown;
@@ -11,6 +11,7 @@ import java.io.PrintStream;
 import java.util.NoSuchElementException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import racingcar.view.Input;
 
 class InputRacingGameCountTest {
 

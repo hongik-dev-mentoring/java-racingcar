@@ -12,12 +12,10 @@ import racingcar.view.OutputView;
 
 public class RaceGameController {
 	private Cars cars;
-	private int attemptNumber;
+	private AttemptNumber attemptNumber;
 
 	public void ready() {
 		cars = createCars();
-		attemptNumber = getAttemptNumber();
-		printResultHeader();
 	}
 
 	private Cars createCars() {
@@ -36,26 +34,9 @@ public class RaceGameController {
 			.collect(Collectors.toList());
 	}
 
-	private int getAttemptNumber() {
-		try {
-			return new AttemptNumber(InputView.getAttemptNumber()).getAttemptNumber();
-		} catch (IllegalArgumentException e) {
-			OutputView.printErrorMessage(e.getMessage());
-			return getAttemptNumber();
-		}
-	}
-
-	private void printResultHeader() {
-		OutputView.printBlankLine();
-		OutputView.printGameResultHeader();
-	}
-
 	public void run() {
-		moveCarsForwardByAttemptNumber();
-	}
-
-	private void moveCarsForwardByAttemptNumber() {
-		for (int i = 0; i < attemptNumber; ++i) {
+		attemptNumber = new AttemptNumber(InputView.getAttemptNumber());
+		for (int i = 0; i < attemptNumber.getAttemptNumber(); ++i) {
 			cars.moveForward();
 			OutputView.printCarsPosition(cars.getCars());
 		}

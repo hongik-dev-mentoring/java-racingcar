@@ -45,7 +45,7 @@ public class CarRacingController {
             racing.raceAllCar(movingStrategy);
             printCurrentRaceResult(new CarsDto(racing.getCars()));
         }
-        printRacingGameWinner(racing);
+        printRacingGameWinner(racing.getWinnersName());
     }
 
     public static class CarsDto {

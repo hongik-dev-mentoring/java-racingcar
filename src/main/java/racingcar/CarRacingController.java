@@ -3,6 +3,9 @@ package racingcar;
 import static racingcar.view.CarRacingResultView.printCurrentRaceResult;
 import static racingcar.view.CarRacingResultView.printRacingGameWinner;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Racing;
 import racingcar.domain.movingstrategy.MovingStrategy;
@@ -40,8 +43,42 @@ public class CarRacingController {
         System.out.println("실행 결과");
         while  (racing.isLeftRacing()) {
             racing.raceAllCar(movingStrategy);
-            printCurrentRaceResult(racing);
+            printCurrentRaceResult(new CarsDto(racing.getCars()));
         }
         printRacingGameWinner(racing);
+    }
+
+    public static class CarsDto {
+        private final List<CarDto> cars;
+
+        public CarsDto(Cars cars) {
+            List<Car> carList = cars.getCars();
+            this.cars = carList.stream()
+                .map(CarDto::new)
+                .collect(Collectors.toList());
+        }
+
+        public List<CarDto> getCars() {
+            return cars;
+        }
+    }
+
+    public static class CarDto {
+
+        private final String name;
+        private final int position;
+
+        public CarDto(Car car) {
+            name = car.getName();
+            position = car.getPosition();
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getPosition() {
+            return position;
+        }
     }
 }
